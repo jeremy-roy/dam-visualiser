@@ -1,0 +1,13 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": { "name": "Woodhead Dam" },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[18.4, -33.97], [18.41, -33.97], [18.41, -33.96], [18.4, -33.96], [18.4, -33.97]]]
+        }
+      }
+    ]
+  }
