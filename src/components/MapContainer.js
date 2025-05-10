@@ -78,34 +78,36 @@ function MapContainer({ data, mapStyle, onSelectDam }) {
     map.on('load', () => {
       map.addControl(new mapboxgl.NavigationControl());
       map.addControl(overlay);
+
+      // Attach picking events after overlay is initialized
+      map.on('click', (e) => {
+        const info = overlay.pickObject({ x: e.point.x, y: e.point.y });
+        if (info && info.object) {
+          onSelectDam(info.object);
+        }
+      });
+
+      map.on('mousemove', (e) => {
+        const info = overlay.pickObject({ x: e.point.x, y: e.point.y });
+        if (info && info.object) {
+          const props = info.object.properties || {};
+          let percent = null;
+          // time-series
+          if (Array.isArray(props.storage_levels) && props.storage_levels.length) {
+            const latest = props.storage_levels[props.storage_levels.length - 1];
+            percent = latest && latest.percent_full;
+          }
+          // fallback single value
+          else if (props.current_percentage_full != null) {
+            percent = parseFloat(props.current_percentage_full);
+          }
+          setHoverInfo({ x: e.point.x, y: e.point.y, name: props.NAME, percent });
+        } else {
+          setHoverInfo(null);
+        }
+      });
     });
 
-    map.on('click', (e) => {
-      const info = overlay.pickObject({ x: e.point.x, y: e.point.y });
-      if (info && info.object) {
-        onSelectDam(info.object);
-      }
-    });
-
-    map.on('mousemove', (e) => {
-      const info = overlay.pickObject({ x: e.point.x, y: e.point.y });
-      if (info && info.object) {
-        const props = info.object.properties || {};
-        let percent = null;
-        // time-series
-        if (Array.isArray(props.storage_levels) && props.storage_levels.length) {
-          const latest = props.storage_levels[props.storage_levels.length - 1];
-          percent = latest && latest.percent_full;
-        }
-        // fallback single value
-        else if (props.current_percentage_full != null) {
-          percent = parseFloat(props.current_percentage_full);
-        }
-        setHoverInfo({ x: e.point.x, y: e.point.y, name: props.NAME, percent });
-      } else {
-        setHoverInfo(null);
-      }
-    });
 
     return () => map.remove();
   }, [data, mapStyle, onSelectDam]);

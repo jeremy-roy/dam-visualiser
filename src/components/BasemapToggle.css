@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+.basemap-toggle {
+  position: absolute;
+  display: inline-block;
+  /* position below the Mapbox zoom controls */
+  top: 130px;
+  right: 10px;
+  z-index: 1000;
+  font-family: 'Nunito', sans-serif;
+}
+
+.basemap-toggle-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: #8b96aa;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.basemap-toggle-button:hover {
+  background: #f5f5f5;
+}
+
+.basemap-toggle-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #2684ff;
+}
+
+.basemap-options {
+  position: absolute;
+  top: calc(100% + 8px);
+  /* align options under toggle, flush right */
+  right: 0;
+  display: flex;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.basemap-option-button {
+  flex: 1;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #8b96aa;
+  transition: background 0.2s;
+}
+
+.basemap-option-button:hover {
+  background-color: #f0f0f0;
+}
+
+.basemap-option-button.selected {
+  background-color: #0063e0;
+  color: #ffffff;
+  margin: 2px;
+  border-radius: 6px !important;
+}
+
+.basemap-option-button:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.basemap-option-button:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Override Mapbox GL Zoom Controls to match our basemap toggle styling */
+.mapboxgl-ctrl-group {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  /* remove group background and borders to let buttons stand alone */
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* Zoom in/out buttons styling */
+.mapboxgl-ctrl-group button.mapboxgl-ctrl-zoom-in,
+.mapboxgl-ctrl-group button.mapboxgl-ctrl-zoom-out {
+  background: #ffffff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  color: #8b96aa !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+/* remove default button borders and separators */
+.mapboxgl-ctrl-group button {
+  border: none !important;
+}
+.mapboxgl-ctrl-group button + button {
+  border-top: none !important;
+}
+
+
+/* Hide original icon spans */
+.mapboxgl-ctrl-group button.mapboxgl-ctrl-zoom-in .mapboxgl-ctrl-icon,
+.mapboxgl-ctrl-group button.mapboxgl-ctrl-zoom-out .mapboxgl-ctrl-icon {
+  display: none !important;
+}
+
+/* Inject new plus icon */
+.mapboxgl-ctrl-group button.mapboxgl-ctrl-zoom-in::before {
+  content: url("data:image/svg+xml;utf8,<svg id='plus' viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'><path fill='%238b96aa' d='M6 8V14H8V8H14V6H8V0H6V6H0V8H6Z'/></svg>");
+  display: inline-block !important;
+  width: 14px !important;
+  height: 14px !important;
+  align-self: center !important;
+}
+
+/* Inject new minus icon */
+.mapboxgl-ctrl-group button.mapboxgl-ctrl-zoom-out::before {
+  content: url("data:image/svg+xml;utf8,<svg id='minus' viewBox='0 0 14 2' xmlns='http://www.w3.org/2000/svg'><path fill='%238b96aa' d='M14 2H0V0H14V2Z'/></svg>");
+  display: inline-block !important;
+  width: 14px !important;
+  height: 20px !important;
+  align-self: center !important;
+}
+
+/* Reset bearing to north (compass) button styling */
+.mapboxgl-ctrl-group button.mapboxgl-ctrl-compass {
+  background: #ffffff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+/* Ensure default compass icon is visible and centered */
+.mapboxgl-ctrl-group button.mapboxgl-ctrl-compass .mapboxgl-ctrl-icon {
+  display: block !important;
+  /* full size to show background-image icon */
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+}

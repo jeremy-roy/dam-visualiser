@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
+import './DamPopup.css';
 
 function DamPopup({ dam, onClose }) {
   const props = dam.properties || {};
@@ -12,7 +13,11 @@ function DamPopup({ dam, onClose }) {
     : null;
 
   // prepare chart data if timeseries exists
-  const labels = timeseries.map(item => item.date);
+  // Extract years for x-axis labels
+  const labels = timeseries.map(item => {
+    const date = new Date(item.date);
+    return date.getFullYear();
+  });
   const data = {
     labels,
     datasets: []
@@ -24,7 +29,9 @@ function DamPopup({ dam, onClose }) {
       data: timeseries.map(item => item.percentagepercent_full ?? item.percent_full ?? null),
       fill: false,
       backgroundColor: 'rgb(75,192,192)',
-      borderColor: 'rgba(75,192,192,0.5)'
+      borderColor: 'rgba(75,192,192,0.5)',
+      pointRadius: 0,
+      pointHoverRadius: 3
     });
     // last year percentage
     data.datasets.push({
@@ -32,16 +39,79 @@ function DamPopup({ dam, onClose }) {
       data: timeseries.map(item => item.last_year_percent_full ?? null),
       fill: false,
       backgroundColor: 'rgb(192,75,75)',
-      borderColor: 'rgba(192,75,75,0.5)'
+      borderColor: 'rgba(192,75,75,0.5)',
+      pointRadius: 0,
+      pointHoverRadius: 3
     });
   }
 
+  // Drag state
+  const popupRef = useRef(null);
+  const [pos, setPos] = useState({ x: 10, y: 10 });
+  const [dragging, setDragging] = useState(false);
+  const [rel, setRel] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    function handleMouseMove(e) {
+      if (!dragging) return;
+      setPos({ x: e.clientX - rel.x, y: e.clientY - rel.y });
+      e.preventDefault();
+    }
+    function handleMouseUp() {
+      setDragging(false);
+    }
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [dragging, rel]);
+
+  function handleMouseDown(e) {
+    if (e.button !== 0) return;
+    const rect = popupRef.current.getBoundingClientRect();
+    setDragging(true);
+    setRel({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    e.preventDefault();
+  }
+
+  // Chart display options: show yearly ticks, limit number of labels
+  const options = {
+    scales: {
+      x: {
+        ticks: {
+          autoSkip: true,
+          maxTicksLimit: 10,
+        },
+        title: {
+          display: false
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        position: 'top'
+      }
+    },
+    maintainAspectRatio: false
+  };
+
   return (
-    <div style={{ position: 'absolute', right: 10, top: 10, width: '300px', background: 'white', padding: '10px', borderRadius: '4px', zIndex: 10 }}>
-      <button onClick={onClose} style={{ float: 'right' }}>Close</button>
-      <h3>{dam.properties.NAME}</h3>
+    <div
+      ref={popupRef}
+      className={`dam-popup${dragging ? ' dragging' : ''}`}
+      style={{ left: pos.x, top: pos.y }}
+    >
+      <div className="dam-popup-header" onMouseDown={handleMouseDown}>
+        <h3>{props.NAME}</h3>
+        <button onClick={onClose} className="dam-popup-close-button" aria-label="Close popup">×</button>
+      </div>
       {timeseries.length ? (
-        <Line data={data} />
+        // Render chart with yearly x-axis
+        <div style={{ height: '300px' }}>
+          <Line data={data} options={options} />
+        </div>
       ) : current != null ? (
         <p>Current: {current}% full</p>
       ) : (

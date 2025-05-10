@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+.dam-popup {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 600px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 1000;
+  font-family: 'Nunito', sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  user-select: none;
+}
+
+.dam-popup.dragging {
+  cursor: grabbing;
+}
+
+.dam-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+  margin-bottom: 10px;
+}
+
+.dam-popup-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.dam-popup-close-button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  color: #333333;
+  padding: 4px;
+}

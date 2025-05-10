@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className="App" style={{ position: 'relative', height: '100vh' }}>
-      <BasemapToggle mapStyle={mapStyle} onStyleChange={setMapStyle} />
+      <BasemapToggle currentStyle={mapStyle} onChange={setMapStyle} />
       {data && (
         <MapContainer
           data={data}
