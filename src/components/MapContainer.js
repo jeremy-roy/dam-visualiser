@@ -6,8 +6,9 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
-function MapContainer({ data, mapStyle, onSelectDam }) {
+function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
   const mapContainer = useRef(null);
+  const mapRef = useRef(null);
   const [hoverInfo, setHoverInfo] = useState(null);
 
   useEffect(() => {
@@ -85,10 +86,23 @@ function MapContainer({ data, mapStyle, onSelectDam }) {
         }
       });
     });
+    // keep map instance for external control
+    mapRef.current = map;
 
 
-    return () => map.remove();
+    return () => {
+      map.remove();
+      mapRef.current = null;
+    };
   }, [data, mapStyle, onSelectDam]);
+
+  // Pan/fly to external coordinate when requested
+  useEffect(() => {
+    if (mapRef.current && panTo && Array.isArray(panTo.coords)) {
+      const [lng, lat] = panTo.coords;
+      mapRef.current.flyTo({ center: [lng, lat], zoom: panTo.zoom });
+    }
+  }, [panTo]);
 
   return (
     <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>

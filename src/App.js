@@ -11,6 +11,8 @@ function App() {
   const [mapStyle, setMapStyle] = useState('mapbox://styles/mapbox/light-v10');
   const [selectedDam, setSelectedDam] = useState(null);
   const [showLevels, setShowLevels] = useState(false);
+  // panTo: { coords: [lng, lat], zoom: number }
+  const [panTo, setPanTo] = useState(null);
 
   useEffect(() => {
     // fetch the updated GeoJSON data in public/ directory
@@ -44,10 +46,17 @@ function App() {
           data={data}
           mapStyle={mapStyle}
           onSelectDam={setSelectedDam}
+          panTo={panTo}
         />
       )}
       {showLevels && data && (
-        <DamLevels data={data} onClose={() => setShowLevels(false)} />
+        <DamLevels
+          data={data}
+          onClose={() => setShowLevels(false)}
+          onSelectDam={coords => {
+            setPanTo({ coords, zoom: 12 });
+          }}
+        />
       )}
       {selectedDam && (
         <DamPopup dam={selectedDam} onClose={() => setSelectedDam(null)} />
