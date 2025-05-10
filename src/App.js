@@ -38,7 +38,11 @@ function App() {
   return (
     <div className="App" style={{ position: 'relative', height: '100vh' }}>
       <BasemapToggle currentStyle={mapStyle} onChange={setMapStyle} />
-      <button className="dam-levels-button" onClick={() => setShowLevels(true)}>
+      <button
+        className="dam-levels-button"
+        onClick={() => setShowLevels(open => !open)}
+        aria-pressed={showLevels}
+      >
         Dam Levels
       </button>
       {data && (
@@ -49,9 +53,10 @@ function App() {
           panTo={panTo}
         />
       )}
-      {showLevels && data && (
+      {data && (
         <DamLevels
           data={data}
+          open={showLevels}
           onClose={() => setShowLevels(false)}
           onSelectDam={coords => {
             setPanTo({ coords, zoom: 12 });

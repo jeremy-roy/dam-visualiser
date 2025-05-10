@@ -4,8 +4,8 @@ import './BasemapToggle.css';
 
 const STYLE_OPTIONS = [
   { id: 'mapbox://styles/mapbox/light-v10', label: 'Light' },
-  { id: 'mapbox://styles/mapbox/satellite-v9', label: 'Satellite' },
-  { id: 'mapbox://styles/mapbox/satellite-streets-v11', label: 'Hybrid' }
+  { id: 'mapbox://styles/mapbox/dark-v10', label: 'Dark' },
+  { id: 'mapbox://styles/mapbox/satellite-v9', label: 'Satellite' }
 ];
 
 function BasemapToggle({ currentStyle, onChange }) {

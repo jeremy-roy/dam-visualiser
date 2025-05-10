@@ -3,7 +3,7 @@ import './DamLevels.css';
 
 // Panel showing list of dams and their current % full
 // data: GeoJSON feature collection, onClose: function, onSelectDam: function(coords)
-function DamLevels({ data, onClose, onSelectDam }) {
+function DamLevels({ data, onClose, onSelectDam, open }) {
   if (!data || !Array.isArray(data.features)) return null;
   // Build list of dams with current percentage
   // Build list of dams with name, percent, and first coordinate for zoom
@@ -35,7 +35,7 @@ function DamLevels({ data, onClose, onSelectDam }) {
   });
   return (
     <div className="dam-levels-overlay">
-      <div className="dam-levels-panel">
+      <div className={`dam-levels-panel${open ? ' open' : ''}`}>
         <div className="dam-levels-header">
           <h3>Dam Levels</h3>
           <button className="dam-levels-close" onClick={onClose} aria-label="Close">×</button>
@@ -47,7 +47,6 @@ function DamLevels({ data, onClose, onSelectDam }) {
               className="dam-levels-item"
               onClick={() => {
                 if (d.coords && onSelectDam) onSelectDam(d.coords);
-                onClose();
               }}
               style={{ cursor: d.coords ? 'pointer' : 'default' }}
             >

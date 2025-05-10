@@ -9,16 +9,20 @@ const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
   const mapContainer = useRef(null);
   const mapRef = useRef(null);
+  // store last camera position across style changes
+  const cameraRef = useRef({ center: [18.0, -33.0], zoom: 8 });
   const [hoverInfo, setHoverInfo] = useState(null);
 
   useEffect(() => {
     if (!data) return;
     mapboxgl.accessToken = MAPBOX_TOKEN;
+    // initialize map with last known camera
+    const { center, zoom } = cameraRef.current;
     const map = new mapboxgl.Map({
       container: mapContainer.current,
       style: mapStyle,
-      center: [18.0, -33.0],
-      zoom: 8
+      center,
+      zoom
     });
 
     const overlay = new MapboxOverlay({
@@ -91,8 +95,13 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
 
 
     return () => {
-      map.remove();
-      mapRef.current = null;
+      if (mapRef.current) {
+        // save camera position
+        const c = mapRef.current.getCenter();
+        cameraRef.current = { center: [c.lng, c.lat], zoom: mapRef.current.getZoom() };
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
     };
   }, [data, mapStyle, onSelectDam]);
 
