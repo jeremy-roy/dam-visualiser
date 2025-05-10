@@ -28,6 +28,21 @@
   color: #61dafb;
 }
 
+/* Button to open Dam Levels panel */
+.dam-levels-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

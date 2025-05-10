@@ -31,16 +31,12 @@ function MapContainer({ data, mapStyle, onSelectDam }) {
           getFillColor: feature => {
             const props = feature.properties || {};
             let percent = null;
-            // try time-series storage_levels
             if (Array.isArray(props.storage_levels) && props.storage_levels.length) {
               const latest = props.storage_levels[props.storage_levels.length - 1];
               percent = latest && latest.percent_full;
-            }
-            // fallback to single current_percentage_full
-            else if (props.current_percentage_full != null) {
+            } else if (props.current_percentage_full != null) {
               percent = parseFloat(props.current_percentage_full);
             }
-            // no valid percentage: grey
             if (percent == null || isNaN(percent)) {
               return [200, 200, 200, 150];
             }
@@ -53,26 +49,8 @@ function MapContainer({ data, mapStyle, onSelectDam }) {
           getLineWidth: 10
         })
       ],
-      getTooltip: info => {
-        if (info.object) {
-          const props = info.object.properties || {};
-          const name = props.NAME || '';
-          let label = 'N/A';
-          // try time-series
-          if (Array.isArray(props.storage_levels) && props.storage_levels.length) {
-            const latest = props.storage_levels[props.storage_levels.length - 1];
-            if (latest && latest.percent_full != null) {
-              label = `${latest.percent_full}% full`;
-            }
-          }
-          // fallback single value
-          else if (props.current_percentage_full != null) {
-            label = `${parseFloat(props.current_percentage_full)}% full`;
-          }
-          return `${name}: ${label}`;
-        }
-        return null;
-      }
+      // Disable Deck.GL default tooltips; use custom React hover tooltip
+      getTooltip: () => null
     });
 
     map.on('load', () => {
@@ -116,9 +94,19 @@ function MapContainer({ data, mapStyle, onSelectDam }) {
     <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
       <div ref={mapContainer} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
       {hoverInfo && (
-        <div style={{ position: 'absolute', left: hoverInfo.x, top: hoverInfo.y, zIndex: 9, pointerEvents: 'none', background: 'white', padding: '4px', borderRadius: '4px' }}>
+        <div style={{
+          position: 'absolute',
+          left: hoverInfo.x,
+          top: hoverInfo.y,
+          zIndex: 9,
+          pointerEvents: 'none',
+          background: 'white',
+          padding: '4px',
+          borderRadius: '4px',
+          fontFamily: "'Nunito', sans-serif"
+        }}>
           <div><strong>{hoverInfo.name}</strong></div>
-          <div>{hoverInfo.percent != null ? `${hoverInfo.percent}% full` : 'N/A'}</div>
+          <div>{hoverInfo.percent != null ? `${Math.round(hoverInfo.percent)}% full` : 'N/A'}</div>
         </div>
       )}
     </div>

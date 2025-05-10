@@ -4,11 +4,13 @@ import React, { useState, useEffect } from 'react';
 import BasemapToggle from './components/BasemapToggle';
 import MapContainer from './components/MapContainer';
 import DamPopup from './components/DamPopup';
+import DamLevels from './components/DamLevels';
 
 function App() {
   const [data, setData] = useState(null);
   const [mapStyle, setMapStyle] = useState('mapbox://styles/mapbox/light-v10');
   const [selectedDam, setSelectedDam] = useState(null);
+  const [showLevels, setShowLevels] = useState(false);
 
   useEffect(() => {
     // fetch the updated GeoJSON data in public/ directory
@@ -34,12 +36,18 @@ function App() {
   return (
     <div className="App" style={{ position: 'relative', height: '100vh' }}>
       <BasemapToggle currentStyle={mapStyle} onChange={setMapStyle} />
+      <button className="dam-levels-button" onClick={() => setShowLevels(true)}>
+        Dam Levels
+      </button>
       {data && (
         <MapContainer
           data={data}
           mapStyle={mapStyle}
           onSelectDam={setSelectedDam}
         />
+      )}
+      {showLevels && data && (
+        <DamLevels data={data} onClose={() => setShowLevels(false)} />
       )}
       {selectedDam && (
         <DamPopup dam={selectedDam} onClose={() => setSelectedDam(null)} />
