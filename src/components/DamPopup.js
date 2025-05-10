@@ -3,7 +3,7 @@ import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 import './DamPopup.css';
 
-function DamPopup({ dam, onClose }) {
+function DamPopup({ dam, onClose, initialPos }) {
   const props = dam.properties || {};
   // use the timeseries array from the feature properties
   const timeseries = Array.isArray(props.timeseries) ? props.timeseries : [];
@@ -56,9 +56,9 @@ function DamPopup({ dam, onClose }) {
       // smooth curves
       tension: 0.4,
       cubicInterpolationMode: 'monotone',
-      spanGaps: true
+      // spanGaps: true
     });
-    // last year percentage
+    // last year percentage (hidden by default)
     data.datasets.push({
       label: 'Last Year %',
       data: filteredTimeseries.map(item => item.last_year_percent_full ?? null),
@@ -70,13 +70,16 @@ function DamPopup({ dam, onClose }) {
       // smooth curves
       tension: 0.4,
       cubicInterpolationMode: 'monotone',
-      spanGaps: true
+      // hide this dataset initially
+      hidden: true,
+      // spanGaps: true
     });
   }
 
   // Drag state
   const popupRef = useRef(null);
-  const [pos, setPos] = useState({ x: 10, y: 10 });
+  // initial position: right of panel if provided, else default (10,10)
+  const [pos, setPos] = useState(initialPos || { x: 10, y: 10 });
   const [dragging, setDragging] = useState(false);
   const [rel, setRel] = useState({ x: 0, y: 0 });
 
@@ -136,11 +139,13 @@ function DamPopup({ dam, onClose }) {
             // Format date string
             return raw ? new Date(raw).toLocaleDateString() : '';
           },
-          // Show value to 2 decimal places
+      // Show value to 2 decimal places
           label: context => {
-            const v = context.raw;
-            if (v == null) return '';
-            return `${v.toFixed(2)}% full`;
+            const raw = context.raw;
+            if (raw == null) return '';
+            const num = parseFloat(raw);
+            if (isNaN(num)) return '';
+            return `${num.toFixed(2)}% full`;
           }
         }
       }

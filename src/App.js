@@ -64,7 +64,11 @@ function App() {
         />
       )}
       {selectedDam && (
-        <DamPopup dam={selectedDam} onClose={() => setSelectedDam(null)} />
+        <DamPopup
+          dam={selectedDam}
+          onClose={() => setSelectedDam(null)}
+          initialPos={showLevels ? { x: 360, y: 10 } : undefined}
+        />
       )}
     </div>
   );

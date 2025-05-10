@@ -95,3 +95,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+# Planning
+## Data
+- Calculate centroids
+- Add summary data, big 6 ect.
+- Add latest date property
+
+# Dam Visualiser App
+- Better color gradients
+- DamLevels battery % full icons with color gradient
+- Go though webpack comiler error messgaes

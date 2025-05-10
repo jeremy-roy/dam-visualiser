@@ -9,7 +9,7 @@
   bottom: 0;
   /* Overlay container: transparent, allows clicks to map except for panel */
   background: transparent;
-  z-index: 2000;
+  z-index: 1000;
   pointer-events: none;
 }
 

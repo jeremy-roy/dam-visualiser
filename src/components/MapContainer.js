@@ -9,8 +9,8 @@ const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
   const mapContainer = useRef(null);
   const mapRef = useRef(null);
-  // store last camera position across style changes
-  const cameraRef = useRef({ center: [18.0, -33.0], zoom: 8 });
+  // store last camera position across style changes (default starting view)
+  const cameraRef = useRef({ center: [18.665421839045592, -33.96235129043437], zoom: 8.4 });
   const [hoverInfo, setHoverInfo] = useState(null);
 
   useEffect(() => {
