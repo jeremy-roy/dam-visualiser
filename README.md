@@ -98,18 +98,28 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
+
+
 # Planning
 ## Data
-- Calculate centroids
-- Add summary data, big 6 ect.
-- Add latest date property
 - Popolation growth data
 - rainfall data
 
 # Dam Visualiser App
-- Better color gradients
-- DamLevels battery % full icons with color gradient
 - Go though webpack comiler error messgaes
-- add more information to the dam tooltip
-- hide mapbox link at the bottom of the page
-- Accept multipolygons shapes
+- Accept multipolygons shapes *
+
+
+# Notes
+Big 6:
+Berg River, Steenbras Lower, Steenbras Upper, Theewaterskloof, Voëlvlei and Wemmershoek
+
+Color gradients:
+0% - 20% FF6961
+21% - 40% FFB54C
+41% - 60% F8D66D
+61% - 80% 7ABD7E
+81% - 100% 8CD47E
+
+
+

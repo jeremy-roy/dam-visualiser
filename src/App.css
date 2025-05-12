@@ -44,11 +44,39 @@
   cursor: pointer;
   color: #5d6572;
   transition: background 0.2s;
+  display: flex;
+  align-items: center;
   
 }
 
 .dam-levels-button:hover {
   background-color: #f5f5f5;
+}
+
+/* Chevron icon for Dam Levels button */
+.dam-levels-chevron {
+  display: inline-block;
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+  animation: bounce-chev 2s ease-in-out 1;
+  /* subtle, light grey stroke via currentColor */
+  color: #888;
+}
+
+.dam-levels-button[aria-pressed="true"] .dam-levels-chevron {
+  transform: rotate(180deg);
+}
+
+@keyframes bounce-chev {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-3px);
+  }
+  60% {
+    transform: translateY(-1px);
+  }
 }
 
 @keyframes App-logo-spin {

@@ -222,6 +222,8 @@ function DamPopup({ dam, onClose, initialPos }) {
       className={`dam-popup${dragging ? ' dragging' : ''}`}
       style={{ left: pos.x, top: pos.y }}
     >
+      {/* Drag handle bar */}
+      <div className="drag-handle" onMouseDown={handleMouseDown} />
       <div className="dam-popup-header" onMouseDown={handleMouseDown}>
         <h3>{props.NAME}</h3>
         <button onClick={onClose} className="dam-popup-close-button" aria-label="Close popup">×</button>

@@ -22,7 +22,9 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
       container: mapContainer.current,
       style: mapStyle,
       center,
-      zoom
+      zoom,
+      // Disable default Mapbox attribution links
+      attributionControl: false
     });
 
     const overlay = new MapboxOverlay({
@@ -82,7 +84,10 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
 
       map.on('mousemove', (e) => {
         const info = overlay.pickObject({ x: e.point.x, y: e.point.y });
+        // change cursor to pointer over dam polygons
+        const canvas = map.getCanvas();
         if (info && info.object) {
+          canvas.style.cursor = 'pointer';
           const props = info.object.properties || {};
           let percent = null;
           // time-series
@@ -108,6 +113,8 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
             construction: props.CNST || null
           });
         } else {
+          // reset cursor and hide tooltip when not over a dam
+          map.getCanvas().style.cursor = '';
           setHoverInfo(null);
         }
       });

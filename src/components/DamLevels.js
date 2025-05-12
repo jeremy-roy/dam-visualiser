@@ -2,13 +2,23 @@ import React, { useMemo, useState } from 'react';
 import './DamLevels.css';
 
 // Battery icon showing fill level and color
-function BatteryIcon({ percent, color }) {
+// Battery icon showing fill level and color, accepts style and className for customization
+function BatteryIcon({ percent, color, style = {}, className }) {
   // clamp percent
   const p = percent != null && !isNaN(percent) ? Math.max(0, Math.min(100, percent)) : 0;
   // compute inner fill width (max 36px)
   const fillWidth = (36 * p) / 100;
+  // merge default and custom styles
+  const baseStyle = { verticalAlign: 'middle', marginRight: '6px' };
+  const mergedStyle = { ...baseStyle, ...style };
   return (
-    <svg width="44" height="20" viewBox="0 0 44 20" style={{ verticalAlign: 'middle', marginRight: '6px' }}>
+    <svg
+      className={className}
+      width="44"
+      height="20"
+      viewBox="0 0 44 20"
+      style={mergedStyle}
+    >
       <rect x="1" y="1" width="40" height="18" rx="2" fill="none" stroke="black" strokeWidth="2" />
       <rect x="41" y="5" width="2" height="10" rx="1" fill="black" />
       <rect x="2" y="2" width={fillWidth} height="16" fill={color} />
@@ -29,18 +39,14 @@ function getBatteryColor(percent) {
 
 // Panel showing list of dams and their current % full
 // data: GeoJSON feature collection, onClose: function, onSelectDam: function(coords), onSelectSummary: function(summaryFeature)
-function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeature, open }) {
+function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeature, selectedFeature, open }) {
   // Ensure features is always an array for hooks
   const features = Array.isArray(data?.features) ? data.features : [];
   // track last clicked dam name to differentiate zoom vs popup
   const [lastClicked, setLastClicked] = useState(null);
-  // Reference precomputed summary features for Big 6 and Big 5
+  // Reference precomputed summary feature for Big 6
   const big6Summary = useMemo(
     () => features.find(f => f.properties?.NAME === 'Big 6 Total'),
-    [features]
-  );
-  const big5Summary = useMemo(
-    () => features.find(f => f.properties?.NAME === 'Big 5 Total'),
     [features]
   );
   if (!features.length) return null;
@@ -51,11 +57,6 @@ function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeatur
     : null;
   const big6Rounded = big6Pct != null ? Math.round(big6Pct) : null;
   const big6Color = getBatteryColor(big6Rounded);
-  const big5Pct = big5Summary?.properties?.current_percentage_full != null
-    ? parseFloat(big5Summary.properties.current_percentage_full)
-    : null;
-  const big5Rounded = big5Pct != null ? Math.round(big5Pct) : null;
-  const big5Color = getBatteryColor(big5Rounded);
   // Build list of individual dams (excluding summary features) with current percentage and zoom coords
   const dams = features
     .filter(feature => {
@@ -109,7 +110,7 @@ function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeatur
           <button className="dam-levels-close" onClick={onClose} aria-label="Close">×</button>
         </div>
         <ul className="dam-levels-list">
-          {/* Summary totals for Big 6 and Big 5 */}
+          {/* Summary total for Big 6 */}
           <li
             key="big6"
             className="dam-levels-item summary"
@@ -124,20 +125,6 @@ function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeatur
               {big6Rounded != null ? `${big6Rounded}%` : 'N/A'}
             </span>
           </li>
-          <li
-            key="big5"
-            className="dam-levels-item summary"
-            onClick={() => { if (onSelectSummary) onSelectSummary(big5Summary); }}
-            style={{ cursor: 'pointer' }}
-          >
-            <span className="dam-name">
-              <BatteryIcon percent={big5Rounded} color={big5Color} />
-              Big 5 Total
-            </span>
-            <span className="dam-percent">
-              {big5Rounded != null ? `${big5Rounded}%` : 'N/A'}
-            </span>
-          </li>
           {/* Individual dams */}
           {dams.map((d, i) => (
             <li
@@ -145,14 +132,13 @@ function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeatur
               className="dam-levels-item"
               onClick={() => {
                 if (!d.coords) return;
-                if (lastClicked === d.name) {
-                  // second click: open/update popup chart
-                  if (onSelectFeature) onSelectFeature(d.feature);
-                } else {
-                  // first click: pan/zoom
-                  setLastClicked(d.name);
-                  if (onSelectDam) onSelectDam(d.coords);
+                const isDoubleClick = lastClicked === d.name;
+                const isPopupOpen = !!selectedFeature;
+                if (onSelectDam) onSelectDam(d.coords);
+                if ((isPopupOpen || isDoubleClick) && onSelectFeature) {
+                  onSelectFeature(d.feature);
                 }
+                setLastClicked(d.name);
               }}
               style={{ cursor: d.coords ? 'pointer' : 'default' }}
             >
@@ -172,3 +158,5 @@ function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeatur
 }
 
 export default DamLevels;
+// Export utility icon and color mapping for external use
+export { BatteryIcon, getBatteryColor };

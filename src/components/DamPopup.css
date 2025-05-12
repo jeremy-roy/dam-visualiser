@@ -6,7 +6,7 @@
   top: 10px;
   width: 600px;
   background: #ffffff;
-  padding: 20px;
+  padding: 10px 20px 20px;
   border-radius: 8px;
   z-index: 1001;
   font-family: 'Nunito', sans-serif;
@@ -24,6 +24,15 @@
   align-items: center;
   cursor: grab;
   margin-bottom: 10px;
+}
+/* Small drag handle bar */
+.drag-handle {
+  width: 40px;
+  height: 4px;
+  background: #ccc;
+  border-radius: 2px;
+  margin: 6px auto;
+  cursor: grab;
 }
 
 .dam-popup-header h3 {
