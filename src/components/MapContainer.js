@@ -42,13 +42,23 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
             } else if (props.current_percentage_full != null) {
               percent = parseFloat(props.current_percentage_full);
             }
+            // no data: light grey
             if (percent == null || isNaN(percent)) {
               return [200, 200, 200, 150];
             }
-            const p = percent / 100;
-            const r = Math.round(255 * (1 - p));
-            const g = Math.round(255 * p);
-            return [r, g, 0, 200];
+            const p = percent;
+            // discrete color bands (5)
+            if (p <= 20) {
+              return [0xFF, 0x69, 0x61, 200];  // #FF6961 (red)
+            } else if (p <= 40) {
+              return [0xFF, 0xB5, 0x4C, 200];  // #FFB54C (amber)
+            } else if (p <= 60) {
+              return [0xF8, 0xD6, 0x6D, 200];  // #F8D66D (light-yellow)
+            } else if (p <= 80) {
+              return [0x7A, 0xBD, 0x7E, 200];  // #7ABD7E (light-green)
+            } else {
+              return [0x8C, 0xD4, 0x7E, 200];  // #8CD47E (green)
+            }
           },
           getLineColor: [0, 0, 0, 255],
           getLineWidth: 10
@@ -135,19 +145,32 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
           top: hoverInfo.y,
           zIndex: 9,
           pointerEvents: 'none',
-          background: 'white',
-          padding: '4px',
+          background: '#fff',
+          padding: '8px',
           borderRadius: '4px',
-          fontFamily: "'Nunito', sans-serif"
+          fontFamily: "'Nunito', sans-serif",
+          fontSize: '14px',
+          textAlign: 'left',
+          boxShadow: '0 1px 4px rgba(0,0,0,0.3)'
         }}>
-          <div><strong>{hoverInfo.name}</strong></div>
-          <div>{hoverInfo.percent != null ? `${Math.round(hoverInfo.percent)}% full` : 'N/A'}</div>
-          <div>Date: {hoverInfo.date != null ? hoverInfo.date : 'N/A'}</div>
-          <div>Location: {hoverInfo.location != null ? hoverInfo.location : 'N/A'}</div>
-          <div>River: {hoverInfo.river != null ? hoverInfo.river : 'N/A'}</div>
-          <div>Water Treatment Works: {hoverInfo.wtw != null ? hoverInfo.wtw : 'N/A'}</div>
-          <div>Capacity: {hoverInfo.capacity != null ? hoverInfo.capacity : 'N/A'}</div>
-          <div>Construction Year: {hoverInfo.construction != null ? hoverInfo.construction : 'N/A'}</div>
+          <div style={{ marginBottom: '4px', fontSize: '16px', lineHeight: '1.2' }}>
+            <strong>{hoverInfo.name}</strong>
+          </div>
+          <div style={{ marginBottom: '4px' }}>
+            {hoverInfo.percent != null
+              ? `${Math.round(hoverInfo.percent)}%${hoverInfo.date ? ` (${hoverInfo.date})` : ''}`
+              : 'N/A'}
+          </div>
+          <div style={{ marginBottom: '2px' }}><strong>Location:</strong> {hoverInfo.location || 'N/A'}</div>
+          <div style={{ marginBottom: '2px' }}><strong>River:</strong> {hoverInfo.river || 'N/A'}</div>
+          {/* <div style={{ marginBottom: '2px' }}><strong>Water Treatment:</strong> {hoverInfo.wtw || 'N/A'}</div> */}
+          <div style={{ marginBottom: '2px' }}>
+            <strong>Capacity:</strong>{' '}
+            {hoverInfo.capacity != null
+              ? `${hoverInfo.capacity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} ML`
+              : 'N/A'}
+          </div>
+          <div><strong>Constructed:</strong> {hoverInfo.construction || 'N/A'}</div>
         </div>
       )}
     </div>

@@ -64,6 +64,9 @@ function App() {
           onSelectSummary={feature => {
             setSelectedDam(feature);
           }}
+          onSelectFeature={feature => {
+            setSelectedDam(feature);
+          }}
         />
       )}
       {selectedDam && (
