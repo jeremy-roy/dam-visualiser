@@ -47,32 +47,63 @@ function DamPopup({ dam, onClose, initialPos }) {
     // current year percentage
     data.datasets.push({
       label: '% Full',
-      data: filteredTimeseries.map(item => item.percentagepercent_full ?? item.percent_full ?? null),
+      data: filteredTimeseries.map(item =>
+        item.percent_full != null ? parseFloat(item.percent_full) : null
+      ),
+      yAxisID: 'y',
       fill: false,
       backgroundColor: 'rgb(75,192,192)',
       borderColor: 'rgba(75,192,192,0.5)',
       pointRadius: 0,
       pointHoverRadius: 3,
-      // smooth curves
       tension: 0.4,
-      cubicInterpolationMode: 'monotone',
-      // spanGaps: true
+      cubicInterpolationMode: 'monotone'
     });
     // last year percentage (hidden by default)
     data.datasets.push({
       label: 'Last Year %',
-      data: filteredTimeseries.map(item => item.last_year_percent_full ?? null),
+      data: filteredTimeseries.map(item =>
+        item.last_year_percent_full != null ? parseFloat(item.last_year_percent_full) : null
+      ),
+      yAxisID: 'y',
       fill: false,
       backgroundColor: 'rgb(192,75,75)',
       borderColor: 'rgba(192,75,75,0.5)',
       pointRadius: 0,
       pointHoverRadius: 3,
-      // smooth curves
       tension: 0.4,
       cubicInterpolationMode: 'monotone',
-      // hide this dataset initially
-      hidden: true,
-      // spanGaps: true
+      hidden: true
+    });
+    // height in meters
+    data.datasets.push({
+      label: 'Height (m)',
+      data: filteredTimeseries.map(item =>
+        item.height_m != null ? parseFloat(item.height_m) : null
+      ),
+      yAxisID: 'y',
+      fill: false,
+      backgroundColor: 'rgb(54,162,235)',
+      borderColor: 'rgba(54,162,235,0.5)',
+      pointRadius: 0,
+      pointHoverRadius: 3,
+      tension: 0.4,
+      cubicInterpolationMode: 'monotone'
+    });
+    // storage in Ml
+    data.datasets.push({
+      label: 'Storage (Ml)',
+      data: filteredTimeseries.map(item =>
+        item.storage_ml != null ? parseFloat(item.storage_ml) : null
+      ),
+      yAxisID: 'y1',
+      fill: false,
+      backgroundColor: 'rgb(255,206,86)',
+      borderColor: 'rgba(255,206,86,0.5)',
+      pointRadius: 0,
+      pointHoverRadius: 3,
+      tension: 0.4,
+      cubicInterpolationMode: 'monotone'
     });
   }
 
@@ -123,6 +154,27 @@ function DamPopup({ dam, onClose, initialPos }) {
         title: {
           display: false
         }
+      },
+      y: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+        title: {
+          display: true,
+          text: 'Height (m) / % Full'
+        }
+      },
+      y1: {
+        type: 'linear',
+        display: true,
+        position: 'right',
+        title: {
+          display: true,
+          text: 'Storage (Ml)'
+        },
+        grid: {
+          drawOnChartArea: false
+        }
       }
     },
     plugins: {
@@ -145,7 +197,18 @@ function DamPopup({ dam, onClose, initialPos }) {
             if (raw == null) return '';
             const num = parseFloat(raw);
             if (isNaN(num)) return '';
-            return `${num.toFixed(2)}% full`;
+            const seriesLabel = context.dataset.label || '';
+            let valueStr;
+            if (seriesLabel === '% Full' || seriesLabel === 'Last Year %') {
+              valueStr = `${num.toFixed(2)}% full`;
+            } else if (seriesLabel === 'Height (m)') {
+              valueStr = `${num.toFixed(2)} m`;
+            } else if (seriesLabel === 'Storage (Ml)') {
+              valueStr = `${num.toFixed(0)} Ml`;
+            } else {
+              valueStr = num.toString();
+            }
+            return `${seriesLabel}: ${valueStr}`;
           }
         }
       }

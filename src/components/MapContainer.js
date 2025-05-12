@@ -84,7 +84,19 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
           else if (props.current_percentage_full != null) {
             percent = parseFloat(props.current_percentage_full);
           }
-          setHoverInfo({ x: e.point.x, y: e.point.y, name: props.NAME, percent });
+          // build hover info with additional properties
+          setHoverInfo({
+            x: e.point.x,
+            y: e.point.y,
+            name: props.NAME,
+            percent,
+            date: props.current_date || null,
+            location: props.LCTN || null,
+            river: props.RVR || null,
+            wtw: props.WTW || null,
+            capacity: props.CPCT != null ? props.CPCT : null,
+            construction: props.CNST || null
+          });
         } else {
           setHoverInfo(null);
         }
@@ -130,6 +142,12 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
         }}>
           <div><strong>{hoverInfo.name}</strong></div>
           <div>{hoverInfo.percent != null ? `${Math.round(hoverInfo.percent)}% full` : 'N/A'}</div>
+          <div>Date: {hoverInfo.date != null ? hoverInfo.date : 'N/A'}</div>
+          <div>Location: {hoverInfo.location != null ? hoverInfo.location : 'N/A'}</div>
+          <div>River: {hoverInfo.river != null ? hoverInfo.river : 'N/A'}</div>
+          <div>Water Treatment Works: {hoverInfo.wtw != null ? hoverInfo.wtw : 'N/A'}</div>
+          <div>Capacity: {hoverInfo.capacity != null ? hoverInfo.capacity : 'N/A'}</div>
+          <div>Construction Year: {hoverInfo.construction != null ? hoverInfo.construction : 'N/A'}</div>
         </div>
       )}
     </div>

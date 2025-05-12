@@ -61,6 +61,9 @@ function App() {
           onSelectDam={coords => {
             setPanTo({ coords, zoom: 12 });
           }}
+          onSelectSummary={feature => {
+            setSelectedDam(feature);
+          }}
         />
       )}
       {selectedDam && (
