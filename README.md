@@ -103,8 +103,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Calculate centroids
 - Add summary data, big 6 ect.
 - Add latest date property
+- Popolation growth data
+- rainfall data
 
 # Dam Visualiser App
 - Better color gradients
 - DamLevels battery % full icons with color gradient
 - Go though webpack comiler error messgaes
+- add more information to the dam tooltip
+- hide mapbox link at the bottom of the page
+- Accept multipolygons shapes
