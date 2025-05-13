@@ -251,7 +251,7 @@ function DamPopup({ dam, onClose, initialPos }) {
             </button>
           </div>
           {filteredTimeseries.length ? (
-            <div style={{ height: '300px' }}>
+            <div className="dam-popup-chart">
               <Line data={data} options={options} />
             </div>
           ) : (

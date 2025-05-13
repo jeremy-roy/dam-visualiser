@@ -71,6 +71,23 @@
   background-color: #eaeaea;
 }
 
-.dam-popup-filter-button.active {
+ .dam-popup-filter-button.active {
   background-color: #e0e0e0;
+}
+
+/* Default chart container */
+.dam-popup-chart {
+  height: 300px;
+}
+
+/* Responsive popup width and chart height on mobile */
+@media (max-width: 600px) {
+  .dam-popup {
+    width: 90vw;
+    left: 5vw !important;
+    top: 10px;
+  }
+  .dam-popup-chart {
+    height: 180px;
+  }
 }

@@ -5,6 +5,7 @@ import BasemapToggle from './components/BasemapToggle';
 import MapContainer from './components/MapContainer';
 import DamPopup from './components/DamPopup';
 import DamLevels, { BatteryIcon, getBatteryColor } from './components/DamLevels';
+import useIsMobile from './hooks/useIsMobile';
 
 function App() {
   const [data, setData] = useState(null);
@@ -13,6 +14,7 @@ function App() {
   const [showLevels, setShowLevels] = useState(false);
   // panTo: { coords: [lng, lat], zoom: number }
   const [panTo, setPanTo] = useState(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     // fetch the updated GeoJSON data in public/ directory
@@ -101,7 +103,7 @@ function App() {
           }}
         />
       )}
-      {selectedDam && (
+      {selectedDam && !isMobile && (
         <DamPopup
           dam={selectedDam}
           onClose={() => setSelectedDam(null)}

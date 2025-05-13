@@ -87,3 +87,10 @@
     transform: rotate(360deg);
   }
 }
+/* Responsive button size on mobile */
+@media (max-width: 600px) {
+  .dam-levels-button {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+}

@@ -12,3 +12,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Map hover tooltip styling */
+.map-tooltip {
+  position: absolute;
+  z-index: 900;
+  pointer-events: none;
+  background: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  text-align: left;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  max-width: 200px;
+  word-break: break-word;
+}
+/* Hide Mapbox logo and attribution links throughout the app */
+.mapboxgl-ctrl-logo,
+.mapboxgl-ctrl-attrib {
+  display: none !important;
+}

@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { MapboxOverlay } from '@deck.gl/mapbox';
 import { GeoJsonLayer } from '@deck.gl/layers';
+import useIsMobile from '../hooks/useIsMobile';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
@@ -12,6 +13,7 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
   // store last camera position across style changes (default starting view)
   const cameraRef = useRef({ center: [18.665421839045592, -33.96235129043437], zoom: 8.4 });
   const [hoverInfo, setHoverInfo] = useState(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (!data) return;
@@ -78,11 +80,42 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
       map.on('click', (e) => {
         const info = overlay.pickObject({ x: e.point.x, y: e.point.y });
         if (info && info.object) {
-          onSelectDam(info.object);
+          if (!isMobile) {
+            onSelectDam(info.object);
+          } else {
+            // on mobile, show a tooltip at fixed position under the Dam Levels button
+            const props = info.object.properties || {};
+            let percent = null;
+            if (Array.isArray(props.storage_levels) && props.storage_levels.length) {
+              const latest = props.storage_levels[props.storage_levels.length - 1];
+              percent = latest && latest.percent_full;
+            } else if (props.current_percentage_full != null) {
+              percent = parseFloat(props.current_percentage_full);
+            }
+            setHoverInfo({
+              x: 20,
+              y: 60,
+              name: props.NAME,
+              percent,
+              date: props.current_date || null,
+              location: props.LCTN || null,
+              river: props.RVR || null,
+              capacity: props.CPCT != null ? props.CPCT : null,
+              construction: props.CNST || null
+            });
+          }
+        } else {
+          if (!isMobile) {
+            map.getCanvas().style.cursor = '';
+            setHoverInfo(null);
+          } else {
+            setHoverInfo(null);
+          }
         }
       });
 
       map.on('mousemove', (e) => {
+        if (isMobile) return;
         const info = overlay.pickObject({ x: e.point.x, y: e.point.y });
         // change cursor to pointer over dam polygons
         const canvas = map.getCanvas();
@@ -146,20 +179,10 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
     <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
       <div ref={mapContainer} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
       {hoverInfo && (
-        <div style={{
-          position: 'absolute',
-          left: hoverInfo.x,
-          top: hoverInfo.y,
-          zIndex: 9,
-          pointerEvents: 'none',
-          background: '#fff',
-          padding: '8px',
-          borderRadius: '4px',
-          fontFamily: "'Nunito', sans-serif",
-          fontSize: '14px',
-          textAlign: 'left',
-          boxShadow: '0 1px 4px rgba(0,0,0,0.3)'
-        }}>
+        <div
+          className="map-tooltip"
+          style={{ left: hoverInfo.x, top: hoverInfo.y }}
+        >
           <div style={{ marginBottom: '4px', fontSize: '16px', lineHeight: '1.2' }}>
             <strong>{hoverInfo.name}</strong>
           </div>

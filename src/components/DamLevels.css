@@ -56,7 +56,7 @@
   color: #5d6572;
   padding: 4px 8px;
   border-radius: 4px;
-  cursor: default;
+  cursor: pointer;
   transition: background 0.2s;
 }
 
@@ -91,4 +91,18 @@
 
 .dam-levels-item:last-child {
   border-bottom: none;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 600px) {
+  .dam-levels-panel.open {
+    /* leave margins on all sides so panel looks like a floating window */
+    width: 80vw;
+    left: 10px;
+    top: 10px;
+    bottom: 20px;
+    right: 20px;
+    /* limit height to leave bottom margin */
+    max-height: calc(100vh - 40px);
+  }
 }

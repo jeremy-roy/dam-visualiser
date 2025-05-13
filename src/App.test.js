@@ -1,8 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+// Mock fetch to prevent network calls in tests
+beforeAll(() => {
+  global.fetch = jest.fn(() =>
+    Promise.resolve({ json: () => Promise.resolve({ features: [] }) })
+  );
+});
+
+test('renders Dam Levels button', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const buttonElement = screen.getByText(/Dam Levels/i);
+  expect(buttonElement).toBeInTheDocument();
 });

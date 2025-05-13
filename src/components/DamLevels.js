@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import './DamLevels.css';
+import useIsMobile from '../hooks/useIsMobile';
 
 // Battery icon showing fill level and color
 // Battery icon showing fill level and color, accepts style and className for customization
@@ -49,6 +50,7 @@ function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeatur
     () => features.find(f => f.properties?.NAME === 'Big 6 Total'),
     [features]
   );
+  const isMobile = useIsMobile();
   if (!features.length) return null;
   
   // Compute summary percentages and colors
@@ -106,15 +108,20 @@ function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeatur
     <div className="dam-levels-overlay">
       <div className={`dam-levels-panel${open ? ' open' : ''}`}>
         <div className="dam-levels-header">
-          <h3>Dam Levels</h3>
-          <button className="dam-levels-close" onClick={onClose} aria-label="Close">×</button>
+          <h3 onClick={onClose}>Dam Levels</h3>
+          {!isMobile && (
+            <button className="dam-levels-close" onClick={onClose} aria-label="Close">×</button>
+          )}
         </div>
         <ul className="dam-levels-list">
           {/* Summary total for Big 6 */}
           <li
             key="big6"
             className="dam-levels-item summary"
-            onClick={() => { if (onSelectSummary) onSelectSummary(big6Summary); }}
+            onClick={() => {
+              if (onSelectSummary) onSelectSummary(big6Summary);
+              if (isMobile && onClose) onClose();
+            }}
             style={{ cursor: 'pointer' }}
           >
             <span className="dam-name">
@@ -130,7 +137,7 @@ function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeatur
             <li
               key={i}
               className="dam-levels-item"
-              onClick={() => {
+            onClick={() => {
                 if (!d.coords) return;
                 const isDoubleClick = lastClicked === d.name;
                 const isPopupOpen = !!selectedFeature;
@@ -139,6 +146,7 @@ function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeatur
                   onSelectFeature(d.feature);
                 }
                 setLastClicked(d.name);
+                if (isMobile && onClose) onClose();
               }}
               style={{ cursor: d.coords ? 'pointer' : 'default' }}
             >
