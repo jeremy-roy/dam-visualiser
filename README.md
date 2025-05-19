@@ -108,6 +108,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 # Dam Visualiser App
 - Go though webpack comiler error messgaes
 - Accept multipolygons shapes *
+- stream maps on initial 
 
 
 # Notes
@@ -120,6 +121,19 @@ Color gradients:
 41% - 60% F8D66D
 61% - 80% 7ABD7E
 81% - 100% 8CD47E
+
+
+/public
+    /data        
+        dam_polygons.geojson
+        dam_levels/json
+        cape_town_rainfall.json
+        cape_town_population.json
+
+        
+daily - dam_levels, rainfall, avg_temp
+monthly - dam_levels, rainfall, avg_temp
+yearly - dam_levels, rainfall, avg_temp, population
 
 
 
