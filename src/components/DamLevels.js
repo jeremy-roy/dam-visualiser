@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './DamLevels.css';
 import useIsMobile from '../hooks/useIsMobile';
 
@@ -45,17 +45,32 @@ function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeatur
   const features = Array.isArray(data?.features) ? data.features : [];
   // track last clicked dam name to differentiate zoom vs popup
   const [lastClicked, setLastClicked] = useState(null);
-  // Reference precomputed summary feature for Big 6
-  const big6Summary = useMemo(
-    () => features.find(f => f.properties?.NAME === 'Big 6 Total'),
-    [features]
-  );
   const isMobile = useIsMobile();
+  const [big6Series, setBig6Series] = useState([]);
+  useEffect(() => {
+    let mounted = true;
+    fetch(process.env.PUBLIC_URL + '/timeseries/dam_levels_daily.json')
+      .then(res => res.json())
+      .then(json => {
+        if (!mounted) return;
+        const series = Array.isArray(json['totalstored-big6'])
+          ? json['totalstored-big6']
+          : [];
+        setBig6Series(series);
+      })
+      .catch(err => {
+        console.error('Error loading Big 6 daily series:', err);
+        setBig6Series([]);
+      });
+    return () => { mounted = false; };
+  }, []);
   if (!features.length) return null;
-  
-  // Compute summary percentages and colors
-  const big6Pct = big6Summary?.properties?.current_percentage_full != null
-    ? parseFloat(big6Summary.properties.current_percentage_full)
+  // derive latest Big 6 percentage
+  const big6Latest = big6Series && big6Series.length > 0
+    ? big6Series[big6Series.length - 1]
+    : null;
+  const big6Pct = big6Latest?.percent_full != null
+    ? parseFloat(big6Latest.percent_full)
     : null;
   const big6Rounded = big6Pct != null ? Math.round(big6Pct) : null;
   const big6Color = getBatteryColor(big6Rounded);
@@ -74,10 +89,17 @@ function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeatur
     } else if (props.current_percentage_full != null) {
       percent = parseFloat(props.current_percentage_full);
     }
-    // Extract coordinate for zoom: use centroid if provided in properties, otherwise first polygon coordinate
+    // Determine coordinates for zoom: prefer centroid property (WKT or array), else fallback to polygon vertex
     let coords = null;
-    if (
-      props.centroid &&
+    if (typeof props.centroid === 'string') {
+      // parse WKT 'POINT (lng lat)'
+      const match = props.centroid.match(/POINT\s*\(\s*([^\s]+)\s+([^\s]+)\s*\)/);
+      if (match) {
+        const lng = parseFloat(match[1]);
+        const lat = parseFloat(match[2]);
+        if (!isNaN(lng) && !isNaN(lat)) coords = [lng, lat];
+      }
+    } else if (
       Array.isArray(props.centroid) &&
       props.centroid.length >= 2 &&
       typeof props.centroid[0] === 'number' &&
@@ -119,7 +141,16 @@ function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeatur
             key="big6"
             className="dam-levels-item summary"
             onClick={() => {
-              if (onSelectSummary) onSelectSummary(big6Summary);
+              // select Big 6 summary for timeseries popup
+              if (onSelectSummary) {
+                onSelectSummary({
+                  type: 'Feature',
+                  properties: {
+                    NAME: 'totalstored-big6',
+                    current_percentage_full: big6Pct
+                  }
+                });
+              }
               if (isMobile && onClose) onClose();
             }}
             style={{ cursor: 'pointer' }}

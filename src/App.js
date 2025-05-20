@@ -21,18 +21,8 @@ function App() {
     fetch(process.env.PUBLIC_URL + '/Bulk_Water_Dams_Enriched.geojson')
       .then(res => res.json())
       .then(raw => {
-        // flatten MultiPolygon features into individual Polygon features
-        const features = raw.features.flatMap(feature => {
-          if (feature.geometry && feature.geometry.type === 'MultiPolygon') {
-            return feature.geometry.coordinates.map(coords => ({
-              type: 'Feature',
-              geometry: { type: 'Polygon', coordinates: coords },
-              properties: feature.properties
-            }));
-          }
-          return feature;
-        });
-        setData({ ...raw, features });
+        // Use MultiPolygon geometries directly (deck.gl GeoJsonLayer supports MultiPolygon)
+        setData(raw);
       })
       .catch(console.error);
   }, []);
@@ -78,7 +68,8 @@ function App() {
           />
         </svg>
       </button>
-      {data && (
+      {/* Render map only when GeoJSON features are loaded */}
+      {data && Array.isArray(data.features) && data.features.length > 0 && (
         <MapContainer
           data={data}
           mapStyle={mapStyle}
@@ -86,7 +77,8 @@ function App() {
           panTo={panTo}
         />
       )}
-      {data && (
+      {/* Show dam levels list after features are available */}
+      {data && Array.isArray(data.features) && data.features.length > 0 && (
         <DamLevels
           data={data}
           open={showLevels}

@@ -5,6 +5,11 @@ import './DamPopup.css';
 
 function DamPopup({ dam, onClose, initialPos }) {
   const props = dam.properties || {};
+  // human-friendly name for display (map summary keys to labels)
+  const rawName = props.NAME;
+  const displayName = rawName === 'totalstored-big6'
+    ? 'Big 6 Total'
+    : rawName;
   // full timeseries data: daily and monthly for dam, plus rainfall and population
   const [allDailyData, setAllDailyData] = useState(null);
   const [allMonthlyData, setAllMonthlyData] = useState(null);
@@ -377,7 +382,7 @@ function DamPopup({ dam, onClose, initialPos }) {
       {/* Drag handle bar */}
       <div className="drag-handle" onMouseDown={handleMouseDown} />
       <div className="dam-popup-header" onMouseDown={handleMouseDown}>
-        <h3>{props.NAME}</h3>
+        <h3>{displayName}</h3>
         <button onClick={onClose} className="dam-popup-close-button" aria-label="Close popup">×</button>
       </div>
       {timeseries.length ? (

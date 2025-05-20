@@ -26,6 +26,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "jest": {
+    "modulePathIgnorePatterns": ["<rootDir>/dam-data/"]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
