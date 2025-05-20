@@ -98,24 +98,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
-
-
 # Planning
 ## Data
-- Popolation growth data
-- rainfall data
+- ✅
 
 # Dam Visualiser App
 - Go though webpack comiler error messgaes
 - Accept multipolygons shapes *
-- stream maps on initial 
-
+- stream maps on initial load
+- Big 6 Total is missing data / not showing a chart
+- Missing data on some dams, review dam data
+- Set up link info and favicon
+- add centroid properrty back
 
 # Notes
 Big 6:
 Berg River, Steenbras Lower, Steenbras Upper, Theewaterskloof, Voëlvlei and Wemmershoek
 
-Color gradients:
+# Color gradients:
 0% - 20% FF6961
 21% - 40% FFB54C
 41% - 60% F8D66D
@@ -123,17 +123,22 @@ Color gradients:
 81% - 100% 8CD47E
 
 
+# Data Structure
 /public
-    /data        
-        dam_polygons.geojson
-        dam_levels/json
-        cape_town_rainfall.json
-        cape_town_population.json
+  /data        
+    dam_polygons.geojson                    ← spatial layer only
+    /timeseries
+      dam_levels_daily.json                 ← full timeseries, per dam, daily
+      dam_levels_monthly.json               ← resampled to monthly
+      dam_levels_yearly.json                ← yearly averages or end-of-year value
+      cape_town_rainfall_daily.json         ← daily total rain + temp
+      cape_town_rainfall_monthly.json       ← monthly aggregates
+      cape_town_rainfall_yearly.json        ← yearly summaries
+      cape_town_population_yearly.json      ← annual values
 
-        
-daily - dam_levels, rainfall, avg_temp
-monthly - dam_levels, rainfall, avg_temp
-yearly - dam_levels, rainfall, avg_temp, population
+
+
+
 
 
 
