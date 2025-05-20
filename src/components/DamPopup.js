@@ -108,7 +108,7 @@ function DamPopup({ dam, onClose, initialPos }) {
   const filteredTimeseries = range === 'all'
     ? timeseries
     : timeseries.filter(item => new Date(item.date) >= cutoffDate);
-  // align rainfall and population data to dam time points
+  // align rainfall and prepare rain data
   const rawRain = range === '1y' ? rainDailyData : rainMonthlyData;
   const rainLookup = {};
   rawRain.forEach(item => { rainLookup[item.date] = item.prcp; });
@@ -116,13 +116,28 @@ function DamPopup({ dam, onClose, initialPos }) {
     const v = rainLookup[item.date];
     return v != null ? parseFloat(v) : null;
   });
-  const popLookup = {};
-  popYearData.forEach(item => { popLookup[item.date.slice(0, 4)] = item.population; });
-  const popData = filteredTimeseries.map(item => {
-    const yr = new Date(item.date).getFullYear().toString();
-    const v = popLookup[yr];
-    return v != null ? parseFloat(v) : null;
-  });
+
+  // prepare population interpolation: linear between yearly values
+  const popPoints = popYearData
+    .map(item => ({ year: new Date(item.date).getFullYear(), population: item.population }))
+    .filter(pt => pt.population != null)
+    .sort((a, b) => a.year - b.year);
+
+  const getPopValue = dateStr => {
+    const d = new Date(dateStr);
+    const y = d.getFullYear();
+    const pt0 = popPoints.find(pt => pt.year === y) || popPoints[0] || {};
+    const pt1 = popPoints.find(pt => pt.year === y + 1) || pt0;
+    const v0 = pt0.population;
+    const v1 = pt1.population;
+    const t0 = new Date(y, 0, 1).getTime();
+    const t1 = new Date(y + 1, 0, 1).getTime();
+    const td = d.getTime();
+    const frac = t1 > t0 ? (td - t0) / (t1 - t0) : 0;
+    return v0 + (v1 - v0) * Math.max(0, Math.min(1, frac));
+  };
+
+  const popPlotData = filteredTimeseries.map(item => getPopValue(item.date));
   // fallback single-value
   const current = props.current_percentage_full != null
     ? parseFloat(props.current_percentage_full)
@@ -221,20 +236,23 @@ function DamPopup({ dam, onClose, initialPos }) {
       pointRadius: 0,
       pointHoverRadius: 3,
       tension: 0.4,
-      cubicInterpolationMode: 'monotone'
+      cubicInterpolationMode: 'monotone',
+      hidden: true
     });
     // population (yearly)
     data.datasets.push({
       label: 'Population',
-      data: popData,
+      data: popPlotData,
       yAxisID: 'y3',
       fill: false,
+      spanGaps: true,
       backgroundColor: 'rgb(153,102,255)',
       borderColor: 'rgba(153,102,255,0.5)',
       pointRadius: 0,
       pointHoverRadius: 3,
-      tension: 0.4,
-      cubicInterpolationMode: 'monotone'
+      tension: 0,
+      cubicInterpolationMode: 'monotone',
+      hidden: true
     });
   }
 
@@ -270,6 +288,10 @@ function DamPopup({ dam, onClose, initialPos }) {
     e.preventDefault();
   }
 
+  // fixed population scale: compute global min/max
+  const popValuesAll = popYearData.map(item => item.population).filter(v => v != null);
+  const popMin = popValuesAll.length ? Math.min(...popValuesAll) : undefined;
+  const popMax = popValuesAll.length ? Math.max(...popValuesAll) : undefined;
   // Chart display options: show yearly ticks, limit number of labels
   const options = {
     scales: {
@@ -327,13 +349,18 @@ function DamPopup({ dam, onClose, initialPos }) {
         display: true,
         position: 'left',
         offset: true,
-        title: {
-          display: true,
-          text: 'Population'
-        },
+        // hide axis title (Population) and tick labels, and no border or ticks
+        title: { display: false },
         grid: {
-          drawOnChartArea: false
-        }
+          drawOnChartArea: false,
+          drawTicks: false,
+          drawBorder: false
+        },
+        // remove axis line
+        border: { display: false, color: 'transparent' },
+        ticks: { display: false },
+        min: popMin,
+        max: popMax
       }
     },
     plugins: {
