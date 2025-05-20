@@ -20,6 +20,8 @@ function DamPopup({ dam, onClose, initialPos }) {
   const [rainDailyData, setRainDailyData] = useState([]);
   const [rainMonthlyData, setRainMonthlyData] = useState([]);
   const [popYearData, setPopYearData] = useState([]);
+  // expanded chart toggle
+  const [expanded, setExpanded] = useState(false);
   // fetch daily data
   useEffect(() => {
     fetch(process.env.PUBLIC_URL + '/timeseries/dam_levels_daily.json')
@@ -376,14 +378,25 @@ function DamPopup({ dam, onClose, initialPos }) {
   return (
     <div
       ref={popupRef}
-      className={`dam-popup${dragging ? ' dragging' : ''}`}
-      style={{ left: pos.x, top: pos.y }}
+      className={`dam-popup${dragging ? ' dragging' : ''}${expanded ? ' expanded' : ''}`}
+      style={expanded ? {} : { left: pos.x, top: pos.y }}
     >
       {/* Drag handle bar */}
       <div className="drag-handle" onMouseDown={handleMouseDown} />
       <div className="dam-popup-header" onMouseDown={handleMouseDown}>
         <h3>{displayName}</h3>
-        <button onClick={onClose} className="dam-popup-close-button" aria-label="Close popup">×</button>
+        <div className="dam-popup-controls">
+        <button
+          onClick={e => { e.stopPropagation(); setExpanded(exp => !exp); }}
+          className="dam-popup-expand-button"
+          aria-label={expanded ? 'Shrink chart' : 'Expand chart'}
+        >{expanded ? '−' : '+'}</button>
+          <button
+            onClick={onClose}
+            className="dam-popup-close-button"
+            aria-label="Close popup"
+          >×</button>
+        </div>
       </div>
       {timeseries.length ? (
         <>

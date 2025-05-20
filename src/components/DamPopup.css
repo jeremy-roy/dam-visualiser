@@ -41,6 +41,13 @@
   font-weight: 600;
 }
 
+/* Container for expand/shrink and close buttons */
+.dam-popup-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .dam-popup-close-button {
   background: none;
   border: none;
@@ -90,4 +97,27 @@
   .dam-popup-chart {
     height: 180px;
   }
+}
+
+/* Expand/shrink button in header */
+.dam-popup-expand-button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  color: #333333;
+  padding: 4px;
+}
+/* Expanded popup full-screen-ish */
+.dam-popup.expanded {
+  width: 90vw;
+  height: 90vh;
+  left: 5vw !important;
+  top: 5vh !important;
+  right: 5vw;
+  bottom: 5vh;
+}
+.dam-popup.expanded .dam-popup-chart {
+  height: calc(90vh - 180px);
 }
