@@ -5,10 +5,91 @@ import './DamPopup.css';
 
 function DamPopup({ dam, onClose, initialPos }) {
   const props = dam.properties || {};
-  // use the timeseries array from the feature properties
-  const timeseries = Array.isArray(props.timeseries) ? props.timeseries : [];
+  // full timeseries data: daily and monthly for dam, plus rainfall and population
+  const [allDailyData, setAllDailyData] = useState(null);
+  const [allMonthlyData, setAllMonthlyData] = useState(null);
+  // per-dam series arrays
+  const [dailySeries, setDailySeries] = useState([]);
+  const [monthlySeries, setMonthlySeries] = useState([]);
+  // rainfall and population series arrays
+  const [rainDailyData, setRainDailyData] = useState([]);
+  const [rainMonthlyData, setRainMonthlyData] = useState([]);
+  const [popYearData, setPopYearData] = useState([]);
+  // fetch daily data
+  useEffect(() => {
+    fetch(process.env.PUBLIC_URL + '/timeseries/dam_levels_daily.json')
+      .then(res => res.json())
+      .then(data => setAllDailyData(data))
+      .catch(err => {
+        console.error('Error loading daily timeseries data:', err);
+        setAllDailyData({});
+      });
+  }, []);
+  // fetch monthly data
+  useEffect(() => {
+    fetch(process.env.PUBLIC_URL + '/timeseries/dam_levels_monthly.json')
+      .then(res => res.json())
+      .then(data => setAllMonthlyData(data))
+      .catch(err => {
+        console.error('Error loading monthly timeseries data:', err);
+        setAllMonthlyData({});
+      });
+  }, []);
+  // fetch rainfall daily data
+  useEffect(() => {
+    fetch(process.env.PUBLIC_URL + '/timeseries/cape_town_rainfall_daily.json')
+      .then(res => res.json())
+      .then(data => setRainDailyData(data))
+      .catch(err => {
+        console.error('Error loading rainfall daily:', err);
+        setRainDailyData([]);
+      });
+  }, []);
+  // fetch rainfall monthly data
+  useEffect(() => {
+    fetch(process.env.PUBLIC_URL + '/timeseries/cape_town_rainfall_monthly.json')
+      .then(res => res.json())
+      .then(data => setRainMonthlyData(data))
+      .catch(err => {
+        console.error('Error loading rainfall monthly:', err);
+        setRainMonthlyData([]);
+      });
+  }, []);
+  // fetch population yearly data
+  useEffect(() => {
+    fetch(process.env.PUBLIC_URL + '/timeseries/cape_town_population_yearly.json')
+      .then(res => res.json())
+      .then(data => {
+        // convert to date format for lookup
+        const series = data.map(item => ({ date: `${item.year}-01-01`, population: item.population }));
+        setPopYearData(series);
+      })
+      .catch(err => {
+        console.error('Error loading population yearly:', err);
+        setPopYearData([]);
+      });
+  }, []);
+  // derive daily and monthly series for this dam
+  useEffect(() => {
+    if (!allDailyData || !allMonthlyData) return;
+    // derive key from dam name: lowercase, drop trailing ' Dam', remove spaces
+    // keep only first hyphen (e.g. 'land-en-zeezicht')
+    const name = (props.NAME || '').toLowerCase().replace(/\s*dam$/i, '');
+    const noSpace = name.replace(/\s+/g, '');
+    const parts = noSpace.split('-').filter(Boolean);
+    const key = parts.length > 1
+      ? parts[0] + '-' + parts.slice(1).join('')
+      : parts[0] || '';
+    // select series or empty
+    const daily = Array.isArray(allDailyData[key]) ? allDailyData[key] : [];
+    const monthly = Array.isArray(allMonthlyData[key]) ? allMonthlyData[key] : [];
+    setDailySeries(daily);
+    setMonthlySeries(monthly);
+  }, [allDailyData, allMonthlyData, props.NAME]);
   // filter range: '1y', '5y', or 'all'
   const [range, setRange] = useState('all');
+  // pick daily or monthly series based on range
+  const timeseries = range === '1y' ? dailySeries : monthlySeries;
   // compute filtered timeseries based on selected range
   const now = new Date();
   const cutoffDate = new Date(now);
@@ -20,6 +101,21 @@ function DamPopup({ dam, onClose, initialPos }) {
   const filteredTimeseries = range === 'all'
     ? timeseries
     : timeseries.filter(item => new Date(item.date) >= cutoffDate);
+  // align rainfall and population data to dam time points
+  const rawRain = range === '1y' ? rainDailyData : rainMonthlyData;
+  const rainLookup = {};
+  rawRain.forEach(item => { rainLookup[item.date] = item.prcp; });
+  const rainData = filteredTimeseries.map(item => {
+    const v = rainLookup[item.date];
+    return v != null ? parseFloat(v) : null;
+  });
+  const popLookup = {};
+  popYearData.forEach(item => { popLookup[item.date.slice(0, 4)] = item.population; });
+  const popData = filteredTimeseries.map(item => {
+    const yr = new Date(item.date).getFullYear().toString();
+    const v = popLookup[yr];
+    return v != null ? parseFloat(v) : null;
+  });
   // fallback single-value
   const current = props.current_percentage_full != null
     ? parseFloat(props.current_percentage_full)
@@ -88,7 +184,8 @@ function DamPopup({ dam, onClose, initialPos }) {
       pointRadius: 0,
       pointHoverRadius: 3,
       tension: 0.4,
-      cubicInterpolationMode: 'monotone'
+      cubicInterpolationMode: 'monotone',
+      hidden: true
     });
     // storage in Ml
     data.datasets.push({
@@ -100,6 +197,33 @@ function DamPopup({ dam, onClose, initialPos }) {
       fill: false,
       backgroundColor: 'rgb(255,206,86)',
       borderColor: 'rgba(255,206,86,0.5)',
+      pointRadius: 0,
+      pointHoverRadius: 3,
+      tension: 0.4,
+      cubicInterpolationMode: 'monotone',
+      hidden: true
+    });
+    // rainfall (mm)
+    data.datasets.push({
+      label: 'Rainfall (mm)',
+      data: rainData,
+      yAxisID: 'y2',
+      fill: false,
+      backgroundColor: 'rgb(54,162,235)',
+      borderColor: 'rgba(54,162,235,0.5)',
+      pointRadius: 0,
+      pointHoverRadius: 3,
+      tension: 0.4,
+      cubicInterpolationMode: 'monotone'
+    });
+    // population (yearly)
+    data.datasets.push({
+      label: 'Population',
+      data: popData,
+      yAxisID: 'y3',
+      fill: false,
+      backgroundColor: 'rgb(153,102,255)',
+      borderColor: 'rgba(153,102,255,0.5)',
       pointRadius: 0,
       pointHoverRadius: 3,
       tension: 0.4,
@@ -171,6 +295,34 @@ function DamPopup({ dam, onClose, initialPos }) {
         title: {
           display: true,
           text: 'Storage (Ml)'
+        },
+        grid: {
+          drawOnChartArea: false
+        }
+      },
+      // rainfall axis
+      y2: {
+        type: 'linear',
+        display: true,
+        position: 'right',
+        offset: true,
+        title: {
+          display: true,
+          text: 'Rainfall (mm)'
+        },
+        grid: {
+          drawOnChartArea: false
+        }
+      },
+      // population axis
+      y3: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+        offset: true,
+        title: {
+          display: true,
+          text: 'Population'
         },
         grid: {
           drawOnChartArea: false
