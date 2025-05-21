@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
-import 'chart.js/auto';
+// Import ChartJS to customize legend options
+import ChartJS from 'chart.js/auto';
 import './DamPopup.css';
 
 function DamPopup({ dam, onClose, initialPos }) {
@@ -365,7 +366,33 @@ function DamPopup({ dam, onClose, initialPos }) {
     },
     plugins: {
       legend: {
-        position: 'top'
+        position: 'top',
+        labels: {
+          // use circular point style instead of box
+          usePointStyle: true,
+          pointStyle: 'circle',
+          // custom label generator: remove strikethrough and dim hidden items
+          generateLabels: chart => {
+            const original = ChartJS.defaults.plugins.legend.labels.generateLabels(chart);
+            // helper to convert rgb/rgba to transparent rgba
+            const makeTransparent = (c, alpha) => {
+              const m = c.match(/rgba?\((\d+)\s*,\s*(\d+)\s*,\s*(\d+)(?:\s*,\s*([\d.]+))?\)/);
+              if (!m) return c;
+              return `rgba(${m[1]},${m[2]},${m[3]},${alpha})`;
+            };
+            return original.map(item => {
+              // Determine original hidden state, then override to prevent strikethrough
+              const isHidden = item.hidden;
+              const label = { ...item, hidden: false };
+              if (isHidden) {
+                // dim marker colors for hidden datasets
+                label.fillStyle = makeTransparent(item.fillStyle, 0.3);
+                label.strokeStyle = makeTransparent(item.strokeStyle || item.fillStyle, 0.3);
+              }
+              return label;
+            });
+          }
+        }
       },
       tooltip: {
         callbacks: {
