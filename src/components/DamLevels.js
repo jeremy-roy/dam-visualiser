@@ -40,7 +40,7 @@ function getBatteryColor(percent) {
 
 // Panel showing list of dams and their current % full
 // data: GeoJSON feature collection, onClose: function, onSelectDam: function(coords), onSelectSummary: function(summaryFeature)
-function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeature, selectedFeature, open }) {
+function DamLevels({ data, selectedDate, onClose, onSelectDam, onSelectSummary, onSelectFeature, selectedFeature, open }) {
   // Ensure features is always an array for hooks
   const features = Array.isArray(data?.features) ? data.features : [];
   // track last clicked dam name to differentiate zoom vs popup
@@ -65,10 +65,11 @@ function DamLevels({ data, onClose, onSelectDam, onSelectSummary, onSelectFeatur
     return () => { mounted = false; };
   }, []);
   if (!features.length) return null;
-  // derive latest Big 6 percentage
-  const big6Latest = big6Series && big6Series.length > 0
-    ? big6Series[big6Series.length - 1]
+  // derive Big 6 percentage for selected date (fallback to latest)
+  const big6Entry = selectedDate
+    ? big6Series.find(item => item.date === selectedDate)
     : null;
+  const big6Latest = big6Entry || (big6Series.length > 0 ? big6Series[big6Series.length - 1] : null);
   const big6Pct = big6Latest?.percent_full != null
     ? parseFloat(big6Latest.percent_full)
     : null;

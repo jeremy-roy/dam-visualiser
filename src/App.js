@@ -2,13 +2,19 @@ import './App.css';
 
 import React, { useState, useEffect, useMemo } from 'react';
 import BasemapToggle from './components/BasemapToggle';
+import DatePickerToggle from './components/DatePickerToggle';
 import MapContainer from './components/MapContainer';
 import DamPopup from './components/DamPopup';
 import DamLevels, { BatteryIcon, getBatteryColor } from './components/DamLevels';
 import useIsMobile from './hooks/useIsMobile';
 
 function App() {
+  // Raw GeoJSON dam data
   const [data, setData] = useState(null);
+  // Daily time-series data for dams
+  const [dailyLevels, setDailyLevels] = useState(null);
+  // Currently selected date for visualization (YYYY-MM-DD)
+  const [selectedDate, setSelectedDate] = useState(null);
   const [mapStyle, setMapStyle] = useState('mapbox://styles/mapbox/light-v10');
   const [selectedDam, setSelectedDam] = useState(null);
   const [showLevels, setShowLevels] = useState(false);
@@ -27,22 +33,73 @@ function App() {
       .catch(console.error);
   }, []);
 
-  // Compute Big 6 summary percentage for the button icon
-  const big6Summary = useMemo(
-    () => data && Array.isArray(data.features)
-      ? data.features.find(f => f.properties?.NAME === 'Big 6 Total')
-      : null,
-    [data]
-  );
-  const big6Pct = big6Summary?.properties?.current_percentage_full != null
-    ? parseFloat(big6Summary.properties.current_percentage_full)
-    : null;
+  // fetch daily time-series data for dams
+  useEffect(() => {
+    fetch(process.env.PUBLIC_URL + '/timeseries/dam_levels_daily.json')
+      .then(res => res.json())
+      .then(json => setDailyLevels(json))
+      .catch(console.error);
+  }, []);
+
+  // set default selected date to latest available in Big 6 series
+  useEffect(() => {
+    if (!selectedDate && dailyLevels && Array.isArray(dailyLevels['totalstored-big6'])) {
+      const series = dailyLevels['totalstored-big6'];
+      if (series.length > 0) {
+        setSelectedDate(series[series.length - 1].date);
+      }
+    }
+  }, [dailyLevels, selectedDate]);
+
+  // Derive GeoJSON features augmented with values for the selected date
+  const processedData = useMemo(() => {
+    if (!data || !dailyLevels || !selectedDate) return data;
+    // key derivation matching timeseries JSON keys
+    const deriveKey = name => {
+      const lower = (name || '').toLowerCase().replace(/\s*dam$/i, '');
+      const noSpace = lower.replace(/\s+/g, '');
+      const parts = noSpace.split('-').filter(Boolean);
+      return parts.length > 1
+        ? parts[0] + '-' + parts.slice(1).join('')
+        : parts[0] || '';
+    };
+    const features = data.features.map(feature => {
+      const props = { ...feature.properties };
+      const key = deriveKey(props.NAME);
+      const series = dailyLevels[key] || [];
+      const entry = series.find(item => item.date === selectedDate);
+      if (entry && entry.percent_full != null) {
+        props.current_percentage_full = parseFloat(entry.percent_full);
+        props.current_date = entry.date;
+      }
+      return { ...feature, properties: props };
+    });
+    return { ...data, features };
+  }, [data, dailyLevels, selectedDate]);
+
+  // Compute Big 6 summary percentage based on selected date or fallback to raw data
+  const big6Pct = useMemo(() => {
+    if (dailyLevels && selectedDate && Array.isArray(dailyLevels['totalstored-big6'])) {
+      const entry = dailyLevels['totalstored-big6'].find(item => item.date === selectedDate);
+      if (entry && entry.percent_full != null) {
+        return parseFloat(entry.percent_full);
+      }
+    }
+    if (data && Array.isArray(data.features)) {
+      const summary = data.features.find(f => f.properties?.NAME === 'Big 6 Total');
+      if (summary && summary.properties.current_percentage_full != null) {
+        return parseFloat(summary.properties.current_percentage_full);
+      }
+    }
+    return null;
+  }, [dailyLevels, selectedDate, data]);
   const big6Rounded = big6Pct != null ? Math.round(big6Pct) : null;
   const big6Color = getBatteryColor(big6Rounded);
 
   return (
     <div className="App" style={{ position: 'relative', height: '100vh' }}>
       <BasemapToggle currentStyle={mapStyle} onChange={setMapStyle} />
+      <DatePickerToggle selectedDate={selectedDate} onChange={setSelectedDate} />
       <button
         className="dam-levels-button"
         onClick={() => setShowLevels(open => !open)}
@@ -69,18 +126,19 @@ function App() {
         </svg>
       </button>
       {/* Render map only when GeoJSON features are loaded */}
-      {data && Array.isArray(data.features) && data.features.length > 0 && (
+      {processedData && Array.isArray(processedData.features) && processedData.features.length > 0 && (
         <MapContainer
-          data={data}
+          data={processedData}
           mapStyle={mapStyle}
           onSelectDam={setSelectedDam}
           panTo={panTo}
         />
       )}
       {/* Show dam levels list after features are available */}
-      {data && Array.isArray(data.features) && data.features.length > 0 && (
+      {processedData && Array.isArray(processedData.features) && processedData.features.length > 0 && (
         <DamLevels
-          data={data}
+          data={processedData}
+          selectedDate={selectedDate}
           open={showLevels}
           selectedFeature={selectedDam}
           onClose={() => setShowLevels(false)}

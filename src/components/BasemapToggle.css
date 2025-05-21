@@ -36,9 +36,9 @@
 
 .basemap-options {
   position: absolute;
-  top: calc(100% + 8px);
-  /* align options under toggle, flush right */
-  right: 0;
+  /* position options panel to the left of the toggle button */
+  top: 0;
+  right: calc(100% + 8px);
   display: flex;
   background: #ffffff;
   border-radius: 4px;
