@@ -83,7 +83,7 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
           if (!isMobile) {
             onSelectDam(info.object);
           } else {
-            // on mobile, show a tooltip at fixed position under the Dam Levels button
+            // on mobile, show a tooltip positioned below the Dam Levels button
             const props = info.object.properties || {};
             let percent = null;
             if (Array.isArray(props.storage_levels) && props.storage_levels.length) {
@@ -92,9 +92,17 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
             } else if (props.current_percentage_full != null) {
               percent = parseFloat(props.current_percentage_full);
             }
+            // compute tooltip position: align under the Dam Levels button
+            let x = 20, y = 60;
+            const btn = document.querySelector('.dam-levels-button');
+            if (btn) {
+              const rect = btn.getBoundingClientRect();
+              x = rect.left;
+              y = rect.bottom + 4; // small margin below button
+            }
             setHoverInfo({
-              x: 20,
-              y: 60,
+              x,
+              y,
               name: props.NAME,
               percent,
               date: props.current_date || null,

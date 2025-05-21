@@ -46,6 +46,8 @@ function DamLevels({ data, selectedDate, onClose, onSelectDam, onSelectSummary, 
   // track last clicked dam name to differentiate zoom vs popup
   const [lastClicked, setLastClicked] = useState(null);
   const isMobile = useIsMobile();
+  // load daily timeseries data (including Big 6 and individual dams)
+  const [dailyLevelsData, setDailyLevelsData] = useState(null);
   const [big6Series, setBig6Series] = useState([]);
   useEffect(() => {
     let mounted = true;
@@ -53,13 +55,15 @@ function DamLevels({ data, selectedDate, onClose, onSelectDam, onSelectSummary, 
       .then(res => res.json())
       .then(json => {
         if (!mounted) return;
+        setDailyLevelsData(json || {});
         const series = Array.isArray(json['totalstored-big6'])
           ? json['totalstored-big6']
           : [];
         setBig6Series(series);
       })
       .catch(err => {
-        console.error('Error loading Big 6 daily series:', err);
+        console.error('Error loading daily timeseries data:', err);
+        setDailyLevelsData({});
         setBig6Series([]);
       });
     return () => { mounted = false; };
@@ -75,11 +79,28 @@ function DamLevels({ data, selectedDate, onClose, onSelectDam, onSelectSummary, 
     : null;
   const big6Rounded = big6Pct != null ? Math.round(big6Pct) : null;
   const big6Color = getBatteryColor(big6Rounded);
-  // Build list of individual dams (excluding summary features) with current percentage and zoom coords
+  // helper: derive key for timeseries lookup from dam name (match naming in JSON)
+  function deriveKey(name) {
+    const lower = (name || '').toLowerCase().replace(/\s*dam$/i, '');
+    const noSpace = lower.replace(/\s+/g, '');
+    const parts = noSpace.split('-').filter(Boolean);
+    return parts.length > 1
+      ? parts[0] + '-' + parts.slice(1).join('')
+      : parts[0] || '';
+  }
+  // Build list of individual dams (excluding summary) that have timeseries entries
   const dams = features
     .filter(feature => {
-      const name = feature.properties?.NAME;
-      return name !== 'Big 6 Total' && name !== 'Big 5 Total';
+      const props = feature.properties || {};
+      const name = props.NAME;
+      // skip summary features
+      if (name === 'Big 6 Total' || name === 'Big 5 Total') return false;
+      // require dailyLevelsData to be loaded
+      if (!dailyLevelsData) return false;
+      // lookup series array by key
+      const key = deriveKey(name);
+      const series = dailyLevelsData[key];
+      return Array.isArray(series) && series.length > 0;
     })
     .map(feature => {
     const props = feature.properties || {};

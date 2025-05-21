@@ -293,6 +293,10 @@ function DamPopup({ dam, onClose, initialPos }) {
   const popValuesAll = popYearData.map(item => item.population).filter(v => v != null);
   const popMin = popValuesAll.length ? Math.min(...popValuesAll) : undefined;
   const popMax = popValuesAll.length ? Math.max(...popValuesAll) : undefined;
+  // determine rainfall axis label based on selected range
+  const rainfallLabel = range === '1y'
+    ? 'Daily Rainfall (mm)'
+    : 'Monthly Rainfall (mm)';
   // Chart display options: show yearly ticks, limit number of labels
   const options = {
     scales: {
@@ -338,7 +342,7 @@ function DamPopup({ dam, onClose, initialPos }) {
         offset: true,
         title: {
           display: true,
-          text: 'Rainfall (mm)'
+          text: rainfallLabel
         },
         grid: {
           drawOnChartArea: false
