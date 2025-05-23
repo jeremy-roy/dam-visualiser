@@ -103,7 +103,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - ✅
 
 # Dam Visualiser App
-- Go though webpack comiler error messgaes
+- Go though webpack comiler error messages
 - Accept multipolygons shapes *
 - stream maps on initial load
 - Big 6 Total is missing data / not showing a chart
