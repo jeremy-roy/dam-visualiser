@@ -1,0 +1,2062 @@
+{
+  "woodhead": [
+    {
+      "date": "2000"
+    },
+    {
+      "date": "2001"
+    },
+    {
+      "date": "2002"
+    },
+    {
+      "date": "2003"
+    },
+    {
+      "date": "2004"
+    },
+    {
+      "date": "2005"
+    },
+    {
+      "date": "2006"
+    },
+    {
+      "date": "2007"
+    },
+    {
+      "date": "2008"
+    },
+    {
+      "date": "2009"
+    },
+    {
+      "date": "2010"
+    },
+    {
+      "date": "2011"
+    },
+    {
+      "date": "2012"
+    },
+    {
+      "date": "2013"
+    },
+    {
+      "date": "2014"
+    },
+    {
+      "date": "2015"
+    },
+    {
+      "date": "2016"
+    },
+    {
+      "date": "2017"
+    },
+    {
+      "date": "2018"
+    },
+    {
+      "date": "2019"
+    },
+    {
+      "date": "2020"
+    },
+    {
+      "date": "2021"
+    },
+    {
+      "date": "2022"
+    },
+    {
+      "date": "2023"
+    },
+    {
+      "date": "2024"
+    },
+    {
+      "date": "2025"
+    }
+  ],
+  "hely-hutchinson": [
+    {
+      "date": "2000"
+    },
+    {
+      "date": "2001"
+    },
+    {
+      "date": "2002"
+    },
+    {
+      "date": "2003"
+    },
+    {
+      "date": "2004"
+    },
+    {
+      "date": "2005"
+    },
+    {
+      "date": "2006"
+    },
+    {
+      "date": "2007"
+    },
+    {
+      "date": "2008"
+    },
+    {
+      "date": "2009"
+    },
+    {
+      "date": "2010"
+    },
+    {
+      "date": "2011"
+    },
+    {
+      "date": "2012"
+    },
+    {
+      "date": "2013"
+    },
+    {
+      "date": "2014"
+    },
+    {
+      "date": "2015"
+    },
+    {
+      "date": "2016"
+    },
+    {
+      "date": "2017"
+    },
+    {
+      "date": "2018"
+    },
+    {
+      "date": "2019"
+    },
+    {
+      "date": "2020"
+    },
+    {
+      "date": "2021"
+    },
+    {
+      "date": "2022"
+    },
+    {
+      "date": "2023"
+    },
+    {
+      "date": "2024"
+    },
+    {
+      "date": "2025"
+    }
+  ],
+  "lewisgay": [
+    {
+      "date": "2000",
+      "height_m": 12.924468664850135,
+      "storage_ml": 110.97792915531336,
+      "percent_full": 66.05829115986376,
+      "last_year_percent_full": 49.05844155636364
+    },
+    {
+      "date": "2001",
+      "height_m": 11.506140602739727,
+      "storage_ml": 88.49095890410959,
+      "percent_full": 52.67318981969863,
+      "last_year_percent_full": 65.2897912550137
+    },
+    {
+      "date": "2002",
+      "height_m": 11.8873698630137,
+      "storage_ml": 90.14931506849315,
+      "percent_full": 53.66030658654794,
+      "last_year_percent_full": 52.67318981969863
+    },
+    {
+      "date": "2003",
+      "height_m": 11.960054794520548,
+      "storage_ml": 90.55232876712329,
+      "percent_full": 53.9001956950411,
+      "last_year_percent_full": 53.66030658654794
+    },
+    {
+      "date": "2004",
+      "height_m": 12.517349726775958,
+      "storage_ml": 103.70628415300547,
+      "percent_full": 61.72993103797814,
+      "last_year_percent_full": 53.85294691680328
+    },
+    {
+      "date": "2005",
+      "height_m": 11.850109589041097,
+      "storage_ml": 84.47150684931506,
+      "percent_full": 50.280658838767124,
+      "last_year_percent_full": 61.790932806
+    },
+    {
+      "date": "2006",
+      "height_m": 12.235561643835615,
+      "storage_ml": 98.64712328767122,
+      "percent_full": 58.71852576389041,
+      "last_year_percent_full": 50.280658838767124
+    },
+    {
+      "date": "2007",
+      "height_m": 12.844602739726026,
+      "storage_ml": 110.19972602739726,
+      "percent_full": 65.59507500665754,
+      "last_year_percent_full": 58.71852576389041
+    },
+    {
+      "date": "2008",
+      "height_m": 12.794890710382514,
+      "storage_ml": 110.46967213114755,
+      "percent_full": 65.75575721229508,
+      "last_year_percent_full": 65.4919659024317
+    },
+    {
+      "date": "2009",
+      "height_m": 12.01345205479452,
+      "storage_ml": 93.60246575342467,
+      "percent_full": 55.71575341920548,
+      "last_year_percent_full": 65.84067187654794
+    },
+    {
+      "date": "2010",
+      "height_m": 10.639965369863013,
+      "storage_ml": 60.004383561643834,
+      "percent_full": 35.71689497709589,
+      "last_year_percent_full": 55.71575341920548
+    },
+    {
+      "date": "2011",
+      "height_m": 11.714739726027398,
+      "storage_ml": 84.52657534246576,
+      "percent_full": 50.31343770347946,
+      "last_year_percent_full": 35.71689497709589
+    },
+    {
+      "date": "2012",
+      "height_m": 13.541185792349728,
+      "storage_ml": 126.41311475409836,
+      "percent_full": 75.24590162483607,
+      "last_year_percent_full": 50.23972157131148
+    },
+    {
+      "date": "2013",
+      "height_m": 14.13331506849315,
+      "storage_ml": 137.51753424657534,
+      "percent_full": 81.85567513408219,
+      "last_year_percent_full": 75.33333331879452
+    },
+    {
+      "date": "2014",
+      "height_m": 13.687808219178082,
+      "storage_ml": 125.73671232876713,
+      "percent_full": 74.84328113843836,
+      "last_year_percent_full": 81.85567513408219
+    },
+    {
+      "date": "2015",
+      "height_m": 14.423214285714286,
+      "storage_ml": 143.9524725274725,
+      "percent_full": 85.685995546511,
+      "last_year_percent_full": 74.86852432315935
+    },
+    {
+      "date": "2016",
+      "height_m": 9.786994535519126,
+      "storage_ml": 71.91502732240437,
+      "percent_full": 42.8065638814071,
+      "last_year_percent_full": 85.87626853382514
+    },
+    {
+      "date": "2017",
+      "height_m": 12.25772602739726,
+      "storage_ml": 100.9427397260274,
+      "percent_full": 60.0849641230411,
+      "last_year_percent_full": 42.8786692749452
+    },
+    {
+      "date": "2018",
+      "height_m": 14.141863013698629,
+      "storage_ml": 136.35698630136986,
+      "percent_full": 81.16487279526028,
+      "last_year_percent_full": 60.0849641230411
+    },
+    {
+      "date": "2019",
+      "height_m": 7.294219178082192,
+      "storage_ml": 55.936164383561646,
+      "percent_full": 33.29533594248493,
+      "last_year_percent_full": 81.16487279526028
+    },
+    {
+      "date": "2020",
+      "height_m": 9.655245901639345,
+      "storage_ml": 83.91475409836066,
+      "percent_full": 49.949258388243166,
+      "last_year_percent_full": 33.204365079254096
+    },
+    {
+      "date": "2021",
+      "height_m": 13.780986301369865,
+      "storage_ml": 127.94246575342466,
+      "percent_full": 76.1562296070959,
+      "last_year_percent_full": 50.08170254038356
+    },
+    {
+      "date": "2022",
+      "height_m": 10.072465753424657,
+      "storage_ml": 70.51013698630138,
+      "percent_full": 41.970319634558905,
+      "last_year_percent_full": 76.1562296070959
+    },
+    {
+      "date": "2023",
+      "height_m": 13.937753424657533,
+      "storage_ml": 133.18849315068493,
+      "percent_full": 79.27886495457534,
+      "last_year_percent_full": 41.970319634558905
+    },
+    {
+      "date": "2024",
+      "height_m": 12.776994535519126,
+      "storage_ml": 107.61748633879782,
+      "percent_full": 64.05802757188525,
+      "last_year_percent_full": 79.21269189133879
+    },
+    {
+      "date": "2025",
+      "height_m": 13.959191176470588,
+      "storage_ml": 132.60735294117646,
+      "percent_full": 78.93294817933824,
+      "last_year_percent_full": 48.405112044411766
+    }
+  ],
+  "kleinplaats": [
+    {
+      "date": "2000",
+      "height_m": 6.578964577656675,
+      "storage_ml": 429.9307901907357,
+      "percent_full": 33.05634247163488,
+      "last_year_percent_full": 42.61459745909091
+    },
+    {
+      "date": "2001",
+      "height_m": 8.463945205479453,
+      "storage_ml": 750.8378082191781,
+      "percent_full": 57.73010981273973,
+      "last_year_percent_full": 33.845938333726025
+    },
+    {
+      "date": "2002",
+      "height_m": 9.444860273972601,
+      "storage_ml": 907.413698630137,
+      "percent_full": 69.7688527319178,
+      "last_year_percent_full": 57.73010981273973
+    },
+    {
+      "date": "2003",
+      "height_m": 8.572328767123288,
+      "storage_ml": 727.1742465753424,
+      "percent_full": 55.91067557871233,
+      "last_year_percent_full": 69.7688527319178
+    },
+    {
+      "date": "2004",
+      "height_m": 8.894489071038251,
+      "storage_ml": 800.2989071038252,
+      "percent_full": 61.533054521475414,
+      "last_year_percent_full": 55.896542915573775
+    },
+    {
+      "date": "2005",
+      "height_m": 10.069534246575342,
+      "storage_ml": 1041.0276712328766,
+      "percent_full": 80.04210912169863,
+      "last_year_percent_full": 61.555509680657536
+    },
+    {
+      "date": "2006",
+      "height_m": 9.470246575342465,
+      "storage_ml": 908.2375342465754,
+      "percent_full": 69.83219546742465,
+      "last_year_percent_full": 80.04210912169863
+    },
+    {
+      "date": "2007",
+      "height_m": 9.693972602739727,
+      "storage_ml": 965.0887671232878,
+      "percent_full": 74.20334977115068,
+      "last_year_percent_full": 69.83219546742465
+    },
+    {
+      "date": "2008",
+      "height_m": 9.20811475409836,
+      "storage_ml": 871.4478142076504,
+      "percent_full": 67.00352254445355,
+      "last_year_percent_full": 74.16024466221312
+    },
+    {
+      "date": "2009",
+      "height_m": 9.499424657534247,
+      "storage_ml": 942.7054794520548,
+      "percent_full": 72.48235271841097,
+      "last_year_percent_full": 67.0436194890137
+    },
+    {
+      "date": "2010",
+      "height_m": 8.610575342465754,
+      "storage_ml": 722.5227397260273,
+      "percent_full": 55.553032426191784,
+      "last_year_percent_full": 72.48235271841097
+    },
+    {
+      "date": "2011",
+      "height_m": 6.085684860273973,
+      "storage_ml": 336.33643835616436,
+      "percent_full": 25.860098289342464,
+      "last_year_percent_full": 55.553032426191784
+    },
+    {
+      "date": "2012",
+      "height_m": 8.177131147540983,
+      "storage_ml": 731.877868852459,
+      "percent_full": 56.272325761038246,
+      "last_year_percent_full": 25.86924992125683
+    },
+    {
+      "date": "2013",
+      "height_m": 9.79158904109589,
+      "storage_ml": 992.1293150684932,
+      "percent_full": 76.28243234684932,
+      "last_year_percent_full": 56.369199462931505
+    },
+    {
+      "date": "2014",
+      "height_m": 9.929698630136986,
+      "storage_ml": 1009.6728767123287,
+      "percent_full": 77.63131452476712,
+      "last_year_percent_full": 76.28243234684932
+    },
+    {
+      "date": "2015",
+      "height_m": 7.955824175824176,
+      "storage_ml": 636.2964285714286,
+      "percent_full": 48.92329913645604,
+      "last_year_percent_full": 77.64394032821428
+    },
+    {
+      "date": "2016",
+      "height_m": 8.759890710382514,
+      "storage_ml": 779.4737704918033,
+      "percent_full": 59.931859948989064,
+      "last_year_percent_full": 49.057181678879786
+    },
+    {
+      "date": "2017",
+      "height_m": 8.391397260273973,
+      "storage_ml": 677.4586301369862,
+      "percent_full": 52.08816162857534,
+      "last_year_percent_full": 59.973795024356164
+    },
+    {
+      "date": "2018",
+      "height_m": 9.177698630136987,
+      "storage_ml": 859.7920547945205,
+      "percent_full": 66.10733928909589,
+      "last_year_percent_full": 52.08816162857534
+    },
+    {
+      "date": "2019",
+      "height_m": 9.206164383561644,
+      "storage_ml": 846.106301369863,
+      "percent_full": 65.05507468613698,
+      "last_year_percent_full": 66.10733928909589
+    },
+    {
+      "date": "2020",
+      "height_m": 9.137158469945355,
+      "storage_ml": 856.3931693989072,
+      "percent_full": 65.84600718221311,
+      "last_year_percent_full": 65.03442295218579
+    },
+    {
+      "date": "2021",
+      "height_m": 9.820767123287672,
+      "storage_ml": 994.754794520548,
+      "percent_full": 76.48429913186301,
+      "last_year_percent_full": 65.8935917889863
+    },
+    {
+      "date": "2022",
+      "height_m": 8.926328767123287,
+      "storage_ml": 781.6720547945205,
+      "percent_full": 60.10088073178082,
+      "last_year_percent_full": 76.48429913186301
+    },
+    {
+      "date": "2023",
+      "height_m": 8.543780821917808,
+      "storage_ml": 784.9854794520548,
+      "percent_full": 60.35564197375343,
+      "last_year_percent_full": 60.10088073178082
+    },
+    {
+      "date": "2024",
+      "height_m": 8.751311475409835,
+      "storage_ml": 752.8131147540983,
+      "percent_full": 57.881986372049184,
+      "last_year_percent_full": 60.27461894874317
+    },
+    {
+      "date": "2025",
+      "height_m": 5.140514705882353,
+      "storage_ml": 243.21985294117647,
+      "percent_full": 18.700588415735293,
+      "last_year_percent_full": 54.46773434882353
+    }
+  ],
+  "victoria": [
+    {
+      "date": "2000"
+    },
+    {
+      "date": "2001"
+    },
+    {
+      "date": "2002"
+    },
+    {
+      "date": "2003"
+    },
+    {
+      "date": "2004"
+    },
+    {
+      "date": "2005"
+    },
+    {
+      "date": "2006"
+    },
+    {
+      "date": "2007"
+    },
+    {
+      "date": "2008"
+    },
+    {
+      "date": "2009"
+    },
+    {
+      "date": "2010"
+    },
+    {
+      "date": "2011"
+    },
+    {
+      "date": "2012"
+    },
+    {
+      "date": "2013"
+    },
+    {
+      "date": "2014"
+    },
+    {
+      "date": "2015"
+    },
+    {
+      "date": "2016"
+    },
+    {
+      "date": "2017"
+    },
+    {
+      "date": "2018"
+    },
+    {
+      "date": "2019"
+    },
+    {
+      "date": "2020"
+    },
+    {
+      "date": "2021"
+    },
+    {
+      "date": "2022"
+    },
+    {
+      "date": "2023"
+    },
+    {
+      "date": "2024"
+    },
+    {
+      "date": "2025"
+    }
+  ],
+  "alexandra": [
+    {
+      "date": "2000"
+    },
+    {
+      "date": "2001"
+    },
+    {
+      "date": "2002"
+    },
+    {
+      "date": "2003"
+    },
+    {
+      "date": "2004"
+    },
+    {
+      "date": "2005"
+    },
+    {
+      "date": "2006"
+    },
+    {
+      "date": "2007"
+    },
+    {
+      "date": "2008"
+    },
+    {
+      "date": "2009"
+    },
+    {
+      "date": "2010"
+    },
+    {
+      "date": "2011"
+    },
+    {
+      "date": "2012"
+    },
+    {
+      "date": "2013"
+    },
+    {
+      "date": "2014"
+    },
+    {
+      "date": "2015"
+    },
+    {
+      "date": "2016"
+    },
+    {
+      "date": "2017"
+    },
+    {
+      "date": "2018"
+    },
+    {
+      "date": "2019"
+    },
+    {
+      "date": "2020"
+    },
+    {
+      "date": "2021"
+    },
+    {
+      "date": "2022"
+    },
+    {
+      "date": "2023"
+    },
+    {
+      "date": "2024"
+    },
+    {
+      "date": "2025"
+    }
+  ],
+  "devilliers": [
+    {
+      "date": "2000"
+    },
+    {
+      "date": "2001"
+    },
+    {
+      "date": "2002"
+    },
+    {
+      "date": "2003"
+    },
+    {
+      "date": "2004"
+    },
+    {
+      "date": "2005"
+    },
+    {
+      "date": "2006"
+    },
+    {
+      "date": "2007"
+    },
+    {
+      "date": "2008"
+    },
+    {
+      "date": "2009"
+    },
+    {
+      "date": "2010"
+    },
+    {
+      "date": "2011"
+    },
+    {
+      "date": "2012"
+    },
+    {
+      "date": "2013"
+    },
+    {
+      "date": "2014"
+    },
+    {
+      "date": "2015"
+    },
+    {
+      "date": "2016"
+    },
+    {
+      "date": "2017"
+    },
+    {
+      "date": "2018"
+    },
+    {
+      "date": "2019"
+    },
+    {
+      "date": "2020"
+    },
+    {
+      "date": "2021"
+    },
+    {
+      "date": "2022"
+    },
+    {
+      "date": "2023"
+    },
+    {
+      "date": "2024"
+    },
+    {
+      "date": "2025"
+    }
+  ],
+  "steenbraslower": [
+    {
+      "date": "2000",
+      "height_m": 18.15198910081744,
+      "percent_full": 54.86937817280654,
+      "last_year_percent_full": 58.788620157272724
+    },
+    {
+      "date": "2001",
+      "height_m": 19.616657534246574,
+      "percent_full": 67.10102949191781,
+      "last_year_percent_full": 55.43491526038356
+    },
+    {
+      "date": "2002",
+      "height_m": 20.224438356164384,
+      "percent_full": 70.15898290852054,
+      "last_year_percent_full": 67.10102949191781
+    },
+    {
+      "date": "2003",
+      "height_m": 18.836772602739725,
+      "percent_full": 59.79336595068493,
+      "last_year_percent_full": 70.15898290852054
+    },
+    {
+      "date": "2004",
+      "height_m": 18.923762295081968,
+      "percent_full": 59.95740518928962,
+      "last_year_percent_full": 59.74500176142077
+    },
+    {
+      "date": "2005",
+      "height_m": 19.936630136986302,
+      "percent_full": 68.56154370227398,
+      "last_year_percent_full": 59.974905394630134
+    },
+    {
+      "date": "2006",
+      "height_m": 19.60394520547945,
+      "percent_full": 66.74578142863014,
+      "last_year_percent_full": 68.56154370227398
+    },
+    {
+      "date": "2007",
+      "height_m": 20.493616438356163,
+      "percent_full": 73.47742159865753,
+      "last_year_percent_full": 66.74578142863014
+    },
+    {
+      "date": "2008",
+      "height_m": 20.7903825136612,
+      "percent_full": 75.84739234262295,
+      "last_year_percent_full": 73.43134411349726
+    },
+    {
+      "date": "2009",
+      "height_m": 20.691205479452055,
+      "percent_full": 75.44559885915069,
+      "last_year_percent_full": 75.87463487046575
+    },
+    {
+      "date": "2010",
+      "height_m": 18.881394520547946,
+      "percent_full": 58.55043096093151,
+      "last_year_percent_full": 75.44559885915069
+    },
+    {
+      "date": "2011",
+      "height_m": 19.298602739726025,
+      "percent_full": 63.194494226876714,
+      "last_year_percent_full": 58.55043096093151
+    },
+    {
+      "date": "2012",
+      "height_m": 20.260765027322403,
+      "percent_full": 71.48548383554645,
+      "last_year_percent_full": 63.15924664898907
+    },
+    {
+      "date": "2013",
+      "height_m": 20.81704109589041,
+      "percent_full": 76.14117718224657,
+      "last_year_percent_full": 71.5308485849589
+    },
+    {
+      "date": "2014",
+      "height_m": 20.628712328767122,
+      "percent_full": 74.28944052460274,
+      "last_year_percent_full": 76.14117718224657
+    },
+    {
+      "date": "2015",
+      "height_m": 19.60793956043956,
+      "percent_full": 64.9949328646978,
+      "last_year_percent_full": 74.27480625651098
+    },
+    {
+      "date": "2016",
+      "height_m": 17.68245901639344,
+      "percent_full": 49.89727095516394,
+      "last_year_percent_full": 64.94521742560109
+    },
+    {
+      "date": "2017",
+      "height_m": 15.936356164383563,
+      "percent_full": 38.54909040252055,
+      "last_year_percent_full": 49.90303428120548
+    },
+    {
+      "date": "2018",
+      "height_m": 18.664246575342464,
+      "percent_full": 58.47562124452055,
+      "last_year_percent_full": 38.54909040252055
+    },
+    {
+      "date": "2019",
+      "height_m": 19.905424657534244,
+      "percent_full": 68.90807813273973,
+      "last_year_percent_full": 58.47562124452055
+    },
+    {
+      "date": "2020",
+      "height_m": 20.87207650273224,
+      "percent_full": 76.34991035360656,
+      "last_year_percent_full": 68.86334982710383
+    },
+    {
+      "date": "2021",
+      "height_m": 21.295616438356163,
+      "percent_full": 79.70728409649315,
+      "last_year_percent_full": 76.36925199583561
+    },
+    {
+      "date": "2022",
+      "height_m": 21.175479452054795,
+      "percent_full": 78.13041102386302,
+      "last_year_percent_full": 79.70728409649315
+    },
+    {
+      "date": "2023",
+      "height_m": 21.35876712328767,
+      "percent_full": 80.99605965482192,
+      "last_year_percent_full": 78.13041102386302
+    },
+    {
+      "date": "2024",
+      "height_m": 21.394207650273223,
+      "percent_full": 80.82236548680328,
+      "last_year_percent_full": 80.9262765424317
+    },
+    {
+      "date": "2025",
+      "height_m": 19.05970588235294,
+      "percent_full": 60.29451252933823,
+      "last_year_percent_full": 67.51174557595589
+    }
+  ],
+  "steenbrasupper": [
+    {
+      "date": "2000",
+      "height_m": 21.365613079019074,
+      "percent_full": 74.19898925163488,
+      "last_year_percent_full": 79.34248519727272
+    },
+    {
+      "date": "2001",
+      "height_m": 21.55813698630137,
+      "percent_full": 75.82101871112329,
+      "last_year_percent_full": 74.07947680715068
+    },
+    {
+      "date": "2002",
+      "height_m": 21.510465753424658,
+      "percent_full": 75.57536877019179,
+      "last_year_percent_full": 75.82101871112329
+    },
+    {
+      "date": "2003",
+      "height_m": 21.032246575342466,
+      "percent_full": 72.44630962350685,
+      "last_year_percent_full": 75.57536877019179
+    },
+    {
+      "date": "2004",
+      "height_m": 20.952786885245903,
+      "percent_full": 71.81910774106557,
+      "last_year_percent_full": 72.44144996333333
+    },
+    {
+      "date": "2005",
+      "height_m": 22.146454794520547,
+      "percent_full": 79.6122365289863,
+      "last_year_percent_full": 71.84693687843836
+    },
+    {
+      "date": "2006",
+      "height_m": 22.02175890410959,
+      "percent_full": 78.56391853065753,
+      "last_year_percent_full": 79.6122365289863
+    },
+    {
+      "date": "2007",
+      "height_m": 22.911780821917805,
+      "percent_full": 85.04010579978083,
+      "last_year_percent_full": 78.56391853065753
+    },
+    {
+      "date": "2008",
+      "height_m": 23.801730298633878,
+      "percent_full": 90.76316609196721,
+      "last_year_percent_full": 85.00140451827869
+    },
+    {
+      "date": "2009",
+      "height_m": 24.09421917808219,
+      "percent_full": 92.78616432778081,
+      "last_year_percent_full": 90.76481969884931
+    },
+    {
+      "date": "2010",
+      "height_m": 22.65536712328767,
+      "percent_full": 82.11185813123286,
+      "last_year_percent_full": 92.78616432778081
+    },
+    {
+      "date": "2011",
+      "height_m": 22.961899531999997,
+      "percent_full": 84.87339536884932,
+      "last_year_percent_full": 82.11185813123286
+    },
+    {
+      "date": "2012",
+      "height_m": 22.746147540983607,
+      "percent_full": 83.94822719653006,
+      "last_year_percent_full": 84.85575728043716
+    },
+    {
+      "date": "2013",
+      "height_m": 23.504778082191784,
+      "percent_full": 88.43562566813698,
+      "last_year_percent_full": 83.94624213780823
+    },
+    {
+      "date": "2014",
+      "height_m": 24.40994520547945,
+      "percent_full": 95.36063744876712,
+      "last_year_percent_full": 88.43562566813698
+    },
+    {
+      "date": "2015",
+      "height_m": 22.450914835164834,
+      "percent_full": 80.93134004162087,
+      "last_year_percent_full": 95.35513043546705
+    },
+    {
+      "date": "2016",
+      "height_m": 21.864,
+      "percent_full": 76.67282317360656,
+      "last_year_percent_full": 80.9299904128142
+    },
+    {
+      "date": "2017",
+      "height_m": 21.71558904109589,
+      "percent_full": 76.29456949090411,
+      "last_year_percent_full": 76.70630890717808
+    },
+    {
+      "date": "2018",
+      "height_m": 22.61531506849315,
+      "percent_full": 81.92735547460273,
+      "last_year_percent_full": 76.29456949090411
+    },
+    {
+      "date": "2019",
+      "height_m": 22.422246575342466,
+      "percent_full": 80.3403204240548,
+      "last_year_percent_full": 81.92735547460273
+    },
+    {
+      "date": "2020",
+      "height_m": 24.510819672131145,
+      "percent_full": 96.07855077289618,
+      "last_year_percent_full": 80.31218945480875
+    },
+    {
+      "date": "2021",
+      "height_m": 21.441917808219177,
+      "percent_full": 74.31691627934246,
+      "last_year_percent_full": 96.07233490767123
+    },
+    {
+      "date": "2022",
+      "height_m": 23.900712328767124,
+      "percent_full": 91.15282465468493,
+      "last_year_percent_full": 74.31691627934246
+    },
+    {
+      "date": "2023",
+      "height_m": 24.58432876712329,
+      "percent_full": 96.63570923654794,
+      "last_year_percent_full": 91.15282465468493
+    },
+    {
+      "date": "2024",
+      "height_m": 24.09775956284153,
+      "percent_full": 92.83178870071039,
+      "last_year_percent_full": 96.61587332964481
+    },
+    {
+      "date": "2025",
+      "height_m": 24.21764705882353,
+      "percent_full": 93.63610776257353,
+      "last_year_percent_full": 87.96718848088234
+    }
+  ],
+  "vo\u00eblvlei": [
+    {
+      "date": "2000",
+      "height_m": 12.535231607629429,
+      "percent_full": 55.774699526267035,
+      "last_year_percent_full": 50.457190816363635
+    },
+    {
+      "date": "2001",
+      "height_m": 13.045890410958904,
+      "percent_full": 61.4232400449863,
+      "last_year_percent_full": 56.317186794767125
+    },
+    {
+      "date": "2002",
+      "height_m": 15.800904109589041,
+      "percent_full": 83.19016673876713,
+      "last_year_percent_full": 61.4232400449863
+    },
+    {
+      "date": "2003",
+      "height_m": 13.939534246575343,
+      "percent_full": 66.81391125331507,
+      "last_year_percent_full": 83.19016673876713
+    },
+    {
+      "date": "2004",
+      "height_m": 11.208852459016393,
+      "percent_full": 45.357389103688526,
+      "last_year_percent_full": 66.82400422114755
+    },
+    {
+      "date": "2005",
+      "height_m": 11.376657534246574,
+      "percent_full": 48.09967330164383,
+      "last_year_percent_full": 45.355826707123285
+    },
+    {
+      "date": "2006",
+      "height_m": 14.397397260273973,
+      "percent_full": 71.7608284879452,
+      "last_year_percent_full": 48.09967330164383
+    },
+    {
+      "date": "2007",
+      "height_m": 16.000849315068493,
+      "percent_full": 85.08071711046576,
+      "last_year_percent_full": 71.7608284879452
+    },
+    {
+      "date": "2008",
+      "height_m": 15.572841530054644,
+      "percent_full": 81.33194203076503,
+      "last_year_percent_full": 85.04821027967213
+    },
+    {
+      "date": "2009",
+      "height_m": 15.715835616438355,
+      "percent_full": 82.29836974116192,
+      "last_year_percent_full": 81.35068935726028
+    },
+    {
+      "date": "2010",
+      "height_m": 15.84517808219178,
+      "percent_full": 83.62930260553425,
+      "last_year_percent_full": 82.29836974116192
+    },
+    {
+      "date": "2011",
+      "height_m": 14.759589041095891,
+      "percent_full": 74.09269855769863,
+      "last_year_percent_full": 83.62930260553425
+    },
+    {
+      "date": "2012",
+      "height_m": 14.136584699453552,
+      "percent_full": 69.31610321073771,
+      "last_year_percent_full": 74.08056641830602
+    },
+    {
+      "date": "2013",
+      "height_m": 15.196076712328768,
+      "percent_full": 78.15717173547945,
+      "last_year_percent_full": 69.35197828572602
+    },
+    {
+      "date": "2014",
+      "height_m": 15.800164383561645,
+      "percent_full": 83.2626539850685,
+      "last_year_percent_full": 78.15717173547945
+    },
+    {
+      "date": "2015",
+      "height_m": 11.746675824175824,
+      "percent_full": 49.491675787747255,
+      "last_year_percent_full": 83.23472164631869
+    },
+    {
+      "date": "2016",
+      "height_m": 10.534344262295082,
+      "percent_full": 41.59143618795082,
+      "last_year_percent_full": 49.420717406775964
+    },
+    {
+      "date": "2017",
+      "height_m": 8.454383561643835,
+      "percent_full": 26.36080586471233,
+      "last_year_percent_full": 41.64508614465753
+    },
+    {
+      "date": "2018",
+      "height_m": 11.306054794520549,
+      "percent_full": 49.20421222756165,
+      "last_year_percent_full": 26.36080586471233
+    },
+    {
+      "date": "2019",
+      "height_m": 14.724383561643835,
+      "percent_full": 73.69643127723288,
+      "last_year_percent_full": 49.20421222756165
+    },
+    {
+      "date": "2020",
+      "height_m": 14.704240437158472,
+      "percent_full": 73.81676647688525,
+      "last_year_percent_full": 73.67750122103826
+    },
+    {
+      "date": "2021",
+      "height_m": 15.505123287671232,
+      "percent_full": 80.63276910726027,
+      "last_year_percent_full": 73.84431754539726
+    },
+    {
+      "date": "2022",
+      "height_m": 13.95454794520548,
+      "percent_full": 66.90408454493151,
+      "last_year_percent_full": 80.63276910726027
+    },
+    {
+      "date": "2023",
+      "height_m": 14.167616438356164,
+      "percent_full": 70.14003498747945,
+      "last_year_percent_full": 66.90408454493151
+    },
+    {
+      "date": "2024",
+      "height_m": 15.305437158469946,
+      "percent_full": 79.19095412770491,
+      "last_year_percent_full": 70.0612733171858
+    },
+    {
+      "date": "2025",
+      "height_m": 14.415735294117647,
+      "percent_full": 70.88268900882353,
+      "last_year_percent_full": 66.25337188058823
+    }
+  ],
+  "wemmershoek": [
+    {
+      "date": "2000",
+      "height_m": 45.47929155313352,
+      "percent_full": 64.90435430223434,
+      "last_year_percent_full": 65.35179914545455
+    },
+    {
+      "date": "2001",
+      "height_m": 46.49156164383561,
+      "percent_full": 71.79702836750685,
+      "last_year_percent_full": 65.80053034224657
+    },
+    {
+      "date": "2002",
+      "height_m": 47.718876712328765,
+      "percent_full": 75.20999707558904,
+      "last_year_percent_full": 71.79702836750685
+    },
+    {
+      "date": "2003",
+      "height_m": 42.26293150684931,
+      "percent_full": 54.21226102630138,
+      "last_year_percent_full": 75.20999707558904
+    },
+    {
+      "date": "2004",
+      "height_m": 41.730054644808746,
+      "percent_full": 51.75271239303279,
+      "last_year_percent_full": 54.20755895644809
+    },
+    {
+      "date": "2005",
+      "height_m": 43.49802739726027,
+      "percent_full": 60.06523223950685,
+      "last_year_percent_full": 51.744199736
+    },
+    {
+      "date": "2006",
+      "height_m": 46.72372602739726,
+      "percent_full": 71.01229802720549,
+      "last_year_percent_full": 60.06523223950685
+    },
+    {
+      "date": "2007",
+      "height_m": 46.63002739726027,
+      "percent_full": 71.80147591320548,
+      "last_year_percent_full": 71.01229802720549
+    },
+    {
+      "date": "2008",
+      "height_m": 47.5744043715847,
+      "percent_full": 75.23220130106557,
+      "last_year_percent_full": 71.74539865117487
+    },
+    {
+      "date": "2009",
+      "height_m": 47.67569863013699,
+      "percent_full": 76.15110632682192,
+      "last_year_percent_full": 75.284568228
+    },
+    {
+      "date": "2010",
+      "height_m": 47.076821917808225,
+      "percent_full": 72.31705961134247,
+      "last_year_percent_full": 76.15110632682192
+    },
+    {
+      "date": "2011",
+      "height_m": 47.32827397260274,
+      "percent_full": 72.85003172147945,
+      "last_year_percent_full": 72.31705961134247
+    },
+    {
+      "date": "2012",
+      "height_m": 46.947349726775954,
+      "percent_full": 72.58526766896175,
+      "last_year_percent_full": 72.8573688865847
+    },
+    {
+      "date": "2013",
+      "height_m": 50.41627671232877,
+      "percent_full": 86.43383386857535,
+      "last_year_percent_full": 72.61056030712328
+    },
+    {
+      "date": "2014",
+      "height_m": 49.69279452054794,
+      "percent_full": 83.21974804106848,
+      "last_year_percent_full": 86.43383386857535
+    },
+    {
+      "date": "2015",
+      "height_m": 44.85098901098901,
+      "percent_full": 62.87865841285715,
+      "last_year_percent_full": 83.21753871956044
+    },
+    {
+      "date": "2016",
+      "height_m": 43.012513661202185,
+      "percent_full": 56.26082991081967,
+      "last_year_percent_full": 62.87134317551913
+    },
+    {
+      "date": "2017",
+      "height_m": 38.163534246575345,
+      "percent_full": 40.49842420416438,
+      "last_year_percent_full": 56.27106394471233
+    },
+    {
+      "date": "2018",
+      "height_m": 46.02769863013699,
+      "percent_full": 68.88253525095891,
+      "last_year_percent_full": 40.49842420416438
+    },
+    {
+      "date": "2019",
+      "height_m": 46.26279452054794,
+      "percent_full": 69.72263100430136,
+      "last_year_percent_full": 68.88253525095891
+    },
+    {
+      "date": "2020",
+      "height_m": 46.966584699453556,
+      "percent_full": 72.74753229923498,
+      "last_year_percent_full": 69.70204676718579
+    },
+    {
+      "date": "2021",
+      "height_m": 49.68652054794521,
+      "percent_full": 83.31341280942465,
+      "last_year_percent_full": 72.77234448309589
+    },
+    {
+      "date": "2022",
+      "height_m": 46.910136986301374,
+      "percent_full": 71.46393890054794,
+      "last_year_percent_full": 83.31341280942465
+    },
+    {
+      "date": "2023",
+      "height_m": 50.797753424657536,
+      "percent_full": 88.27008660709589,
+      "last_year_percent_full": 71.46393890054794
+    },
+    {
+      "date": "2024",
+      "height_m": 50.437622950819666,
+      "percent_full": 86.59871567314207,
+      "last_year_percent_full": 88.21858985896175
+    },
+    {
+      "date": "2025",
+      "height_m": 45.06705882352941,
+      "percent_full": 63.9608460017647,
+      "last_year_percent_full": 79.44588132992646
+    }
+  ],
+  "theewaterskloof": [
+    {
+      "date": "2000",
+      "height_m": 24.407193460490465,
+      "percent_full": 71.33919040201634,
+      "last_year_percent_full": 61.86807894181818
+    },
+    {
+      "date": "2001",
+      "height_m": 24.469890410958904,
+      "percent_full": 73.51055026926026,
+      "last_year_percent_full": 71.9579106630137
+    },
+    {
+      "date": "2002",
+      "height_m": 26.459671232876715,
+      "percent_full": 90.21986479799999,
+      "last_year_percent_full": 73.51055026926026
+    },
+    {
+      "date": "2003",
+      "height_m": 24.084054794520547,
+      "percent_full": 68.32958004684932,
+      "last_year_percent_full": 90.21986479799999
+    },
+    {
+      "date": "2004",
+      "height_m": 21.11639344262295,
+      "percent_full": 46.55540821636612,
+      "last_year_percent_full": 68.334567025847
+    },
+    {
+      "date": "2005",
+      "height_m": 22.06268493150685,
+      "percent_full": 55.4774322979726,
+      "last_year_percent_full": 46.55310003569863
+    },
+    {
+      "date": "2006",
+      "height_m": 23.499013698630137,
+      "percent_full": 64.27759743841095,
+      "last_year_percent_full": 55.4774322979726
+    },
+    {
+      "date": "2007",
+      "height_m": 24.988849315068492,
+      "percent_full": 77.68537859131507,
+      "last_year_percent_full": 64.27759743841095
+    },
+    {
+      "date": "2008",
+      "height_m": 26.40308743169399,
+      "percent_full": 89.87430059718581,
+      "last_year_percent_full": 77.63025738346995
+    },
+    {
+      "date": "2009",
+      "height_m": 26.461397260273973,
+      "percent_full": 90.44466203005479,
+      "last_year_percent_full": 89.89175244142467
+    },
+    {
+      "date": "2010",
+      "height_m": 25.88701369863014,
+      "percent_full": 84.55943339967124,
+      "last_year_percent_full": 90.44466203005479
+    },
+    {
+      "date": "2011",
+      "height_m": 24.413386301369865,
+      "percent_full": 71.55030717994521,
+      "last_year_percent_full": 84.55943339967124
+    },
+    {
+      "date": "2012",
+      "height_m": 24.630956284153005,
+      "percent_full": 74.25677789019126,
+      "last_year_percent_full": 71.52460743860655
+    },
+    {
+      "date": "2013",
+      "height_m": 26.04358904109589,
+      "percent_full": 86.54821211183561,
+      "last_year_percent_full": 74.30097355775342
+    },
+    {
+      "date": "2014",
+      "height_m": 26.537753424657534,
+      "percent_full": 91.06686468046574,
+      "last_year_percent_full": 86.54821211183561
+    },
+    {
+      "date": "2015",
+      "height_m": 23.826620879120878,
+      "percent_full": 66.32038097381867,
+      "last_year_percent_full": 91.05381241862636
+    },
+    {
+      "date": "2016",
+      "height_m": 20.63584699453552,
+      "percent_full": 43.465169333907106,
+      "last_year_percent_full": 66.31760597795082
+    },
+    {
+      "date": "2017",
+      "height_m": 16.72841095890411,
+      "percent_full": 24.084865277013698,
+      "last_year_percent_full": 43.47085062890411
+    },
+    {
+      "date": "2018",
+      "height_m": 17.73986301369863,
+      "percent_full": 32.7238886230411,
+      "last_year_percent_full": 24.084865277013698
+    },
+    {
+      "date": "2019",
+      "height_m": 22.25090410958904,
+      "percent_full": 55.05970492580822,
+      "last_year_percent_full": 32.7238886230411
+    },
+    {
+      "date": "2020",
+      "height_m": 24.565683060109293,
+      "percent_full": 73.6785833565847,
+      "last_year_percent_full": 55.02301159251366
+    },
+    {
+      "date": "2021",
+      "height_m": 26.488383561643836,
+      "percent_full": 90.59397398117808,
+      "last_year_percent_full": 73.71757648372603
+    },
+    {
+      "date": "2022",
+      "height_m": 25.13860273972603,
+      "percent_full": 77.53567811079452,
+      "last_year_percent_full": 90.59397398117808
+    },
+    {
+      "date": "2023",
+      "height_m": 25.389827397260273,
+      "percent_full": 81.33241934693152,
+      "last_year_percent_full": 77.53567811079452
+    },
+    {
+      "date": "2024",
+      "height_m": 25.65863387978142,
+      "percent_full": 83.17742103879782,
+      "last_year_percent_full": 81.25494029068307
+    },
+    {
+      "date": "2025",
+      "height_m": 24.468529411764706,
+      "percent_full": 71.68518310735294,
+      "last_year_percent_full": 70.9855612925
+    }
+  ],
+  "bergriver": [
+    {
+      "date": "2000"
+    },
+    {
+      "date": "2001"
+    },
+    {
+      "date": "2002"
+    },
+    {
+      "date": "2003"
+    },
+    {
+      "date": "2004"
+    },
+    {
+      "date": "2005"
+    },
+    {
+      "date": "2006"
+    },
+    {
+      "date": "2007"
+    },
+    {
+      "date": "2008"
+    },
+    {
+      "date": "2009"
+    },
+    {
+      "date": "2010"
+    },
+    {
+      "date": "2011"
+    },
+    {
+      "date": "2012"
+    },
+    {
+      "date": "2013"
+    },
+    {
+      "date": "2014"
+    },
+    {
+      "date": "2015"
+    },
+    {
+      "date": "2016"
+    },
+    {
+      "date": "2017"
+    },
+    {
+      "date": "2018"
+    },
+    {
+      "date": "2019"
+    },
+    {
+      "date": "2020"
+    },
+    {
+      "date": "2021"
+    },
+    {
+      "date": "2022"
+    },
+    {
+      "date": "2023"
+    },
+    {
+      "date": "2024"
+    },
+    {
+      "date": "2025"
+    }
+  ],
+  "land-enzeezicht": [
+    {
+      "date": "2000",
+      "height_m": 5.710909090909091,
+      "storage_ml": 337.97854545454544,
+      "percent_full": 71.45423794090908,
+      "last_year_percent_full": 100.0315011
+    },
+    {
+      "date": "2001",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2002",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2003",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2004",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2005",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2006",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2007",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2008",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2009",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2010",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2011",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2012",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2013",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2014",
+      "height_m": null,
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2015",
+      "height_m": 4.131907894736842,
+      "storage_ml": 244.69684868421055,
+      "percent_full": 51.732948982039474,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2016",
+      "height_m": 3.30120218579235,
+      "storage_ml": 195.2016038251366,
+      "percent_full": 41.268838018087436,
+      "last_year_percent_full": 52.401681659281046
+    },
+    {
+      "date": "2017",
+      "height_m": 6.572904109589041,
+      "storage_ml": 388.4681479452055,
+      "percent_full": 82.12857251336986,
+      "last_year_percent_full": 41.34079469441096
+    },
+    {
+      "date": "2018",
+      "height_m": 7.694465753424658,
+      "storage_ml": 454.87924657534245,
+      "percent_full": 96.16897392523288,
+      "last_year_percent_full": 82.12857251336986
+    },
+    {
+      "date": "2019",
+      "height_m": 7.131780821917808,
+      "storage_ml": 422.64538904109594,
+      "percent_full": 89.3542048720274,
+      "last_year_percent_full": 96.16897392523288
+    },
+    {
+      "date": "2020",
+      "height_m": 6.2754071038251364,
+      "storage_ml": 371.12130874316944,
+      "percent_full": 78.46116463904372,
+      "last_year_percent_full": 89.35604674344262
+    },
+    {
+      "date": "2021",
+      "height_m": 6.881808219178082,
+      "storage_ml": 406.3580849315068,
+      "percent_full": 85.91080021016438,
+      "last_year_percent_full": 78.4856561150411
+    },
+    {
+      "date": "2022",
+      "height_m": 6.533041095890411,
+      "storage_ml": 386.3495479452055,
+      "percent_full": 81.68066552726027,
+      "last_year_percent_full": 85.91080021016438
+    },
+    {
+      "date": "2023",
+      "height_m": 7.424767123287671,
+      "storage_ml": 438.0111589041096,
+      "percent_full": 92.6027820099726,
+      "last_year_percent_full": 81.68066552726027
+    },
+    {
+      "date": "2024",
+      "height_m": 7.644535519125683,
+      "storage_ml": 450.86089071038253,
+      "percent_full": 95.31942723672131,
+      "last_year_percent_full": 92.58105742967213
+    },
+    {
+      "date": "2025",
+      "height_m": 6.282794117647059,
+      "storage_ml": 372.7279705882353,
+      "percent_full": 78.80083944860293,
+      "last_year_percent_full": 88.01384312419117
+    }
+  ],
+  "totalstored-big5": [
+    {
+      "date": "2000",
+      "storage_ml": 518576.762295082,
+      "percent_full": 67.50446977393443,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2001",
+      "storage_ml": 542462.2712328767,
+      "percent_full": 70.61370785186301,
+      "last_year_percent_full": 0.0
+    },
+    {
+      "date": "2002",
+      "storage_ml": 661365.2328767123,
+      "percent_full": 86.09161192449315,
+      "last_year_percent_full": 0.0
+    },
+    {
+      "date": "2003",
+      "storage_ml": 512595.9315068493,
+      "percent_full": 66.72592966076712,
+      "last_year_percent_full": 0.0
+    },
+    {
+      "date": "2004",
+      "storage_ml": 371243.25136612024,
+      "percent_full": 48.32568804218579,
+      "last_year_percent_full": 0.0
+    },
+    {
+      "date": "2005",
+      "storage_ml": 428819.9780821918,
+      "percent_full": 55.820598518000004,
+      "last_year_percent_full": 0.0
+    },
+    {
+      "date": "2006",
+      "storage_ml": 515382.2767123288,
+      "percent_full": 67.08863537630137,
+      "last_year_percent_full": 0.0
+    },
+    {
+      "date": "2007",
+      "storage_ml": 606398.4438356165,
+      "percent_full": 78.93644374123288,
+      "last_year_percent_full": 0.0
+    },
+    {
+      "date": "2008",
+      "storage_ml": 663400.9344262296,
+      "percent_full": 86.35660442491803,
+      "last_year_percent_full": 0.0
+    },
+    {
+      "date": "2009",
+      "storage_ml": 577439.2488480663,
+      "percent_full": 75.1667509120442,
+      "last_year_percent_full": 0.0
+    },
+    {
+      "date": "2010",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2011",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2012",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2013",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2014",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2015",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2016",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2017",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2018",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2019",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2020",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2021",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2022",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2023",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2024",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    },
+    {
+      "date": "2025",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
+    }
+  ],
+  "totalstored-big6": [
+    {
+      "date": "2000"
+    },
+    {
+      "date": "2001"
+    },
+    {
+      "date": "2002"
+    },
+    {
+      "date": "2003"
+    },
+    {
+      "date": "2004"
+    },
+    {
+      "date": "2005"
+    },
+    {
+      "date": "2006"
+    },
+    {
+      "date": "2007"
+    },
+    {
+      "date": "2008"
+    },
+    {
+      "date": "2009"
+    },
+    {
+      "date": "2010"
+    },
+    {
+      "date": "2011"
+    },
+    {
+      "date": "2012"
+    },
+    {
+      "date": "2013"
+    },
+    {
+      "date": "2014"
+    },
+    {
+      "date": "2015"
+    },
+    {
+      "date": "2016"
+    },
+    {
+      "date": "2017"
+    },
+    {
+      "date": "2018"
+    },
+    {
+      "date": "2019"
+    },
+    {
+      "date": "2020"
+    },
+    {
+      "date": "2021"
+    },
+    {
+      "date": "2022"
+    },
+    {
+      "date": "2023"
+    },
+    {
+      "date": "2024"
+    },
+    {
+      "date": "2025"
+    }
+  ]
+}

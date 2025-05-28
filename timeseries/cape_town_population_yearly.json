@@ -1,0 +1,306 @@
+[
+  {
+    "year": 1950,
+    "population": 618000
+  },
+  {
+    "year": 1951,
+    "population": 634000
+  },
+  {
+    "year": 1952,
+    "population": 651000
+  },
+  {
+    "year": 1953,
+    "population": 669000
+  },
+  {
+    "year": 1954,
+    "population": 686000
+  },
+  {
+    "year": 1955,
+    "population": 705000
+  },
+  {
+    "year": 1956,
+    "population": 723000
+  },
+  {
+    "year": 1957,
+    "population": 743000
+  },
+  {
+    "year": 1958,
+    "population": 762000
+  },
+  {
+    "year": 1959,
+    "population": 783000
+  },
+  {
+    "year": 1960,
+    "population": 803000
+  },
+  {
+    "year": 1961,
+    "population": 829000
+  },
+  {
+    "year": 1962,
+    "population": 857000
+  },
+  {
+    "year": 1963,
+    "population": 885000
+  },
+  {
+    "year": 1964,
+    "population": 915000
+  },
+  {
+    "year": 1965,
+    "population": 945000
+  },
+  {
+    "year": 1966,
+    "population": 977000
+  },
+  {
+    "year": 1967,
+    "population": 1009000
+  },
+  {
+    "year": 1968,
+    "population": 1043000
+  },
+  {
+    "year": 1969,
+    "population": 1077000
+  },
+  {
+    "year": 1970,
+    "population": 1114000
+  },
+  {
+    "year": 1971,
+    "population": 1156000
+  },
+  {
+    "year": 1972,
+    "population": 1199000
+  },
+  {
+    "year": 1973,
+    "population": 1244000
+  },
+  {
+    "year": 1974,
+    "population": 1291000
+  },
+  {
+    "year": 1975,
+    "population": 1339000
+  },
+  {
+    "year": 1976,
+    "population": 1389000
+  },
+  {
+    "year": 1977,
+    "population": 1441000
+  },
+  {
+    "year": 1978,
+    "population": 1495000
+  },
+  {
+    "year": 1979,
+    "population": 1551000
+  },
+  {
+    "year": 1980,
+    "population": 1609000
+  },
+  {
+    "year": 1981,
+    "population": 1670000
+  },
+  {
+    "year": 1982,
+    "population": 1732000
+  },
+  {
+    "year": 1983,
+    "population": 1797000
+  },
+  {
+    "year": 1984,
+    "population": 1865000
+  },
+  {
+    "year": 1985,
+    "population": 1925000
+  },
+  {
+    "year": 1986,
+    "population": 1969000
+  },
+  {
+    "year": 1987,
+    "population": 2014000
+  },
+  {
+    "year": 1988,
+    "population": 2060000
+  },
+  {
+    "year": 1989,
+    "population": 2107000
+  },
+  {
+    "year": 1990,
+    "population": 2155000
+  },
+  {
+    "year": 1991,
+    "population": 2206000
+  },
+  {
+    "year": 1992,
+    "population": 2264000
+  },
+  {
+    "year": 1993,
+    "population": 2324000
+  },
+  {
+    "year": 1994,
+    "population": 2384000
+  },
+  {
+    "year": 1995,
+    "population": 2447000
+  },
+  {
+    "year": 1996,
+    "population": 2511000
+  },
+  {
+    "year": 1997,
+    "population": 2577000
+  },
+  {
+    "year": 1998,
+    "population": 2644000
+  },
+  {
+    "year": 1999,
+    "population": 2714000
+  },
+  {
+    "year": 2000,
+    "population": 2785000
+  },
+  {
+    "year": 2001,
+    "population": 2858000
+  },
+  {
+    "year": 2002,
+    "population": 2933000
+  },
+  {
+    "year": 2003,
+    "population": 3009000
+  },
+  {
+    "year": 2004,
+    "population": 3088000
+  },
+  {
+    "year": 2005,
+    "population": 3168000
+  },
+  {
+    "year": 2006,
+    "population": 3251000
+  },
+  {
+    "year": 2007,
+    "population": 3336000
+  },
+  {
+    "year": 2008,
+    "population": 3423000
+  },
+  {
+    "year": 2009,
+    "population": 3512000
+  },
+  {
+    "year": 2010,
+    "population": 3604000
+  },
+  {
+    "year": 2011,
+    "population": 3698000
+  },
+  {
+    "year": 2012,
+    "population": 3795000
+  },
+  {
+    "year": 2013,
+    "population": 3894000
+  },
+  {
+    "year": 2014,
+    "population": 3996000
+  },
+  {
+    "year": 2015,
+    "population": 4100000
+  },
+  {
+    "year": 2016,
+    "population": 4208000
+  },
+  {
+    "year": 2017,
+    "population": 4318000
+  },
+  {
+    "year": 2018,
+    "population": 4430000
+  },
+  {
+    "year": 2019,
+    "population": 4524000
+  },
+  {
+    "year": 2020,
+    "population": 4618000
+  },
+  {
+    "year": 2021,
+    "population": 4710000
+  },
+  {
+    "year": 2022,
+    "population": 4801000
+  },
+  {
+    "year": 2023,
+    "population": 4890000
+  },
+  {
+    "year": 2024,
+    "population": 4978000
+  },
+  {
+    "year": 2025,
+    "population": 5064000
+  }
+]
