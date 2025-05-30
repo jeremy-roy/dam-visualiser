@@ -74,6 +74,9 @@ function App() {
       }
       return { ...feature, properties: props };
     });
+    // Add console log for selected date and augmented features
+    console.log('Selected Date:', selectedDate);
+    console.log('Augmented Features:', features);
     return { ...data, features };
   }, [data, dailyLevels, selectedDate]);
 
@@ -85,12 +88,12 @@ function App() {
         return parseFloat(entry.percent_full);
       }
     }
-    if (data && Array.isArray(data.features)) {
-      const summary = data.features.find(f => f.properties?.NAME === 'Big 6 Total');
-      if (summary && summary.properties.current_percentage_full != null) {
-        return parseFloat(summary.properties.current_percentage_full);
-      }
-    }
+    // if (data && Array.isArray(data.features)) {
+    //   const summary = data.features.find(f => f.properties?.NAME === 'Big 6 Total');
+    //   if (summary && summary.properties.current_percentage_full != null) {
+    //     return parseFloat(summary.properties.current_percentage_full);
+    //   }
+    // }
     return null;
   }, [dailyLevels, selectedDate, data]);
   const big6Rounded = big6Pct != null ? Math.round(big6Pct) : null;
