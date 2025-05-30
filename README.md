@@ -104,7 +104,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Is the mapping in the data nessesary, the app also does mapping between the geojson and the damlevels
 
 # Dam Visualiser App
-- remove .env file on repo
+- Go though webpack comiler error messgaes
+- Accept multipolygons shapes *
+- stream maps on initial load
+- Big 6 Total is missing data / not showing a chart
+- Missing data on some dams, review dam data
+- Set up link info and favicon
+- add centroid properrty back
 
 # Notes
 Big 6:
