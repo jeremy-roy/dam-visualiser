@@ -12,3 +12,6 @@
 
 # Firebase
 .firebase
+
+# Jupyter Notebook checkpoints
+public/timeseries/.ipynb_checkpoints/

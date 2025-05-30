@@ -80,7 +80,7 @@ function App() {
     return { ...data, features };
   }, [data, dailyLevels, selectedDate]);
 
-  // Compute Big 6 summary percentage based on selected date or fallback to raw data
+  // Compute Big 6 summary percentage based on selected date
   const big6Pct = useMemo(() => {
     if (dailyLevels && selectedDate && Array.isArray(dailyLevels['totalstored-big6'])) {
       const entry = dailyLevels['totalstored-big6'].find(item => item.date === selectedDate);
@@ -88,12 +88,6 @@ function App() {
         return parseFloat(entry.percent_full);
       }
     }
-    // if (data && Array.isArray(data.features)) {
-    //   const summary = data.features.find(f => f.properties?.NAME === 'Big 6 Total');
-    //   if (summary && summary.properties.current_percentage_full != null) {
-    //     return parseFloat(summary.properties.current_percentage_full);
-    //   }
-    // }
     return null;
   }, [dailyLevels, selectedDate, data]);
   const big6Rounded = big6Pct != null ? Math.round(big6Pct) : null;
