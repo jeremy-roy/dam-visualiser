@@ -100,16 +100,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # Planning
 ## Data
-- ✅
+- Remove generation of current_percentage_full & current_date from properties
+- Is the mapping in the data nessesary, the app also does mapping between the geojson and the damlevels
 
 # Dam Visualiser App
-- Go though webpack comiler error messgaes
-- Accept multipolygons shapes *
-- stream maps on initial load
-- Big 6 Total is missing data / not showing a chart
-- Missing data on some dams, review dam data
-- Set up link info and favicon
-- add centroid properrty back
+- remove .env file on repo
 
 # Notes
 Big 6:
@@ -130,7 +125,7 @@ Berg River, Steenbras Lower, Steenbras Upper, Theewaterskloof, Voëlvlei and Wem
     /timeseries
       dam_levels_daily.json                 ← full timeseries, per dam, daily
       dam_levels_monthly.json               ← resampled to monthly
-      dam_levels_yearly.json                ← yearly averages or end-of-year value
+      dam_levels_yearly.json                ← yearly averages
       cape_town_rainfall_daily.json         ← daily total rain + temp
       cape_town_rainfall_monthly.json       ← monthly aggregates
       cape_town_rainfall_yearly.json        ← yearly summaries
@@ -139,6 +134,27 @@ Berg River, Steenbras Lower, Steenbras Upper, Theewaterskloof, Voëlvlei and Wem
 
 
 
+CODEX Prompt initialiser:
+
+My repo conatains a react app for visualising Dam Level Data on a map
+The app has a component called DamLevels.js for viewing dam Levels in a list
+The app has a component called DamPopup.js for viewing timeseries data of dams.
+The app has a toggle for difference base maps called BasemapToggle.js
+The MapContainer,js component is the full screen map.
+
+The dam data is in the following structure:
+
+/public
+  /data        
+    dam_polygons.geojson                    ← spatial layer only
+    /timeseries
+      dam_levels_daily.json                 ← full timeseries, per dam, daily
+      dam_levels_monthly.json               ← resampled to monthly
+      dam_levels_yearly.json                ← yearly averages
+      cape_town_rainfall_daily.json         ← daily total rain + temp
+      cape_town_rainfall_monthly.json       ← monthly aggregates
+      cape_town_rainfall_yearly.json        ← yearly summaries
+      cape_town_population_yearly.json      ← annual values
 
 
 
