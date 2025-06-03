@@ -7,6 +7,7 @@ import MapContainer from './components/MapContainer';
 import DamPopup from './components/DamPopup';
 import DamLevels, { BatteryIcon, getBatteryColor } from './components/DamLevels';
 import useIsMobile from './hooks/useIsMobile';
+import { fetchFromStorage } from './firebase-config';
 
 function App() {
   // Raw GeoJSON dam data
@@ -23,9 +24,8 @@ function App() {
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    // fetch the updated GeoJSON data in public/ directory
-    fetch(process.env.PUBLIC_URL + '/Bulk_Water_Dams_Enriched.geojson')
-      .then(res => res.json())
+    // fetch the GeoJSON data from Firebase Storage
+    fetchFromStorage('shapefiles/Bulk_Water_Dams_Enriched.geojson')
       .then(raw => {
         // Use MultiPolygon geometries directly (deck.gl GeoJsonLayer supports MultiPolygon)
         setData(raw);
@@ -35,8 +35,7 @@ function App() {
 
   // fetch daily time-series data for dams
   useEffect(() => {
-    fetch(process.env.PUBLIC_URL + '/timeseries/dam_levels_daily.json')
-      .then(res => res.json())
+    fetchFromStorage('timeseries/dam_levels_daily.json')
       .then(json => setDailyLevels(json))
       .catch(console.error);
   }, []);

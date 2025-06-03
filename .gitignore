@@ -12,6 +12,8 @@
 
 # Firebase
 .firebase
+firebase-key.json
+dam-data/firebase-key.json
 
 # Jupyter Notebook checkpoints
 public/timeseries/.ipynb_checkpoints/

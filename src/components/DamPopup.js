@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 // Import ChartJS to customize legend options
 import ChartJS from 'chart.js/auto';
+import { fetchFromStorage } from '../firebase-config';
 import './DamPopup.css';
 
 function DamPopup({ dam, onClose, initialPos }) {
@@ -25,8 +26,7 @@ function DamPopup({ dam, onClose, initialPos }) {
   const [expanded, setExpanded] = useState(false);
   // fetch daily data
   useEffect(() => {
-    fetch(process.env.PUBLIC_URL + '/timeseries/dam_levels_daily.json')
-      .then(res => res.json())
+    fetchFromStorage('timeseries/dam_levels_daily.json')
       .then(data => setAllDailyData(data))
       .catch(err => {
         console.error('Error loading daily timeseries data:', err);
@@ -35,8 +35,7 @@ function DamPopup({ dam, onClose, initialPos }) {
   }, []);
   // fetch monthly data
   useEffect(() => {
-    fetch(process.env.PUBLIC_URL + '/timeseries/dam_levels_monthly.json')
-      .then(res => res.json())
+    fetchFromStorage('timeseries/dam_levels_monthly.json')
       .then(data => setAllMonthlyData(data))
       .catch(err => {
         console.error('Error loading monthly timeseries data:', err);
@@ -45,8 +44,7 @@ function DamPopup({ dam, onClose, initialPos }) {
   }, []);
   // fetch rainfall daily data
   useEffect(() => {
-    fetch(process.env.PUBLIC_URL + '/timeseries/cape_town_rainfall_daily.json')
-      .then(res => res.json())
+    fetchFromStorage('timeseries/cape_town_rainfall_daily.json')
       .then(data => setRainDailyData(data))
       .catch(err => {
         console.error('Error loading rainfall daily:', err);
@@ -55,8 +53,7 @@ function DamPopup({ dam, onClose, initialPos }) {
   }, []);
   // fetch rainfall monthly data
   useEffect(() => {
-    fetch(process.env.PUBLIC_URL + '/timeseries/cape_town_rainfall_monthly.json')
-      .then(res => res.json())
+    fetchFromStorage('timeseries/cape_town_rainfall_monthly.json')
       .then(data => setRainMonthlyData(data))
       .catch(err => {
         console.error('Error loading rainfall monthly:', err);
@@ -65,8 +62,7 @@ function DamPopup({ dam, onClose, initialPos }) {
   }, []);
   // fetch population yearly data
   useEffect(() => {
-    fetch(process.env.PUBLIC_URL + '/timeseries/cape_town_population_yearly.json')
-      .then(res => res.json())
+    fetchFromStorage('timeseries/cape_town_population_yearly.json')
       .then(data => {
         // convert to date format for lookup
         const series = data.map(item => ({ date: `${item.year}-01-01`, population: item.population }));
@@ -173,8 +169,8 @@ function DamPopup({ dam, onClose, initialPos }) {
       fill: false,
       backgroundColor: 'rgb(75,192,192)',
       borderColor: 'rgba(75,192,192,0.5)',
-      pointRadius: 0,
-      pointHoverRadius: 3,
+      pointRadius: 2,
+      pointHoverRadius: 5,
       tension: 0.4,
       cubicInterpolationMode: 'monotone'
     });
@@ -188,8 +184,8 @@ function DamPopup({ dam, onClose, initialPos }) {
       fill: false,
       backgroundColor: 'rgb(192,75,75)',
       borderColor: 'rgba(192,75,75,0.5)',
-      pointRadius: 0,
-      pointHoverRadius: 3,
+      pointRadius: 2,
+      pointHoverRadius: 5,
       tension: 0.4,
       cubicInterpolationMode: 'monotone',
       hidden: true
@@ -204,8 +200,8 @@ function DamPopup({ dam, onClose, initialPos }) {
       fill: false,
       backgroundColor: 'rgb(54,162,235)',
       borderColor: 'rgba(54,162,235,0.5)',
-      pointRadius: 0,
-      pointHoverRadius: 3,
+      pointRadius: 2,
+      pointHoverRadius: 5,
       tension: 0.4,
       cubicInterpolationMode: 'monotone',
       hidden: true
@@ -220,8 +216,8 @@ function DamPopup({ dam, onClose, initialPos }) {
       fill: false,
       backgroundColor: 'rgb(255,206,86)',
       borderColor: 'rgba(255,206,86,0.5)',
-      pointRadius: 0,
-      pointHoverRadius: 3,
+      pointRadius: 2,
+      pointHoverRadius: 5,
       tension: 0.4,
       cubicInterpolationMode: 'monotone',
       hidden: true
@@ -234,8 +230,8 @@ function DamPopup({ dam, onClose, initialPos }) {
       fill: false,
       backgroundColor: 'rgb(54,162,235)',
       borderColor: 'rgba(54,162,235,0.5)',
-      pointRadius: 0,
-      pointHoverRadius: 3,
+      pointRadius: 2,
+      pointHoverRadius: 5,
       tension: 0.4,
       cubicInterpolationMode: 'monotone',
       hidden: true
@@ -249,8 +245,8 @@ function DamPopup({ dam, onClose, initialPos }) {
       spanGaps: true,
       backgroundColor: 'rgb(153,102,255)',
       borderColor: 'rgba(153,102,255,0.5)',
-      pointRadius: 0,
-      pointHoverRadius: 3,
+      pointRadius: 1,
+      pointHoverRadius: 5,
       tension: 0,
       cubicInterpolationMode: 'monotone',
       hidden: true
