@@ -51,21 +51,22 @@ function DamLevels({ data, selectedDate, onClose, onSelectDam, onSelectSummary, 
   const [big6Series, setBig6Series] = useState([]);
   useEffect(() => {
     let mounted = true;
-    fetch(process.env.PUBLIC_URL + '/timeseries/dam_levels_daily.json')
-      .then(res => res.json())
-      .then(json => {
-        if (!mounted) return;
-        setDailyLevelsData(json || {});
-        const series = Array.isArray(json['totalstored-big6'])
-          ? json['totalstored-big6']
-          : [];
-        setBig6Series(series);
-      })
-      .catch(err => {
-        console.error('Error loading daily timeseries data:', err);
-        setDailyLevelsData({});
-        setBig6Series([]);
-      });
+    import('../firebase-config').then(({ fetchFromStorage }) => {
+      fetchFromStorage('timeseries/dam_levels_daily.json')
+        .then(json => {
+          if (!mounted) return;
+          setDailyLevelsData(json || {});
+          const series = Array.isArray(json['totalstored-big6'])
+            ? json['totalstored-big6']
+            : [];
+          setBig6Series(series);
+        })
+        .catch(err => {
+          console.error('Error loading daily timeseries data:', err);
+          setDailyLevelsData({});
+          setBig6Series([]);
+        });
+    });
     return () => { mounted = false; };
   }, []);
   if (!features.length) return null;
