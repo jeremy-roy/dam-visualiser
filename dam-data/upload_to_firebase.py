@@ -31,9 +31,11 @@ def upload_json_to_firebase(local_path, storage_path):
         blob.upload_from_filename(local_path)
         print(f"Completed upload of {local_path}")
         
-        # Make it publicly accessible
+        # Make it publicly accessible and set cache control
         blob.make_public()
-        print(f"Made {storage_path} public")
+        blob.cache_control = 'public, max-age=3600'  # Cache for 1 hour
+        blob.patch()
+        print(f"Made {storage_path} public with caching")
         
         url = blob.public_url
         print(f"Public URL: {url}")

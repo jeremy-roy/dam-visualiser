@@ -21,23 +21,37 @@ function App() {
   const [showLevels, setShowLevels] = useState(false);
   // panTo: { coords: [lng, lat], zoom: number }
   const [panTo, setPanTo] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    // fetch the GeoJSON data from Firebase Storage
-    fetchFromStorage('shapefiles/Bulk_Water_Dams_Enriched.geojson')
-      .then(raw => {
-        // Use MultiPolygon geometries directly (deck.gl GeoJsonLayer supports MultiPolygon)
-        setData(raw);
-      })
-      .catch(console.error);
-  }, []);
+    let isMounted = true;
+    
+    async function loadData() {
+      try {
+        const [geoJson, levels] = await Promise.all([
+          fetchFromStorage('shapefiles/Bulk_Water_Dams_Enriched.geojson'),
+          fetchFromStorage('timeseries/dam_levels_daily.json')
+        ]);
 
-  // fetch daily time-series data for dams
-  useEffect(() => {
-    fetchFromStorage('timeseries/dam_levels_daily.json')
-      .then(json => setDailyLevels(json))
-      .catch(console.error);
+        if (!isMounted) return;
+
+        // Set data in a single batch update
+        const latestDate = levels['totalstored-big6']?.[levels['totalstored-big6'].length - 1]?.date;
+        setData(geoJson);
+        setDailyLevels(levels);
+        setSelectedDate(latestDate);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error loading data:', error);
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    }
+
+    loadData();
+    return () => { isMounted = false; };
   }, []);
 
   // set default selected date to latest available in Big 6 series
@@ -92,6 +106,27 @@ function App() {
   const big6Rounded = big6Pct != null ? Math.round(big6Pct) : null;
   const big6Color = getBatteryColor(big6Rounded);
 
+  if (isLoading) {
+    return (
+      <div className="App" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <div style={{ textAlign: 'center' }}>
+          <img 
+            src="dam_levels.png" 
+            alt="Dam Levels" 
+            style={{ 
+              width: '64px', 
+              height: '64px', 
+              marginBottom: '16px', 
+              display: 'block', 
+              margin: '0 auto 16px' 
+            }} 
+          />
+          <div>Loading dam data...</div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="App" style={{ position: 'relative', height: '100vh' }}>
       <BasemapToggle currentStyle={mapStyle} onChange={setMapStyle} />
@@ -121,8 +156,8 @@ function App() {
           />
         </svg>
       </button>
-      {/* Render map only when GeoJSON features are loaded */}
-      {processedData && Array.isArray(processedData.features) && processedData.features.length > 0 && (
+      {/* Render map only when all data is ready */}
+      {!isLoading && processedData && selectedDate && (
         <MapContainer
           data={processedData}
           mapStyle={mapStyle}
@@ -134,6 +169,7 @@ function App() {
       {processedData && Array.isArray(processedData.features) && processedData.features.length > 0 && (
         <DamLevels
           data={processedData}
+          dailyLevels={dailyLevels}
           selectedDate={selectedDate}
           open={showLevels}
           selectedFeature={selectedDam}

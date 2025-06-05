@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import './DamLevels.css';
 import useIsMobile from '../hooks/useIsMobile';
 
@@ -40,35 +40,18 @@ function getBatteryColor(percent) {
 
 // Panel showing list of dams and their current % full
 // data: GeoJSON feature collection, onClose: function, onSelectDam: function(coords), onSelectSummary: function(summaryFeature)
-function DamLevels({ data, selectedDate, onClose, onSelectDam, onSelectSummary, onSelectFeature, selectedFeature, open }) {
+function DamLevels({ data, selectedDate, dailyLevels, onClose, onSelectDam, onSelectSummary, onSelectFeature, selectedFeature, open }) {
   // Ensure features is always an array for hooks
   const features = Array.isArray(data?.features) ? data.features : [];
   // track last clicked dam name to differentiate zoom vs popup
   const [lastClicked, setLastClicked] = useState(null);
   const isMobile = useIsMobile();
-  // load daily timeseries data (including Big 6 and individual dams)
-  const [dailyLevelsData, setDailyLevelsData] = useState(null);
-  const [big6Series, setBig6Series] = useState([]);
-  useEffect(() => {
-    let mounted = true;
-    import('../firebase-config').then(({ fetchFromStorage }) => {
-      fetchFromStorage('timeseries/dam_levels_daily.json')
-        .then(json => {
-          if (!mounted) return;
-          setDailyLevelsData(json || {});
-          const series = Array.isArray(json['totalstored-big6'])
-            ? json['totalstored-big6']
-            : [];
-          setBig6Series(series);
-        })
-        .catch(err => {
-          console.error('Error loading daily timeseries data:', err);
-          setDailyLevelsData({});
-          setBig6Series([]);
-        });
-    });
-    return () => { mounted = false; };
-  }, []);
+  
+  const big6Series = useMemo(() => {
+    return Array.isArray(dailyLevels?.['totalstored-big6']) 
+      ? dailyLevels['totalstored-big6'] 
+      : [];
+  }, [dailyLevels]);
   if (!features.length) return null;
   // derive Big 6 percentage for selected date (fallback to latest)
   const big6Entry = selectedDate
@@ -96,11 +79,11 @@ function DamLevels({ data, selectedDate, onClose, onSelectDam, onSelectSummary, 
       const name = props.NAME;
       // skip summary features
       if (name === 'Big 6 Total' || name === 'Big 5 Total') return false;
-      // require dailyLevelsData to be loaded
-      if (!dailyLevelsData) return false;
+      // require dailyLevels to be loaded
+      if (!dailyLevels) return false;
       // lookup series array by key
       const key = deriveKey(name);
-      const series = dailyLevelsData[key];
+      const series = dailyLevels[key];
       return Array.isArray(series) && series.length > 0;
     })
     .map(feature => {

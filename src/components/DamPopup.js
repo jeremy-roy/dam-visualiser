@@ -12,6 +12,15 @@ function DamPopup({ dam, onClose, initialPos }) {
   const displayName = rawName === 'totalstored-big6'
     ? 'Big 6 Total'
     : rawName;
+
+  // Loading states for each data type
+  const [loading, setLoading] = useState({
+    daily: true,
+    monthly: true,
+    rainDaily: true,
+    rainMonthly: true,
+    population: true
+  });
   // full timeseries data: daily and monthly for dam, plus rainfall and population
   const [allDailyData, setAllDailyData] = useState(null);
   const [allMonthlyData, setAllMonthlyData] = useState(null);
@@ -27,50 +36,67 @@ function DamPopup({ dam, onClose, initialPos }) {
   // fetch daily data
   useEffect(() => {
     fetchFromStorage('timeseries/dam_levels_daily.json')
-      .then(data => setAllDailyData(data))
+      .then(data => {
+        setAllDailyData(data);
+        setLoading(prev => ({ ...prev, daily: false }));
+      })
       .catch(err => {
         console.error('Error loading daily timeseries data:', err);
         setAllDailyData({});
+        setLoading(prev => ({ ...prev, daily: false }));
       });
   }, []);
   // fetch monthly data
   useEffect(() => {
     fetchFromStorage('timeseries/dam_levels_monthly.json')
-      .then(data => setAllMonthlyData(data))
+      .then(data => {
+        setAllMonthlyData(data);
+        setLoading(prev => ({ ...prev, monthly: false }));
+      })
       .catch(err => {
         console.error('Error loading monthly timeseries data:', err);
         setAllMonthlyData({});
+        setLoading(prev => ({ ...prev, monthly: false }));
       });
   }, []);
   // fetch rainfall daily data
   useEffect(() => {
     fetchFromStorage('timeseries/cape_town_rainfall_daily.json')
-      .then(data => setRainDailyData(data))
+      .then(data => {
+        setRainDailyData(data);
+        setLoading(prev => ({ ...prev, rainDaily: false }));
+      })
       .catch(err => {
         console.error('Error loading rainfall daily:', err);
         setRainDailyData([]);
+        setLoading(prev => ({ ...prev, rainDaily: false }));
       });
   }, []);
   // fetch rainfall monthly data
   useEffect(() => {
     fetchFromStorage('timeseries/cape_town_rainfall_monthly.json')
-      .then(data => setRainMonthlyData(data))
+      .then(data => {
+        setRainMonthlyData(data);
+        setLoading(prev => ({ ...prev, rainMonthly: false }));
+      })
       .catch(err => {
         console.error('Error loading rainfall monthly:', err);
         setRainMonthlyData([]);
+        setLoading(prev => ({ ...prev, rainMonthly: false }));
       });
   }, []);
   // fetch population yearly data
   useEffect(() => {
     fetchFromStorage('timeseries/cape_town_population_yearly.json')
       .then(data => {
-        // convert to date format for lookup
         const series = data.map(item => ({ date: `${item.year}-01-01`, population: item.population }));
         setPopYearData(series);
+        setLoading(prev => ({ ...prev, population: false }));
       })
       .catch(err => {
         console.error('Error loading population yearly:', err);
         setPopYearData([]);
+        setLoading(prev => ({ ...prev, population: false }));
       });
   }, []);
   // derive daily and monthly series for this dam
@@ -429,6 +455,9 @@ function DamPopup({ dam, onClose, initialPos }) {
     maintainAspectRatio: false
   };
 
+  // Check if any data is still loading
+  const isLoading = Object.values(loading).some(state => state);
+
   return (
     <div
       ref={popupRef}
@@ -452,7 +481,12 @@ function DamPopup({ dam, onClose, initialPos }) {
           >×</button>
         </div>
       </div>
-      {timeseries.length ? (
+      {isLoading ? (
+        <div className="dam-popup-loading">
+          <div className="dam-popup-spinner" />
+          <div>Loading historical data...</div>
+        </div>
+      ) : timeseries.length ? (
         <>
           <div className="dam-popup-filters">
             <button

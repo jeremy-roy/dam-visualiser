@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, memo } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { MapboxOverlay } from '@deck.gl/mapbox';
 import { GeoJsonLayer } from '@deck.gl/layers';
@@ -215,4 +215,5 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
   );
 }
 
-export default MapContainer;
+// Memoize the component to prevent unnecessary re-renders
+export default memo(MapContainer);
