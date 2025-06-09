@@ -21,7 +21,28 @@ export async function fetchFromStorage(path) {
   try {
     const fileRef = ref(storage, path);
     const url = await getDownloadURL(fileRef);
-    const response = await fetch(url);
+    
+    // Try to get from cache first
+    const cache = await caches.open('dam-data-cache');
+    let response = await cache.match(url);
+    
+    if (!response) {
+      console.log(`Cache miss for ${path}, fetching from network...`);
+      // If not in cache, fetch from network
+      response = await fetch(url, {
+        headers: {
+          'Accept-Encoding': 'gzip',
+          'Accept': 'application/json'
+        }
+      });
+      
+      // Clone the response before caching (because response body can only be used once)
+      const responseToCache = response.clone();
+      await cache.put(url, responseToCache);
+    } else {
+      console.log(`Loading ${path} from cache`);
+    }
+    
     return await response.json();
   } catch (error) {
     console.error(`Error fetching ${path}:`, error);

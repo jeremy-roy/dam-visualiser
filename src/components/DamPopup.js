@@ -35,8 +35,18 @@ function DamPopup({ dam, onClose, initialPos }) {
   const [expanded, setExpanded] = useState(false);
   // fetch daily data
   useEffect(() => {
+    console.log('Fetching daily data...');
     fetchFromStorage('timeseries/dam_levels_daily.json')
       .then(data => {
+        console.log('Daily data loaded - checking if from cache...');
+        // Log cache status from response
+        caches.match(data._responseUrl).then(cachedResponse => {
+          if (cachedResponse) {
+            console.log('Daily data was loaded from cache');
+          } else {
+            console.log('Daily data was fetched from network');
+          }
+        });
         setAllDailyData(data);
         setLoading(prev => ({ ...prev, daily: false }));
       })

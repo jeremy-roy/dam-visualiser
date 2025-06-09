@@ -1,0 +1,154 @@
+[
+  {
+    "Id": 34077,
+    "service_area": "Water & Sanitation",
+    "title": "Planned Water maintenance",
+    "description": "Infrastructure water mains maintenance\n \n\nCITY OF CAPE TOWN\n \n8 JUNE 2025\n                                               \nMEDIA RELEASE \n\nPlanned water supply maintenance for 9 to 16 June 2025\n \nThe City\u2019s Water and Sanitation Directorate will be doing pl",
+    "area": "City of Cape Town",
+    "location": null,
+    "publish_date": "2025-06-08T22:00:00.000Z",
+    "effective_date": "2025-06-08T22:00:00.000Z",
+    "expiry_date": "2025-06-16T22:00:00.000Z",
+    "start_timestamp": "2025-06-08T22:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-16T16:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "Id": 34025,
+    "service_area": "Electricity",
+    "title": "Electrical Maintenance - Kiosk Replacement/repair",
+    "description": "Electricity supply affected in surrounding area due to replacement of kiosk.",
+    "area": "PINELANDS",
+    "location": "Alice Ride, Glenwood Way, Forest Drive, Aandblom Rd, Letchworth Rd, Pleasant Place,Links,",
+    "publish_date": "2025-06-05T22:00:00.000Z",
+    "effective_date": "2025-06-05T22:00:00.000Z",
+    "expiry_date": "2025-06-06T22:00:00.000Z",
+    "start_timestamp": "2025-06-06T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-06T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": 39.5505376,
+      "lng": -107.3247762
+    }
+  },
+  {
+    "Id": 34013,
+    "service_area": "Water & Sanitation",
+    "title": "Planned Maintenance - Valve Maintenance",
+    "description": "Planned maintenance on Pressure Reducing Valves (PRVs) to ensure network operating effectively. Due to complexity of work, it may take longer than expected.",
+    "area": "MONTAGUE GARDENS",
+    "location": "RAILWAY ROAD, FORTUNE PARK, MONTAGUE GARDENS",
+    "publish_date": "2025-06-04T22:00:00.000Z",
+    "effective_date": "2025-06-04T22:00:00.000Z",
+    "expiry_date": "2025-06-06T22:00:00.000Z",
+    "start_timestamp": "2025-06-05T09:00:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": true,
+    "request_number": "9119211165",
+    "coordinates": {
+      "lat": -33.8706921,
+      "lng": 18.5263649
+    }
+  },
+  {
+    "Id": 33961,
+    "service_area": "Water & Sanitation",
+    "title": "Unplanned Maintenance - Replacing Fire Hydrant",
+    "description": "Water will be off until Fire Hydrant replacement is complete",
+    "area": "LANSDOWNE",
+    "location": "PARKS OF KENWYN AND LANSDOWNE",
+    "publish_date": "2025-06-02T22:00:00.000Z",
+    "effective_date": "2025-06-05T22:00:00.000Z",
+    "expiry_date": "2025-06-06T22:00:00.000Z",
+    "start_timestamp": "2025-06-06T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-06T17:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": 29.8377457,
+      "lng": 78.6871069
+    }
+  },
+  {
+    "Id": 33935,
+    "service_area": "Electricity",
+    "title": "Electrical Maintenance-Pole Replacement",
+    "description": "Emergency Pole Replacement & Stay wire replacement",
+    "area": "MILNERTON",
+    "location": "Tulbagh,Uplands Rd ,Langerman Avenue & Surr",
+    "publish_date": "2025-06-01T22:00:00.000Z",
+    "effective_date": "2025-06-01T22:00:00.000Z",
+    "expiry_date": "2025-06-06T22:00:00.000Z",
+    "start_timestamp": "2025-06-02T06:30:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.2827827,
+      "lng": 19.1390309
+    }
+  },
+  {
+    "Id": 33934,
+    "service_area": "Electricity",
+    "title": "Electrical Maintenance-Pole Replacement",
+    "description": "Pole Replacement",
+    "area": "GRASSY PARK",
+    "location": "Tulbagh,Uplands Rd ,Langerman Avenue & Surr",
+    "publish_date": "2025-06-01T22:00:00.000Z",
+    "effective_date": "2025-06-01T22:00:00.000Z",
+    "expiry_date": "2025-06-07T22:00:00.000Z",
+    "start_timestamp": "2025-06-02T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-06-07T16:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.0478878,
+      "lng": 18.5037807
+    }
+  },
+  {
+    "Id": 33544,
+    "service_area": "Roads and Stormwater",
+    "title": "Resurfacing of roads",
+    "description": "Planned road maintenance. Expect delays",
+    "area": "City of Cape Town",
+    "location": "Plattekloof Road, northbound carriageway between the N1 and Gert Van Rooyen Drive, Plattekloof",
+    "publish_date": "2025-05-19T22:00:00.000Z",
+    "effective_date": "2025-05-20T22:00:00.000Z",
+    "expiry_date": "2025-06-11T22:00:00.000Z",
+    "start_timestamp": "2025-05-21T17:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-11T02:30:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.8654738,
+      "lng": 18.5703961
+    }
+  },
+  {
+    "Id": 33543,
+    "service_area": "Roads and Stormwater",
+    "title": "Resurfacing of roads",
+    "description": "Planned road maintenance. Expect delays",
+    "area": "City of Cape Town",
+    "location": "Sable Road between the N1 and Ratanga Road",
+    "publish_date": "2025-05-19T22:00:00.000Z",
+    "effective_date": "2025-05-20T22:00:00.000Z",
+    "expiry_date": "2025-06-11T22:00:00.000Z",
+    "start_timestamp": "2025-05-21T17:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-11T02:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.8892101,
+      "lng": 18.5071065
+    }
+  }
+]
