@@ -97,6 +97,44 @@ def upload_all_timeseries():
             except Exception as e:
                 print(f'Error uploading {filename}: {str(e)}')
 
+def upload_service_alerts():
+    """Upload the latest service alerts JSON files to Firebase Storage"""
+    try:
+        from pathlib import Path
+        alerts_dir = Path('service-alerts-data')
+        
+        if not alerts_dir.exists():
+            print(f"Service alerts directory not found: {alerts_dir}")
+            return
+            
+        # Find the latest files for each alert type
+        alert_types = ['planned', 'unplanned']
+        for alert_type in alert_types:
+            pattern = f'service_alerts_{alert_type}_*.json'
+            files = list(alerts_dir.glob(pattern))
+            
+            if not files:
+                print(f"No {alert_type} service alerts found")
+                continue
+                
+            # Get most recent file
+            latest_file = max(files)
+            local_path = str(latest_file)
+            # Use fixed filename without timestamp
+            storage_path = f'service_alerts/service_alerts_{alert_type}.json'
+            
+            try:
+                public_url = upload_json_to_firebase(local_path, storage_path)
+                print(f'Uploaded {alert_type} service alerts to {public_url}')
+            except Exception as e:
+                print(f'Error uploading {alert_type} service alerts: {str(e)}')
+    
+    except Exception as e:
+        print(f"Error in upload_service_alerts: {str(e)}")
+        traceback.print_exc()
+
 if __name__ == '__main__':
+    initialize_firebase()
     upload_all_timeseries()
     upload_geojson()
+    upload_service_alerts()
