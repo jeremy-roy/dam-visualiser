@@ -7,7 +7,7 @@ def fetch_dam_levels():
     
     # Create dated folder name
     today = datetime.now().strftime('%Y-%m-%d')
-    output_dir = f"data/{today}"
+    output_dir = f"dam-data/{today}"
     
     # Create directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
