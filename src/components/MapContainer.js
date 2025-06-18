@@ -7,7 +7,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
-function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam, panTo, selectedDam }) {
+function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam, panTo, selectedServiceArea }) {
   const mapContainer = useRef(null);
   const mapRef = useRef(null);
   // store last camera position across style changes (default starting view)
@@ -15,7 +15,7 @@ function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam
   const [hoverInfo, setHoverInfo] = useState(null);
   const isMobile = useIsMobile();
 
-  // Combine and filter service alerts for the selected date
+  // Combine and filter service alerts for the selected date and service area
   const activeAlerts = useMemo(() => {
     if (!serviceAlerts) return [];
     
@@ -32,8 +32,12 @@ function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam
       }))
     ];
     
-    return allAlerts;
-  }, [serviceAlerts, selectedDate]);
+    // If no service area is selected, return all alerts
+    if (!selectedServiceArea) return allAlerts;
+    
+    // Filter alerts for the selected service area
+    return allAlerts.filter(alert => alert.service_area === selectedServiceArea);
+  }, [serviceAlerts, selectedServiceArea]);
 
   useEffect(() => {
     if (!data) return;
@@ -93,35 +97,52 @@ function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam
           data: activeAlerts,
           pickable: true,
           getIcon: d => {
-            const iconName = d.service_area.toLowerCase().replace(/&/g, '').replace(/\s+/g, '_');
+            // Log the original service area name
+            console.log('Original service area:', d.service_area);
+            
+            let iconName = d.service_area.toLowerCase();
+            
+            // Special case for Roads & Stormwater
+            if (iconName === 'roads & stormwater') {
+              iconName = 'road_stormwater';
+            } else {
+              iconName = iconName
+                .replace(/&/g, '')
+                .replace(/\s+/g, '_')
+                .replace(/[^a-z0-9_]/g, '');
+            }
+            
             const iconUrl = `/icons/${iconName}_${d.type}.png`;
-            console.log('Creating icon for alert:', { 
-              title: d.title,
-              type: d.type,
-              service_area: d.service_area,
-              coordinates: d.coordinates,
-              iconUrl 
+            
+            // Log the icon name transformation
+            console.log('Icon name transformation:', {
+              original: d.service_area,
+              transformed: iconName,
+              fullUrl: iconUrl
             });
+            
             return {
               url: iconUrl,
               width: 128,
               height: 128,
-              anchorX: 64,  // Center horizontally (half of width)
-              anchorY: 128  // Bottom of icon
+              anchorX: 64,
+              anchorY: 128
             };
           },
           getPosition: d => {
+            if (!d.coordinates) return null;
             return [d.coordinates.lng, d.coordinates.lat];
           },
-          getSize: d => 36, // Made icons even bigger
+          getSize: 32,
           sizeScale: 1,
-          sizeUnits: 'pixels',
-          updateTriggers: {
-            getIcon: [selectedDate],
-            getPosition: [selectedDate]
-          },
-          // Disable Deck.GL default tooltips; use custom React hover tooltip
-          getTooltip: () => null
+          sizeMinPixels: 16,
+          sizeMaxPixels: 64,
+          billboard: true,
+          onClick: info => {
+            if (info.object) {
+              console.log('Clicked alert:', info.object);
+            }
+          }
         })
       ]
     });
@@ -283,7 +304,7 @@ function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam
         mapRef.current = null;
       }
     };
-  }, [data, mapStyle, onSelectDam, activeAlerts, isMobile, selectedDam]);
+  }, [data, mapStyle, onSelectDam, activeAlerts, isMobile, selectedServiceArea]);
 
   // Pan/fly to external coordinate when requested
   useEffect(() => {

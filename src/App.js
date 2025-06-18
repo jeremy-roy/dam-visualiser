@@ -27,6 +27,7 @@ function App() {
   const [panTo, setPanTo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const isMobile = useIsMobile();
+  const [selectedServiceArea, setSelectedServiceArea] = useState(null);
 
   // Get today's date in YYYY-MM-DD format
   const getTodayDate = () => {
@@ -276,6 +277,7 @@ function App() {
           mapStyle={mapStyle}
           onSelectDam={setSelectedDam}
           panTo={panTo}
+          selectedServiceArea={selectedServiceArea}
         />
       )}
       {/* Show dam levels list after features are available */}
@@ -303,6 +305,8 @@ function App() {
         data={filteredServiceAlerts}
         open={showAlerts}
         onClose={() => setShowAlerts(false)}
+        onSelectArea={setSelectedServiceArea}
+        selectedArea={selectedServiceArea}
       />
       {selectedDam && !isMobile && (
         <DamPopup

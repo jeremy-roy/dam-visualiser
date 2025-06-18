@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import './ServiceAlerts.css';
 import useIsMobile from '../hooks/useIsMobile';
 
-function ServiceAlerts({ data, open, onClose }) {
+function ServiceAlerts({ data, open, onClose, onSelectArea, selectedArea }) {
   const isMobile = useIsMobile();
 
   // Get unique service areas and count alerts for each
@@ -40,7 +40,10 @@ function ServiceAlerts({ data, open, onClose }) {
           )}
         </div>
         <ul className="service-alerts-list">
-          <li className="service-alerts-item total-item">
+          <li 
+            className={`service-alerts-item total-item${selectedArea === null ? ' selected' : ''}`}
+            onClick={() => onSelectArea(null)}
+          >
             <span className="service-area-name">
               All Service Alerts
             </span>
@@ -51,7 +54,8 @@ function ServiceAlerts({ data, open, onClose }) {
           {serviceAreas.map((area, i) => (
             <li
               key={i}
-              className="service-alerts-item"
+              className={`service-alerts-item${selectedArea === area.name ? ' selected' : ''}`}
+              onClick={() => onSelectArea(area.name)}
             >
               <span className="service-area-name">
                 {area.name}
