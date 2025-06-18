@@ -22,6 +22,12 @@ function ServiceAlerts({ data, open, onClose }) {
     })).sort((a, b) => b.count - a.count); // Sort by count descending
   }, [data]);
 
+  // Calculate total alerts
+  const totalAlerts = useMemo(() => {
+    if (!data) return 0;
+    return (data.planned?.length || 0) + (data.unplanned?.length || 0);
+  }, [data]);
+
   if (!open) return null;
 
   return (
@@ -34,6 +40,14 @@ function ServiceAlerts({ data, open, onClose }) {
           )}
         </div>
         <ul className="service-alerts-list">
+          <li className="service-alerts-item total-item">
+            <span className="service-area-name">
+              All Service Alerts
+            </span>
+            <span className="service-alert-count">
+              {totalAlerts}
+            </span>
+          </li>
           {serviceAreas.map((area, i) => (
             <li
               key={i}

@@ -1,5 +1,157 @@
 [
   {
+    "Id": 34397,
+    "service_area": "Water & Sanitation",
+    "title": "Unplanned Maintenance -  Burst pipe",
+    "description": "Running water from Burst pipe",
+    "area": "PENLYN ESTATE",
+    "location": "Stemmer Road",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-18T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T02:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T08:00:00.000Z",
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9816586,
+      "lng": 18.5218289
+    }
+  },
+  {
+    "Id": 34396,
+    "service_area": "Electricity",
+    "title": "Unplanned Maintenance-Phases Missing",
+    "description": "Phase/s missing affecting electricity supply.",
+    "area": "LANSDOWNE",
+    "location": "Smuts Rd",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-21T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T12:43:00.000Z",
+    "forecast_end_timestamp": "2025-06-21T15:00:00.000Z",
+    "planned": false,
+    "request_number": "9120121740",
+    "coordinates": {
+      "lat": -33.985152,
+      "lng": 18.5012109
+    }
+  },
+  {
+    "Id": 34395,
+    "service_area": "Electricity",
+    "title": "Unplanned Maintenance - Low Voltage",
+    "description": "Low voltage maintenance in specific area",
+    "area": "MELKBOSCH STRAND",
+    "location": "Milkwood Place",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-21T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T18:40:00.000Z",
+    "forecast_end_timestamp": "2025-06-21T16:00:00.000Z",
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.728186,
+      "lng": 18.44634
+    }
+  },
+  {
+    "Id": 34394,
+    "service_area": "Electricity",
+    "title": "Unplanned Maintenance-Phases Missing",
+    "description": "Phase/s missing affecting electricity supply.",
+    "area": "LANGA",
+    "location": "Zone 23",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-16T22:00:00.000Z",
+    "expiry_date": "2025-06-21T22:00:00.000Z",
+    "start_timestamp": "2025-06-17T17:43:00.000Z",
+    "forecast_end_timestamp": "2025-06-21T17:07:00.000Z",
+    "planned": false,
+    "request_number": "9120098547",
+    "coordinates": {
+      "lat": -33.9446995,
+      "lng": 18.5323091
+    }
+  },
+  {
+    "Id": 34393,
+    "service_area": "Electricity",
+    "title": "Unplanned Maintenance-Phases Missing",
+    "description": "Phase/s missing affecting electricity supply.",
+    "area": "PHILIPPI",
+    "location": "Mdubi & Steve Tshwete",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-21T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T16:44:00.000Z",
+    "forecast_end_timestamp": "2025-06-21T16:44:00.000Z",
+    "planned": false,
+    "request_number": "9120113085",
+    "coordinates": {
+      "lat": -34.0187678,
+      "lng": 18.5634409
+    }
+  },
+  {
+    "Id": 34392,
+    "service_area": "Electricity",
+    "title": "Unplanned Maintenance - Overhead wires",
+    "description": "Overhead wires cut and stolen. To be restored and made safe.",
+    "area": "HAZENDAL",
+    "location": "Fifth Ave",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-21T22:00:00.000Z",
+    "start_timestamp": "2025-06-17T22:05:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.952726,
+      "lng": 18.5069689
+    }
+  },
+  {
+    "Id": 34391,
+    "service_area": "Electricity",
+    "title": "Unplanned Maintenance - Overhead wires",
+    "description": "Overhead wires cut and stolen. To be restored and made safe.",
+    "area": "BELGRAVIA",
+    "location": "Second Ave",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-21T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T02:04:00.000Z",
+    "forecast_end_timestamp": "2025-06-21T02:04:00.000Z",
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": 51.4982272,
+      "lng": -0.1535489
+    }
+  },
+  {
+    "Id": 34390,
+    "service_area": "Water & Sanitation",
+    "title": "Unplanned Maintenance -  Burst pipe",
+    "description": "Running water from Burst pipe",
+    "area": "TABLE VIEW",
+    "location": "North Road",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-18T22:00:00.000Z",
+    "start_timestamp": "2025-06-17T23:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T05:00:00.000Z",
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.8302538,
+      "lng": 18.5159856
+    }
+  },
+  {
     "Id": 34385,
     "service_area": "Electricity",
     "title": "Unplanned maintenance-Switch tripped",
@@ -389,8 +541,8 @@
     "publish_date": "2025-06-16T22:00:00.000Z",
     "effective_date": "2025-06-16T22:00:00.000Z",
     "expiry_date": "2025-06-18T22:00:00.000Z",
-    "start_timestamp": "2025-06-17T16:15:00.000Z",
-    "forecast_end_timestamp": "2025-06-17T22:15:00.000Z",
+    "start_timestamp": "2025-06-17T16:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-17T22:00:00.000Z",
     "planned": false,
     "request_number": "9120110971",
     "coordinates": {
@@ -579,7 +731,7 @@
     "publish_date": "2025-06-16T22:00:00.000Z",
     "effective_date": "2025-06-16T22:00:00.000Z",
     "expiry_date": "2025-06-24T22:00:00.000Z",
-    "start_timestamp": "2025-06-17T02:39:00.000Z",
+    "start_timestamp": "2025-06-17T02:00:00.000Z",
     "forecast_end_timestamp": null,
     "planned": false,
     "request_number": null,

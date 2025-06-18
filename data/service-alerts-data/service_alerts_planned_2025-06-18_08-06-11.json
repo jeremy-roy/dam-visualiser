@@ -1,5 +1,81 @@
 [
   {
+    "Id": 34389,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Substation Maintenance",
+    "description": "Substation under repairs. Power will be restored as soon as repairs completed.",
+    "area": "DURBANVILLE",
+    "location": "Somerset Crescent Str",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-25T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-25T13:30:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.8239557,
+      "lng": 18.6565774
+    }
+  },
+  {
+    "Id": 34388,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Overhead Maintenance and Tree Pruning",
+    "description": "Planned tree pruning maintenance on overhead lines",
+    "area": "GARDENS",
+    "location": "Kloof Nek Rd",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-25T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-25T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9351831,
+      "lng": 18.4020033
+    }
+  },
+  {
+    "Id": 34387,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Cutting Trees/Tree trimming",
+    "description": "Planned area maintenance of trees to avoid interference with overhead lines. ",
+    "area": "BELLVILLE CBD",
+    "location": "Steinberg, Ruth, Allyne, Alliance, Sangiro, Col, Cresswell, Carinus, Epstein and Hobson",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-25T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-25T15:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9151619,
+      "lng": 18.6763262
+    }
+  },
+  {
+    "Id": 34386,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Cutting Trees/Tree trimming",
+    "description": "Planned area maintenance of trees to avoid interference with overhead lines. ",
+    "area": "DURBANVILLE",
+    "location": "Lindenberg, Service Rd, Mill, Malan & De Villiers Str",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-25T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-25T15:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.8326285,
+      "lng": 18.6554172
+    }
+  },
+  {
     "Id": 34350,
     "service_area": "Parks",
     "title": "Planned Parks Mowing Schedule",
