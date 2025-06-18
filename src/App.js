@@ -14,6 +14,8 @@ function App() {
   const [data, setData] = useState(null);
   // Daily time-series data for dams
   const [dailyLevels, setDailyLevels] = useState(null);
+  // Service alerts data
+  const [serviceAlerts, setServiceAlerts] = useState({ planned: [], unplanned: [] });
   // Currently selected date for visualization (YYYY-MM-DD)
   const [selectedDate, setSelectedDate] = useState(null);
   const [mapStyle, setMapStyle] = useState('mapbox://styles/mapbox/light-v10');
@@ -24,23 +26,48 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const isMobile = useIsMobile();
 
+  // Get today's date in YYYY-MM-DD format
+  const getTodayDate = () => {
+    const today = new Date();
+    return today.toISOString().split('T')[0];
+  };
+
+  // Find the latest available date with data for a given dam
+  const findLatestAvailableDate = (damKey) => {
+    if (!dailyLevels || !dailyLevels[damKey]) return null;
+    const series = dailyLevels[damKey];
+    // Find the latest entry with percent_full data
+    for (let i = series.length - 1; i >= 0; i--) {
+      if (series[i].percent_full != null) {
+        return series[i].date;
+      }
+    }
+    return null;
+  };
+
   useEffect(() => {
     let isMounted = true;
     
     async function loadData() {
       try {
-        const [geoJson, levels] = await Promise.all([
+        const [geoJson, levels, plannedAlerts, unplannedAlerts] = await Promise.all([
           fetchFromStorage('shapefiles/Bulk_Water_Dams_Enriched.geojson'),
-          fetchFromStorage('timeseries/dam_levels_daily.json')
+          fetchFromStorage('timeseries/dam_levels_daily.json'),
+          fetchFromStorage('service_alerts/service_alerts_planned.json'),
+          fetchFromStorage('service_alerts/service_alerts_unplanned.json')
         ]);
 
         if (!isMounted) return;
 
         // Set data in a single batch update
-        const latestDate = levels['totalstored-big6']?.[levels['totalstored-big6'].length - 1]?.date;
         setData(geoJson);
         setDailyLevels(levels);
-        setSelectedDate(latestDate);
+        setServiceAlerts({
+          planned: plannedAlerts || [],
+          unplanned: unplannedAlerts || []
+        });
+        // Set initial date to today
+        setSelectedDate(getTodayDate());
         setIsLoading(false);
       } catch (error) {
         console.error('Error loading data:', error);
@@ -54,20 +81,10 @@ function App() {
     return () => { isMounted = false; };
   }, []);
 
-  // set default selected date to latest available in Big 6 series
-  useEffect(() => {
-    if (!selectedDate && dailyLevels && Array.isArray(dailyLevels['totalstored-big6'])) {
-      const series = dailyLevels['totalstored-big6'];
-      if (series.length > 0) {
-        setSelectedDate(series[series.length - 1].date);
-      }
-    }
-  }, [dailyLevels, selectedDate]);
-
   // Derive GeoJSON features augmented with values for the selected date
   const processedData = useMemo(() => {
     if (!data || !dailyLevels || !selectedDate) return data;
-    // key derivation matching timeseries JSON keys
+    // Transform dam names to match time series keys
     const deriveKey = name => {
       const lower = (name || '').toLowerCase().replace(/\s*dam$/i, '');
       const noSpace = lower.replace(/\s+/g, '');
@@ -76,36 +93,57 @@ function App() {
         ? parts[0] + '-' + parts.slice(1).join('')
         : parts[0] || '';
     };
+    // Augment each dam feature with current percentage
     const features = data.features.map(feature => {
       const props = { ...feature.properties };
       const key = deriveKey(props.NAME);
       const series = dailyLevels[key] || [];
-      const entry = series.find(item => item.date === selectedDate);
+      
+      // First try to find data for selected date
+      let entry = series.find(item => item.date === selectedDate);
+      
+      // If no data for selected date, find latest available data
+      if (!entry || entry.percent_full == null) {
+        const latestDate = findLatestAvailableDate(key);
+        if (latestDate) {
+          entry = series.find(item => item.date === latestDate);
+        }
+      }
+
       if (entry && entry.percent_full != null) {
         props.current_percentage_full = parseFloat(entry.percent_full);
         props.current_date = entry.date;
       }
       return { ...feature, properties: props };
     });
-    // Add console log for selected date and augmented features
-    console.log('Selected Date:', selectedDate);
-    console.log('Augmented Features:', features);
     return { ...data, features };
   }, [data, dailyLevels, selectedDate]);
 
-  // Compute Big 6 summary percentage based on selected date
+  // Big 6 summary percentage based on selected date
   const big6Pct = useMemo(() => {
     if (dailyLevels && selectedDate && Array.isArray(dailyLevels['totalstored-big6'])) {
-      const entry = dailyLevels['totalstored-big6'].find(item => item.date === selectedDate);
+      // First try selected date
+      let entry = dailyLevels['totalstored-big6'].find(item => item.date === selectedDate);
+      
+      // If no data for selected date, find latest available data
+      if (!entry || entry.percent_full == null) {
+        const latestDate = findLatestAvailableDate('totalstored-big6');
+        if (latestDate) {
+          entry = dailyLevels['totalstored-big6'].find(item => item.date === latestDate);
+        }
+      }
+
       if (entry && entry.percent_full != null) {
         return parseFloat(entry.percent_full);
       }
     }
     return null;
-  }, [dailyLevels, selectedDate, data]);
+  }, [dailyLevels, selectedDate]);
+
   const big6Rounded = big6Pct != null ? Math.round(big6Pct) : null;
   const big6Color = getBatteryColor(big6Rounded);
 
+  // Loading state: show spinner and message while data is being fetched
   if (isLoading) {
     return (
       <div className="App" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -121,7 +159,7 @@ function App() {
               margin: '0 auto 16px' 
             }} 
           />
-          <div>Loading dam data...</div>
+          <div>Loading utilities data...</div>
         </div>
       </div>
     );
@@ -160,6 +198,8 @@ function App() {
       {!isLoading && processedData && selectedDate && (
         <MapContainer
           data={processedData}
+          serviceAlerts={serviceAlerts}
+          selectedDate={selectedDate}
           mapStyle={mapStyle}
           onSelectDam={setSelectedDam}
           panTo={panTo}

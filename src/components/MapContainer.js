@@ -1,19 +1,63 @@
-import React, { useRef, useEffect, useState, memo } from 'react';
+import React, { useRef, useEffect, useState, useMemo, memo } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { MapboxOverlay } from '@deck.gl/mapbox';
-import { GeoJsonLayer } from '@deck.gl/layers';
+import { GeoJsonLayer, IconLayer } from '@deck.gl/layers';
 import useIsMobile from '../hooks/useIsMobile';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
-function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
+function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam, panTo, selectedDam }) {
   const mapContainer = useRef(null);
   const mapRef = useRef(null);
   // store last camera position across style changes (default starting view)
   const cameraRef = useRef({ center: [18.665421839045592, -33.96235129043437], zoom: 8.4 });
   const [hoverInfo, setHoverInfo] = useState(null);
   const isMobile = useIsMobile();
+
+  // Combine and filter service alerts for the selected date
+  const activeAlerts = useMemo(() => {
+    if (!serviceAlerts) return [];
+    
+    const allAlerts = [
+      ...(serviceAlerts.planned || []).map(alert => ({
+        ...alert,
+        type: 'planned',
+        date: alert.effective_date
+      })),
+      ...(serviceAlerts.unplanned || []).map(alert => ({
+        ...alert,
+        type: 'unplanned',
+        date: alert.effective_date
+      }))
+    ];
+    
+    const filtered = allAlerts.filter(alert => {
+      if (!alert.expiry_date || !alert.publish_date) return false;
+      
+      const expiryDate = alert.expiry_date.split('T')[0]; // Extract date part only
+      const publishDate = alert.publish_date.split('T')[0]; // Extract date part only
+      
+      // Get yesterday's date
+      const yesterday = new Date(selectedDate);
+      yesterday.setDate(yesterday.getDate() - 1);
+      const yesterdayStr = yesterday.toISOString().split('T')[0];
+      
+      // Show alerts that:
+      // 1. Haven't expired yet OR expired yesterday (expiry_date >= yesterday)
+      // 2. Have been published (publish_date <= selectedDate)
+      return expiryDate >= yesterdayStr && publishDate <= selectedDate;
+    });
+
+    // Debug logs
+    console.log('Service Alerts for date:', selectedDate, filtered);
+    if (filtered.length > 0) {
+      console.log('Sample icon URL:', `/icons/${filtered[0].service_area.toLowerCase().replace(/[& ]/g, '_')}_${filtered[0].type}.png`);
+      console.log('Sample coordinates:', filtered[0].coordinates);
+    }
+    
+    return filtered;
+  }, [serviceAlerts, selectedDate]);
 
   useEffect(() => {
     if (!data) return;
@@ -40,6 +84,7 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
           getFillColor: feature => {
             const props = feature.properties || {};
             let percent = null;
+            // Get percentage either from time series or static property
             if (Array.isArray(props.storage_levels) && props.storage_levels.length) {
               const latest = props.storage_levels[props.storage_levels.length - 1];
               percent = latest && latest.percent_full;
@@ -66,10 +111,43 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
           },
           getLineColor: [0, 0, 0, 255],
           getLineWidth: 10
+        }),
+        new IconLayer({
+          id: 'service-alerts-layer',
+          data: activeAlerts,
+          pickable: true,
+          getIcon: d => {
+            const iconName = d.service_area.toLowerCase().replace(/&/g, '').replace(/\s+/g, '_');
+            const iconUrl = `/icons/${iconName}_${d.type}.png`;
+            console.log('Creating icon for alert:', { 
+              title: d.title,
+              type: d.type,
+              service_area: d.service_area,
+              coordinates: d.coordinates,
+              iconUrl 
+            });
+            return {
+              url: iconUrl,
+              width: 128,
+              height: 128,
+              anchorX: 64,  // Center horizontally (half of width)
+              anchorY: 128  // Bottom of icon
+            };
+          },
+          getPosition: d => {
+            return [d.coordinates.lng, d.coordinates.lat];
+          },
+          getSize: d => 36, // Made icons even bigger
+          sizeScale: 1,
+          sizeUnits: 'pixels',
+          updateTriggers: {
+            getIcon: [selectedDate],
+            getPosition: [selectedDate]
+          },
+          // Disable Deck.GL default tooltips; use custom React hover tooltip
+          getTooltip: () => null
         })
-      ],
-      // Disable Deck.GL default tooltips; use custom React hover tooltip
-      getTooltip: () => null
+      ]
     });
 
     map.on('load', () => {
@@ -79,59 +157,119 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
       // Attach picking events after overlay is initialized
       map.on('click', (e) => {
         const info = overlay.pickObject({ x: e.point.x, y: e.point.y });
-        if (info && info.object) {
-          if (!isMobile) {
+        if (!info || !info.object) {
+          setHoverInfo(null);
+          return;
+        }
+
+        if (!isMobile) {
+          // Desktop behavior:
+          // For dams: show popup and clear tooltip
+          // For service alerts: do nothing (keep hover state)
+          if (info.object.properties && info.object.properties.NAME) { // It's a dam
+            setHoverInfo(null);
             onSelectDam(info.object);
-          } else {
-            // on mobile, show a tooltip positioned below the Dam Levels button
-            const props = info.object.properties || {};
-            let percent = null;
-            if (Array.isArray(props.storage_levels) && props.storage_levels.length) {
-              const latest = props.storage_levels[props.storage_levels.length - 1];
-              percent = latest && latest.percent_full;
-            } else if (props.current_percentage_full != null) {
-              percent = parseFloat(props.current_percentage_full);
-            }
-            // compute tooltip position: align under the Dam Levels button
-            let x = 20, y = 60;
-            const btn = document.querySelector('.dam-levels-button');
-            if (btn) {
-              const rect = btn.getBoundingClientRect();
-              x = rect.left;
-              y = rect.bottom + 4; // small margin below button
-            }
-            setHoverInfo({
-              x,
-              y,
-              name: props.NAME,
-              percent,
-              date: props.current_date || null,
-              location: props.LCTN || null,
-              river: props.RVR || null,
-              capacity: props.CPCT != null ? props.CPCT : null,
-              construction: props.CNST || null
-            });
           }
-        } else {
-          if (!isMobile) {
-            map.getCanvas().style.cursor = '';
-            setHoverInfo(null);
-          } else {
-            setHoverInfo(null);
+          return;
+        }
+
+        // Handle mobile clicks - show tooltips for both types
+        if (info.object.type === 'planned' || info.object.type === 'unplanned') {
+          // It's a service alert
+          const alert = info.object;
+          
+          // Position tooltip below Dam Levels button, same as dam tooltips
+          let x = 20, y = 60;
+          const btn = document.querySelector('.dam-levels-button');
+          if (btn) {
+            const rect = btn.getBoundingClientRect();
+            x = rect.left;
+            y = rect.bottom + 4; // small margin below button
           }
+
+          setHoverInfo({
+            x,
+            y,
+            isServiceAlert: true,
+            title: alert.title,
+            type: alert.type,
+            serviceArea: alert.service_area,
+            area: alert.area,
+            location: alert.location,
+            date: alert.publish_date?.split('T')[0],
+            expiryDate: alert.expiry_date?.split('T')[0],
+            description: alert.description
+          });
+        } else if (info.object.properties && info.object.properties.NAME) {
+          // It's a dam - show tooltip below Dam Levels button
+          const props = info.object.properties;
+          const percent = props.current_percentage_full != null 
+            ? parseFloat(props.current_percentage_full) 
+            : null;
+
+          // compute tooltip position: align under the Dam Levels button
+          let x = 20, y = 60;
+          const btn = document.querySelector('.dam-levels-button');
+          if (btn) {
+            const rect = btn.getBoundingClientRect();
+            x = rect.left;
+            y = rect.bottom + 4; // small margin below button
+          }
+          
+          setHoverInfo({
+            x,
+            y,
+            isServiceAlert: false,
+            name: props.NAME,
+            percent,
+            date: props.current_date || null,
+            location: props.LCTN || null,
+            river: props.RVR || null,
+            capacity: props.CPCT != null ? props.CPCT : null,
+            construction: props.CNST || null
+          });
         }
       });
 
       map.on('mousemove', (e) => {
         if (isMobile) return;
+        
         const info = overlay.pickObject({ x: e.point.x, y: e.point.y });
-        // change cursor to pointer over dam polygons
         const canvas = map.getCanvas();
-        if (info && info.object) {
-          canvas.style.cursor = 'pointer';
-          const props = info.object.properties || {};
+        
+        if (!info || !info.object) {
+          canvas.style.cursor = '';
+          setHoverInfo(null);
+          return;
+        }
+
+        // Always show pointer cursor on hover
+        canvas.style.cursor = 'pointer';
+        
+        // Debug log to see what we're picking
+        console.log('Picked object:', info.object);
+        
+        // Check if it's a service alert by looking for the type property and service_area
+        if (info.object.type === 'planned' || info.object.type === 'unplanned') {
+          // It's a service alert
+          const alert = info.object;
+          setHoverInfo({
+            x: e.point.x,
+            y: e.point.y,
+            isServiceAlert: true,
+            title: alert.title,
+            type: alert.type,
+            serviceArea: alert.service_area,
+            area: alert.area,
+            location: alert.location,
+            date: alert.publish_date?.split('T')[0],
+            expiryDate: alert.expiry_date?.split('T')[0],
+            description: alert.description
+          });
+        } else if (info.object.properties && info.object.properties.NAME) {
+          // It's a dam
+          const props = info.object.properties;
           let percent = null;
-          // time-series
           if (Array.isArray(props.storage_levels) && props.storage_levels.length) {
             const latest = props.storage_levels[props.storage_levels.length - 1];
             percent = latest && latest.percent_full;
@@ -140,10 +278,10 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
           else if (props.current_percentage_full != null) {
             percent = parseFloat(props.current_percentage_full);
           }
-          // build hover info with additional properties
           setHoverInfo({
             x: e.point.x,
             y: e.point.y,
+            isServiceAlert: false,
             name: props.NAME,
             percent,
             date: props.current_date || null,
@@ -153,16 +291,12 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
             capacity: props.CPCT != null ? props.CPCT : null,
             construction: props.CNST || null
           });
-        } else {
-          // reset cursor and hide tooltip when not over a dam
-          map.getCanvas().style.cursor = '';
-          setHoverInfo(null);
         }
       });
     });
+
     // keep map instance for external control
     mapRef.current = map;
-
 
     return () => {
       if (mapRef.current) {
@@ -173,7 +307,7 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
         mapRef.current = null;
       }
     };
-  }, [data, mapStyle, onSelectDam]);
+  }, [data, mapStyle, onSelectDam, activeAlerts, isMobile, selectedDam]);
 
   // Pan/fly to external coordinate when requested
   useEffect(() => {
@@ -189,26 +323,55 @@ function MapContainer({ data, mapStyle, onSelectDam, panTo }) {
       {hoverInfo && (
         <div
           className="map-tooltip"
-          style={{ left: hoverInfo.x, top: hoverInfo.y }}
+          style={{
+            position: 'absolute',
+            left: Math.min(hoverInfo.x + 10, window.innerWidth - 320),
+            top: Math.min(hoverInfo.y + 10, window.innerHeight - 220),
+            zIndex: 1000,
+            backgroundColor: 'white',
+            padding: '12px',
+            borderRadius: '4px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+            width: '280px',
+            maxWidth: '280px',
+            pointerEvents: 'none',
+            border: '1px solid #ccc',
+            wordWrap: 'break-word',
+            overflow: 'hidden'
+          }}
         >
-          <div style={{ marginBottom: '4px', fontSize: '16px', lineHeight: '1.2' }}>
-            <strong>{hoverInfo.name}</strong>
-          </div>
-          <div style={{ marginBottom: '4px' }}>
-            {hoverInfo.percent != null
-              ? `${Math.round(hoverInfo.percent)}%${hoverInfo.date ? ` (${hoverInfo.date})` : ''}`
-              : 'N/A'}
-          </div>
-          <div style={{ marginBottom: '2px' }}><strong>Location:</strong> {hoverInfo.location || 'N/A'}</div>
-          <div style={{ marginBottom: '2px' }}><strong>River:</strong> {hoverInfo.river || 'N/A'}</div>
-          {/* <div style={{ marginBottom: '2px' }}><strong>Water Treatment:</strong> {hoverInfo.wtw || 'N/A'}</div> */}
-          <div style={{ marginBottom: '2px' }}>
-            <strong>Capacity:</strong>{' '}
-            {hoverInfo.capacity != null
-              ? `${hoverInfo.capacity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} ML`
-              : 'N/A'}
-          </div>
-          <div><strong>Constructed:</strong> {hoverInfo.construction || 'N/A'}</div>
+          {hoverInfo.isServiceAlert ? (
+            <div style={{ width: '100%' }}>
+              <div style={{ marginBottom: '8px', fontSize: '16px', lineHeight: '1.2', color: '#333', wordBreak: 'break-word' }}>
+                <strong>{hoverInfo.title}</strong>
+              </div>
+              <div style={{ marginBottom: '4px', fontSize: '14px', wordBreak: 'break-word' }}> {hoverInfo.area}, {hoverInfo.location}</div>
+              <div style={{ marginBottom: '4px', fontSize: '14px' }}><strong>Type:</strong> {hoverInfo.type}</div>
+              <div style={{ marginBottom: '4px', fontSize: '14px' }}><strong>Publish Date:</strong> {hoverInfo.date}</div>
+              <div style={{ marginBottom: '4px', fontSize: '14px' }}><strong>Expiry Date:</strong> {hoverInfo.expiryDate}</div>
+              <div style={{ marginTop: '8px', fontSize: '14px', color: '#666', wordBreak: 'break-word' }}>{hoverInfo.description}</div>
+            </div>
+          ) : (
+            <div style={{ width: '100%' }}>
+              <div style={{ marginBottom: '8px', fontSize: '16px', lineHeight: '1.2', color: '#333', wordBreak: 'break-word' }}>
+                <strong>{hoverInfo.name}</strong>
+              </div>
+              <div style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>
+                {hoverInfo.percent != null
+                  ? `${Math.round(hoverInfo.percent)}%${hoverInfo.date ? ` (${hoverInfo.date})` : ''}`
+                  : 'N/A'}
+              </div>
+              <div style={{ marginBottom: '4px', fontSize: '14px' }}><strong>Location:</strong> {hoverInfo.location || 'N/A'}</div>
+              <div style={{ marginBottom: '4px', fontSize: '14px' }}><strong>River:</strong> {hoverInfo.river || 'N/A'}</div>
+              <div style={{ marginBottom: '4px', fontSize: '14px' }}>
+                <strong>Capacity:</strong>{' '}
+                {hoverInfo.capacity != null
+                  ? `${hoverInfo.capacity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} ML`
+                  : 'N/A'}
+              </div>
+              <div style={{ fontSize: '14px' }}><strong>Constructed:</strong> {hoverInfo.construction || 'N/A'}</div>
+            </div>
+          )}
         </div>
       )}
     </div>

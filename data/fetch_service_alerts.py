@@ -5,6 +5,15 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
 import time
+from dotenv import load_dotenv
+
+# Load environment variables from .env file in root directory
+load_dotenv(dotenv_path=Path(__file__).parent.parent / '.env')
+
+# Get API key from environment
+GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY')
+if not GOOGLE_MAPS_API_KEY:
+    raise ValueError("GOOGLE_MAPS_API_KEY not found in environment variables")
 
 def geocode_location(location: str, area: str) -> Optional[Dict[str, float]]:
     """
@@ -12,12 +21,6 @@ def geocode_location(location: str, area: str) -> Optional[Dict[str, float]]:
     Returns a dictionary with lat and lng if successful, None otherwise
     """
     try:
-        # Load API key from environment or config
-        api_key = os.getenv('GOOGLE_MAPS_API_KEY')
-        if not api_key:
-            print("Warning: GOOGLE_MAPS_API_KEY not found in environment variables")
-            return None
-            
         # Combine location and area for better results
         search_text = f"{location}, {area}"
         
@@ -25,7 +28,7 @@ def geocode_location(location: str, area: str) -> Optional[Dict[str, float]]:
         base_url = "https://maps.googleapis.com/maps/api/geocode/json"
         params = {
             "address": search_text,
-            "key": api_key,
+            "key": GOOGLE_MAPS_API_KEY,
             "region": "za"  # Bias results to South Africa
         }
         
@@ -113,7 +116,8 @@ def add_coordinates_to_alert(alert: Dict) -> Dict:
             time.sleep(0.1)
         else:
             # If location or area is missing, set null coordinates
-            alert["coordinates"] = {"lat": None, "lng": None}
+            # alert["coordinates"] = {"lat": None, "lng": None}
+            pass
     return alert
 
 def merge_alerts(existing_alerts: List[Dict], new_alerts: List[Dict]) -> List[Dict]:
