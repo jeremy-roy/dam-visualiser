@@ -6,6 +6,7 @@ import DatePickerToggle from './components/DatePickerToggle';
 import MapContainer from './components/MapContainer';
 import DamPopup from './components/DamPopup';
 import DamLevels, { BatteryIcon, getBatteryColor } from './components/DamLevels';
+import ServiceAlerts from './components/ServiceAlerts';
 import useIsMobile from './hooks/useIsMobile';
 import { fetchFromStorage } from './firebase-config';
 
@@ -21,6 +22,7 @@ function App() {
   const [mapStyle, setMapStyle] = useState('mapbox://styles/mapbox/light-v10');
   const [selectedDam, setSelectedDam] = useState(null);
   const [showLevels, setShowLevels] = useState(false);
+  const [showAlerts, setShowAlerts] = useState(false);
   // panTo: { coords: [lng, lat], zoom: number }
   const [panTo, setPanTo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -143,6 +145,53 @@ function App() {
   const big6Rounded = big6Pct != null ? Math.round(big6Pct) : null;
   const big6Color = getBatteryColor(big6Rounded);
 
+  // Filter service alerts based on selected date
+  const filteredServiceAlerts = useMemo(() => {
+    if (!serviceAlerts || !selectedDate) return { planned: [], unplanned: [] };
+    
+    const allAlerts = [
+      ...(serviceAlerts.planned || []).map(alert => ({
+        ...alert,
+        type: 'planned',
+        date: alert.effective_date
+      })),
+      ...(serviceAlerts.unplanned || []).map(alert => ({
+        ...alert,
+        type: 'unplanned',
+        date: alert.effective_date
+      }))
+    ];
+    
+    const filtered = allAlerts.filter(alert => {
+      if (!alert.expiry_date || !alert.publish_date) return false;
+      
+      const expiryDate = alert.expiry_date.split('T')[0]; // Extract date part only
+      const publishDate = alert.publish_date.split('T')[0]; // Extract date part only
+      
+      // Get yesterday's date
+      const yesterday = new Date(selectedDate);
+      yesterday.setDate(yesterday.getDate() - 1);
+      const yesterdayStr = yesterday.toISOString().split('T')[0];
+      
+      // Show alerts that:
+      // 1. Haven't expired yet OR expired yesterday (expiry_date >= yesterday)
+      // 2. Have been published (publish_date <= selectedDate)
+      return expiryDate >= yesterdayStr && publishDate <= selectedDate;
+    });
+
+    // Separate back into planned and unplanned
+    return {
+      planned: filtered.filter(alert => alert.type === 'planned'),
+      unplanned: filtered.filter(alert => alert.type === 'unplanned')
+    };
+  }, [serviceAlerts, selectedDate]);
+
+  // Calculate total number of filtered alerts
+  const totalAlerts = useMemo(() => {
+    if (!filteredServiceAlerts) return 0;
+    return (filteredServiceAlerts.planned?.length || 0) + (filteredServiceAlerts.unplanned?.length || 0);
+  }, [filteredServiceAlerts]);
+
   // Loading state: show spinner and message while data is being fetched
   if (isLoading) {
     return (
@@ -169,36 +218,60 @@ function App() {
     <div className="App" style={{ position: 'relative', height: '100vh' }}>
       <BasemapToggle currentStyle={mapStyle} onChange={setMapStyle} />
       <DatePickerToggle selectedDate={selectedDate} onChange={setSelectedDate} />
-      <button
-        className="dam-levels-button"
-        onClick={() => setShowLevels(open => !open)}
-        aria-pressed={showLevels}
-      >
-        {/* Battery icon for Big 6 storage */}
-        {big6Rounded != null && (
-          <BatteryIcon
-            percent={big6Rounded}
-            color={big6Color}
-            style={{ opacity: showLevels ? 0 : 1, transition: 'opacity 0.3s ease' }}
-          />
-        )}
-        Dam Levels
-        {/* Chevron indicating expandable panel */}
-        <svg className="dam-levels-chevron" width="10" height="6" viewBox="0 0 10 6">
-          <path
-            d="M1 1 L5 5 L9 1"
-            stroke="currentColor"
-            fill="none"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-        </svg>
-      </button>
+      <div className="button-group">
+        <div className="button-container">
+          <button
+            className="dam-levels-button"
+            onClick={() => setShowLevels(open => !open)}
+            aria-pressed={showLevels}
+          >
+            {/* Battery icon for Big 6 storage */}
+            {big6Rounded != null && (
+              <BatteryIcon
+                percent={big6Rounded}
+                color={big6Color}
+                style={{ opacity: showLevels ? 0 : 1, transition: 'opacity 0.3s ease' }}
+              />
+            )}
+            Dam Levels
+            {/* Chevron indicating expandable panel */}
+            <svg className="dam-levels-chevron" width="10" height="6" viewBox="0 0 10 6">
+              <path
+                d="M1 1 L5 5 L9 1"
+                stroke="currentColor"
+                fill="none"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+          <button
+            className="service-alerts-button"
+            onClick={() => setShowAlerts(open => !open)}
+            aria-pressed={showAlerts}
+          >
+            {totalAlerts > 0 && (
+              <span className="service-alerts-count">{totalAlerts}</span>
+            )}
+            Service Alerts
+            {/* Chevron indicating expandable panel */}
+            <svg className="service-alerts-chevron" width="10" height="6" viewBox="0 0 10 6">
+              <path
+                d="M1 1 L5 5 L9 1"
+                stroke="currentColor"
+                fill="none"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
       {/* Render map only when all data is ready */}
       {!isLoading && processedData && selectedDate && (
         <MapContainer
           data={processedData}
-          serviceAlerts={serviceAlerts}
+          serviceAlerts={filteredServiceAlerts}
           selectedDate={selectedDate}
           mapStyle={mapStyle}
           onSelectDam={setSelectedDam}
@@ -225,6 +298,12 @@ function App() {
           }}
         />
       )}
+      {/* Show service alerts panel */}
+      <ServiceAlerts
+        data={filteredServiceAlerts}
+        open={showAlerts}
+        onClose={() => setShowAlerts(false)}
+      />
       {selectedDam && !isMobile && (
         <DamPopup
           dam={selectedDam}

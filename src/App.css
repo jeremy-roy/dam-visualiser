@@ -94,3 +94,96 @@
     padding: 6px 8px;
   }
 }
+
+.button-group {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  position: relative;
+  gap: 20px;
+}
+
+.dam-levels-button,
+.service-alerts-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+  white-space: nowrap;
+  left: 0;
+  border-radius: 8px;
+}
+
+.dam-levels-button {
+  border-bottom: none;
+  position: relative;
+}
+
+.dam-levels-button .battery-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+}
+
+.service-alerts-button {
+  border-top: none;
+}
+
+.dam-levels-button:hover,
+.service-alerts-button:hover {
+  background: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dam-levels-button[aria-pressed="true"],
+.service-alerts-button[aria-pressed="true"] {
+  background: #f0f0f0;
+  border-color: #ccc;
+}
+
+.dam-levels-chevron,
+.service-alerts-chevron {
+  transition: transform 0.2s ease;
+  margin-left: auto;
+}
+
+.dam-levels-button[aria-pressed="true"] .dam-levels-chevron,
+.service-alerts-button[aria-pressed="true"] .service-alerts-chevron {
+  transform: rotate(180deg);
+}
+
+.service-alerts-count {
+  background-color: #FF6961;
+  color: white;
+  border-radius: 40%;
+  padding: 2px 6px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 8px;
+  min-width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

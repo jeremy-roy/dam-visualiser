@@ -32,31 +32,7 @@ function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam
       }))
     ];
     
-    const filtered = allAlerts.filter(alert => {
-      if (!alert.expiry_date || !alert.publish_date) return false;
-      
-      const expiryDate = alert.expiry_date.split('T')[0]; // Extract date part only
-      const publishDate = alert.publish_date.split('T')[0]; // Extract date part only
-      
-      // Get yesterday's date
-      const yesterday = new Date(selectedDate);
-      yesterday.setDate(yesterday.getDate() - 1);
-      const yesterdayStr = yesterday.toISOString().split('T')[0];
-      
-      // Show alerts that:
-      // 1. Haven't expired yet OR expired yesterday (expiry_date >= yesterday)
-      // 2. Have been published (publish_date <= selectedDate)
-      return expiryDate >= yesterdayStr && publishDate <= selectedDate;
-    });
-
-    // Debug logs
-    console.log('Service Alerts for date:', selectedDate, filtered);
-    if (filtered.length > 0) {
-      console.log('Sample icon URL:', `/icons/${filtered[0].service_area.toLowerCase().replace(/[& ]/g, '_')}_${filtered[0].type}.png`);
-      console.log('Sample coordinates:', filtered[0].coordinates);
-    }
-    
-    return filtered;
+    return allAlerts;
   }, [serviceAlerts, selectedDate]);
 
   useEffect(() => {
