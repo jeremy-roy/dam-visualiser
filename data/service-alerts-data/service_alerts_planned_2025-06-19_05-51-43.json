@@ -1,5 +1,43 @@
 [
   {
+    "Id": 34414,
+    "service_area": "Water & Sanitation",
+    "title": "Water Meter maintenance",
+    "description": "New Connection",
+    "area": "BONTEHEUWEL",
+    "location": "Ivory Street",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-18T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T07:20:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T13:20:00.000Z",
+    "planned": true,
+    "request_number": "9119865645",
+    "coordinates": {
+      "lat": -33.945202,
+      "lng": 18.55691
+    }
+  },
+  {
+    "Id": 34408,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Overhead Maintenance ",
+    "description": "maintenance on overhead lines",
+    "area": "GARDENS",
+    "location": "Glen Crescent",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-18T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9410057,
+      "lng": 18.406822
+    }
+  },
+  {
     "Id": 34389,
     "service_area": "Electricity",
     "title": "Planned Maintenance - Substation Maintenance",

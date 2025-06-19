@@ -1,5 +1,385 @@
 [
   {
+    "Id": 34419,
+    "service_area": "Refuse",
+    "title": "Refuse Delays",
+    "description": "Delayed collection of refuse in specific suburbs",
+    "area": "Tierberg",
+    "location": "EDGEMEAD;BOTHASIG;RAVENSMEAD;LEONSDALE;ADRIAANSE;CLARKES ESTATE;UITSIG;THE RANGE;CRAVENBY;BISHOP LAVIS;NOOITGEDACHT;AVONWOOD;BALVENIE;CONNAUGHT;FLORIDA;PLATTEKLOOF 1;AVON;ELSIES RIVER;",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-19T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T04:30:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9247821,
+      "lng": 18.5804535
+    }
+  },
+  {
+    "Id": 34418,
+    "service_area": "Refuse",
+    "title": "Refuse Delays",
+    "description": "Delayed collection of refuse in specific suburbs",
+    "area": "Impuma",
+    "location": "BEL'AIRE;SOMERSET WEST;",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-19T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T04:30:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.0442464,
+      "lng": 18.8298979
+    }
+  },
+  {
+    "Id": 34417,
+    "service_area": "Refuse",
+    "title": "Refuse Delays",
+    "description": "Delayed collection of refuse in specific suburbs",
+    "area": "Atlantic",
+    "location": "WOODSTOCK;RONDEBOSCH;MAITLAND;GARDEN VILLAGE;PAARDEN EILAND;PARKLANDS;",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-19T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T04:30:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9341454,
+      "lng": 18.4854717
+    }
+  },
+  {
+    "Id": 34416,
+    "service_area": "Refuse",
+    "title": "Refuse Delays",
+    "description": "Backlog of collection of refuse taking place in specific suburbs",
+    "area": "Atlantic",
+    "location": "KOEBERG;MAITLAND;",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-19T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T04:30:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "Id": 34415,
+    "service_area": "Refuse",
+    "title": "Refuse Delays",
+    "description": "Delayed collection of refuse in specific suburbs",
+    "area": "Two Oceans",
+    "location": "LENTEGEUR;ROCKLANDS;STRANDFONTEIN;",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-19T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T04:30:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.027191,
+      "lng": 18.6106988
+    }
+  },
+  {
+    "Id": 34413,
+    "service_area": "Electricity",
+    "title": "Unplanned Maintenance - Main Circuit Board Tripping",
+    "description": "MCB tripping causing disruption in supply of electricity.",
+    "area": "OTTERY",
+    "location": "Harris Rd & Surr",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-21T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T08:45:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.0111888,
+      "lng": 18.5092147
+    }
+  },
+  {
+    "Id": 34412,
+    "service_area": "Water & Sanitation",
+    "title": "Burst Water Main",
+    "description": "Water streaming down the road. Both sides of road affected. Motorists to exercise caution. Maintenance team to conduct repairs asap.",
+    "area": "GLENLILY",
+    "location": "Robertson Street",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-18T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T09:43:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T15:43:00.000Z",
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9032803,
+      "lng": 18.5887076
+    }
+  },
+  {
+    "Id": 34411,
+    "service_area": "Water & Sanitation",
+    "title": "Unplanned Maintenance - Replacing Fire Hydrant",
+    "description": "Water will be off until Fire Hydrant replacement is complete",
+    "area": "STEENBERG",
+    "location": "Le Breton Avenue",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-18T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T09:30:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T15:00:00.000Z",
+    "planned": false,
+    "request_number": "30389327",
+    "coordinates": {
+      "lat": -34.0736398,
+      "lng": 18.470633
+    }
+  },
+  {
+    "Id": 34410,
+    "service_area": "Water & Sanitation",
+    "title": "Burst Water Main",
+    "description": "Water streaming down the road. Both sides of road affected. Motorists to exercise caution. Maintenance team to conduct repairs asap.",
+    "area": "TOKAI",
+    "location": "Stuart Close",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-18T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T08:45:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T14:45:00.000Z",
+    "planned": false,
+    "request_number": "9120030256",
+    "coordinates": {
+      "lat": -34.0591621,
+      "lng": 18.4335288
+    }
+  },
+  {
+    "Id": 34409,
+    "service_area": "Electricity",
+    "title": "Unplanned Maintenance-Kiosk knocked MVA",
+    "description": "Car knocked kiosk. Exercise caution. To be repaired asap.",
+    "area": "PHILIPPI",
+    "location": "Olieboom Rd & Surr",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-21T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T09:46:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.027107,
+      "lng": 18.546771
+    }
+  },
+  {
+    "Id": 34407,
+    "service_area": "Water & Sanitation",
+    "title": "Burst Water Main",
+    "description": "Water streaming down the road. Both sides of road affected. Motorists to exercise caution. Maintenance team to conduct repairs asap.",
+    "area": "PROTEA VALLEY",
+    "location": "Ranksuikerbos Weg",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-18T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T07:10:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T13:10:00.000Z",
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.861998,
+      "lng": 18.6107789
+    }
+  },
+  {
+    "Id": 34406,
+    "service_area": "Electricity",
+    "title": "Unplanned Maintenance - Overhead wires",
+    "description": "Overhead wires cut and stolen. To be restored and made safe. Tree Trimming ",
+    "area": "TOWNSEND ESTATE",
+    "location": "Kimberley Str, Caledon Str & Surr",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-21T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T08:26:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.910261,
+      "lng": 18.542386
+    }
+  },
+  {
+    "Id": 34405,
+    "service_area": "Electricity",
+    "title": "Unplanned Maintenance - Overhead wires",
+    "description": "Overhead wires cut and stolen. To be restored and made safe.",
+    "area": "GARDENS",
+    "location": "Lower Kloof Nek Rd & Surr",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-21T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T08:21:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9351831,
+      "lng": 18.4020033
+    }
+  },
+  {
+    "Id": 34404,
+    "service_area": "Water & Sanitation",
+    "title": "Burst Water Main",
+    "description": "Water streaming down the road. Both sides of road affected. Motorists to exercise caution. Maintenance team to conduct repairs asap.",
+    "area": "OTTERY",
+    "location": "9 Casper Avenue",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-18T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T07:45:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T13:45:00.000Z",
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.0202281,
+      "lng": 18.5125114
+    }
+  },
+  {
+    "Id": 34403,
+    "service_area": "Electricity",
+    "title": "Unplanned Maintenance - Point of Supply",
+    "description": "Unable to locate point of supply Switching ",
+    "area": "SYBRAND PARK",
+    "location": "Dagbreek str & Surr",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-21T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T08:06:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9577328,
+      "lng": 18.5013175
+    }
+  },
+  {
+    "Id": 34402,
+    "service_area": "Electricity",
+    "title": "Unplanned Maintenance - Overhead wires",
+    "description": "Overhead wires cut and stolen. To be restored and made safe.",
+    "area": "ATLANTIS INDUSTRIAL",
+    "location": "Atlantic Beach",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-21T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T07:36:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.5882703,
+      "lng": 18.48102
+    }
+  },
+  {
+    "Id": 34401,
+    "service_area": "Water & Sanitation",
+    "title": "Burst Water Main",
+    "description": "Water streaming down the road. Both sides of road affected. Motorists to exercise caution. Maintenance team to conduct repairs asap.",
+    "area": "MONTAGUE GARDENS",
+    "location": "Marconi Road",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-18T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T03:30:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T09:30:00.000Z",
+    "planned": false,
+    "request_number": "9120101025",
+    "coordinates": {
+      "lat": -33.861073,
+      "lng": 18.516392
+    }
+  },
+  {
+    "Id": 34400,
+    "service_area": "Water & Sanitation",
+    "title": "Burst Water Main",
+    "description": "Water streaming down the road. Both sides of road affected. Motorists to exercise caution. Maintenance team to conduct repairs asap.",
+    "area": "ROME GLEN",
+    "location": "Remus Street",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-18T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T04:50:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T10:00:00.000Z",
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.0895133,
+      "lng": 18.8715296
+    }
+  },
+  {
+    "Id": 34399,
+    "service_area": "Water & Sanitation",
+    "title": "Water Off",
+    "description": "Stolen Water Meter",
+    "area": "AUDAS ESTATE",
+    "location": "Dirkie Uys Road",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-18T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T04:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T10:00:00.000Z",
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.0823369,
+      "lng": 18.8471055
+    }
+  },
+  {
+    "Id": 34398,
+    "service_area": "Water & Sanitation",
+    "title": "Burst Water Main",
+    "description": "Water streaming down the road. Both sides of road affected. Motorists to exercise caution. Maintenance team to conduct repairs asap.",
+    "area": "PANORAMA",
+    "location": "Diaz Street",
+    "publish_date": "2025-06-17T22:00:00.000Z",
+    "effective_date": "2025-06-17T22:00:00.000Z",
+    "expiry_date": "2025-06-18T22:00:00.000Z",
+    "start_timestamp": "2025-06-18T05:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T11:00:00.000Z",
+    "planned": false,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.879697,
+      "lng": 18.566972
+    }
+  },
+  {
     "Id": 34397,
     "service_area": "Water & Sanitation",
     "title": "Unplanned Maintenance -  Burst pipe",
@@ -428,7 +808,7 @@
     "effective_date": "2025-06-16T22:00:00.000Z",
     "expiry_date": "2025-06-18T22:00:00.000Z",
     "start_timestamp": "2025-06-17T18:15:00.000Z",
-    "forecast_end_timestamp": "2025-06-18T00:15:00.000Z",
+    "forecast_end_timestamp": "2025-06-18T00:00:00.000Z",
     "planned": false,
     "request_number": null,
     "coordinates": {
