@@ -1,5 +1,100 @@
 [
   {
+    "Id": 34495,
+    "service_area": "Water & Sanitation",
+    "title": "Planned Maintenance - Valve Maintenance",
+    "description": "Planned maintenance on Pressure Reducing Valves (PRVs) to ensure network operating effectively. Due to complexity of work, it may take longer than expected.",
+    "area": "STRAND",
+    "location": "The water supply to this area will be shut off temporarily from 09:00 until 19:00 on Monday, 23 June 2025.",
+    "publish_date": "2025-06-22T22:00:00.000Z",
+    "effective_date": "2025-06-22T22:00:00.000Z",
+    "expiry_date": "2025-06-24T22:00:00.000Z",
+    "start_timestamp": "2025-06-23T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-24T17:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.1123197,
+      "lng": 18.849207
+    }
+  },
+  {
+    "Id": 34494,
+    "service_area": "Water & Sanitation",
+    "title": "Planned Maintenance - Valve Maintenance",
+    "description": "Planned maintenance on Pressure Reducing Valves (PRVs) to ensure network operating effectively. Due to complexity of work, it may take longer than expected.",
+    "area": "RETREAT",
+    "location": "Retreat (Daisy Hill Road) \nKommetjie (Kommetjie Main Road)",
+    "publish_date": "2025-06-20T22:00:00.000Z",
+    "effective_date": "2025-06-22T22:00:00.000Z",
+    "expiry_date": "2025-06-22T22:00:00.000Z",
+    "start_timestamp": "2025-06-23T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-23T15:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.1403053,
+      "lng": 18.3292082
+    }
+  },
+  {
+    "Id": 34493,
+    "service_area": "Water & Sanitation",
+    "title": "Planned Maintenance - Water Main",
+    "description": "Regular maintenance of infrastructure as per area schedule",
+    "area": "HANOVER PARK",
+    "location": "Hanover Park, Athlone, Rylands, Newfields, Pinati Estate, Belthorn Estate, Penlyn Estate and Belgravia",
+    "publish_date": "2025-06-20T22:00:00.000Z",
+    "effective_date": "2025-06-20T22:00:00.000Z",
+    "expiry_date": "2025-06-26T22:00:00.000Z",
+    "start_timestamp": "2025-06-21T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-26T15:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9909777,
+      "lng": 18.5181188
+    }
+  },
+  {
+    "Id": 34478,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Overhead Maintenance and Tree Pruning",
+    "description": "Planned tree pruning maintenance on overhead lines",
+    "area": "VALMARY PARK",
+    "location": "Van der Byl, Lindenberg, Louw, Durbanville Ave, Baxter St",
+    "publish_date": "2025-06-19T22:00:00.000Z",
+    "effective_date": "2025-06-19T22:00:00.000Z",
+    "expiry_date": "2025-06-20T22:00:00.000Z",
+    "start_timestamp": "2025-06-20T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-20T15:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.835972,
+      "lng": 18.648871
+    }
+  },
+  {
+    "Id": 34477,
+    "service_area": "Electricity",
+    "title": "Electrical Maintenance - Kiosk Replacement/repair",
+    "description": "Electricity supply affected in surrounding area due to replacement of kiosk.",
+    "area": "RAVENSMEAD",
+    "location": "Christiaan St & Surr",
+    "publish_date": "2025-06-19T22:00:00.000Z",
+    "effective_date": "2025-06-19T22:00:00.000Z",
+    "expiry_date": "2025-06-20T22:00:00.000Z",
+    "start_timestamp": "2025-06-20T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-20T20:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9226595,
+      "lng": 18.6027185
+    }
+  },
+  {
     "Id": 34414,
     "service_area": "Water & Sanitation",
     "title": "Water Meter maintenance",
@@ -48,7 +143,7 @@
     "effective_date": "2025-06-17T22:00:00.000Z",
     "expiry_date": "2025-06-25T22:00:00.000Z",
     "start_timestamp": "2025-06-18T07:00:00.000Z",
-    "forecast_end_timestamp": "2025-06-25T13:30:00.000Z",
+    "forecast_end_timestamp": "2025-06-25T13:00:00.000Z",
     "planned": true,
     "request_number": null,
     "coordinates": {

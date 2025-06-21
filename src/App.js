@@ -312,7 +312,13 @@ function App() {
         <DamPopup
           dam={selectedDam}
           onClose={() => setSelectedDam(null)}
-          initialPos={showLevels ? { x: 360, y: 10 } : undefined}
+          initialPos={
+            showLevels 
+              ? { x: 360, y: 10 } 
+              : showAlerts 
+                ? { x: 360, y: 10 } 
+                : undefined
+          }
         />
       )}
     </div>

@@ -87,11 +87,13 @@
     transform: rotate(360deg);
   }
 }
+
 /* Responsive button size on mobile */
 @media (max-width: 600px) {
-  .dam-levels-button {
+  .dam-levels-button,
+  .service-alerts-button {
     font-size: 14px;
-    padding: 6px 8px;
+    padding: 6px 12px;
   }
 }
 
@@ -99,7 +101,7 @@
   position: absolute;
   top: 20px;
   left: 20px;
-  z-index: 1;
+  z-index: 1000;
 }
 
 .button-container {
@@ -118,9 +120,10 @@
   padding: 8px 16px;
   background: white;
   border: 1px solid #e0e0e0;
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #5d6572;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
@@ -166,6 +169,7 @@
 .service-alerts-chevron {
   transition: transform 0.2s ease;
   margin-left: auto;
+  color: #888;
 }
 
 .dam-levels-button[aria-pressed="true"] .dam-levels-chevron,

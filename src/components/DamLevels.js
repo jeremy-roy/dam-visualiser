@@ -145,7 +145,7 @@ function DamLevels({ data, selectedDate, dailyLevels, onClose, onSelectDam, onSe
           {/* Summary total for Big 6 */}
           <li
             key="big6"
-            className="dam-levels-item summary"
+            className={`dam-levels-item summary${selectedFeature && selectedFeature.properties && selectedFeature.properties.NAME === 'totalstored-big6' ? ' selected' : ''}`}
             onClick={() => {
               // select Big 6 summary for timeseries popup
               if (onSelectSummary) {
@@ -173,7 +173,7 @@ function DamLevels({ data, selectedDate, dailyLevels, onClose, onSelectDam, onSe
           {dams.map((d, i) => (
             <li
               key={i}
-              className="dam-levels-item"
+              className={`dam-levels-item${selectedFeature && selectedFeature.properties && selectedFeature.properties.NAME === d.name ? ' selected' : ''}`}
             onClick={() => {
                 if (!d.coords) return;
                 const isDoubleClick = lastClicked === d.name;

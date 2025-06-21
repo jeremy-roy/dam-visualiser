@@ -10,6 +10,7 @@ const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam, panTo, selectedServiceArea }) {
   const mapContainer = useRef(null);
   const mapRef = useRef(null);
+  const overlayRef = useRef(null);
   // store last camera position across style changes (default starting view)
   const cameraRef = useRef({ center: [18.665421839045592, -33.96235129043437], zoom: 8.4 });
   const [hoverInfo, setHoverInfo] = useState(null);
@@ -38,6 +39,106 @@ function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam
     // Filter alerts for the selected service area
     return allAlerts.filter(alert => alert.service_area === selectedServiceArea);
   }, [serviceAlerts, selectedServiceArea]);
+
+  // Update overlay layers when activeAlerts changes
+  useEffect(() => {
+    if (overlayRef.current && mapRef.current) {
+      const overlay = overlayRef.current;
+      const layers = [
+        new GeoJsonLayer({
+          id: 'dams-layer',
+          data,
+          pickable: true,
+          stroked: true,
+          filled: true,
+          getFillColor: feature => {
+            const props = feature.properties || {};
+            let percent = null;
+            // Get percentage either from time series or static property
+            if (Array.isArray(props.storage_levels) && props.storage_levels.length) {
+              const latest = props.storage_levels[props.storage_levels.length - 1];
+              percent = latest && latest.percent_full;
+            } else if (props.current_percentage_full != null) {
+              percent = parseFloat(props.current_percentage_full);
+            }
+            // no data: light grey
+            if (percent == null || isNaN(percent)) {
+              return [200, 200, 200, 150];
+            }
+            const p = percent;
+            // discrete color bands (5)
+            if (p <= 20) {
+              return [0xFF, 0x69, 0x61, 200];  // #FF6961 (red)
+            } else if (p <= 40) {
+              return [0xFF, 0xB5, 0x4C, 200];  // #FFB54C (amber)
+            } else if (p <= 60) {
+              return [0xF8, 0xD6, 0x6D, 200];  // #F8D66D (light-yellow)
+            } else if (p <= 80) {
+              return [0x7A, 0xBD, 0x7E, 200];  // #7ABD7E (light-green)
+            } else {
+              return [0x8C, 0xD4, 0x7E, 200];  // #8CD47E (green)
+            }
+          },
+          getLineColor: [0, 0, 0, 255],
+          getLineWidth: 10
+        }),
+        new IconLayer({
+          id: 'service-alerts-layer',
+          data: activeAlerts,
+          pickable: true,
+          getIcon: d => {
+            // Log the original service area name
+            console.log('Original service area:', d.service_area);
+            
+            let iconName = d.service_area.toLowerCase();
+            
+            // Special case for Roads & Stormwater
+            if (iconName === 'roads & stormwater') {
+              iconName = 'road_stormwater';
+            } else {
+              iconName = iconName
+                .replace(/&/g, '')
+                .replace(/\s+/g, '_')
+                .replace(/[^a-z0-9_]/g, '');
+            }
+            
+            const iconUrl = `/icons/${iconName}_${d.type}.png`;
+            
+            // Log the icon name transformation
+            console.log('Icon name transformation:', {
+              original: d.service_area,
+              transformed: iconName,
+              fullUrl: iconUrl
+            });
+            
+            return {
+              url: iconUrl,
+              width: 128,
+              height: 128,
+              anchorX: 64,
+              anchorY: 128
+            };
+          },
+          getPosition: d => {
+            if (!d.coordinates) return null;
+            return [d.coordinates.lng, d.coordinates.lat];
+          },
+          getSize: 30,
+          sizeScale: 1,
+          sizeMinPixels: 16,
+          sizeMaxPixels: 48,
+          billboard: true,
+          onClick: info => {
+            if (info.object) {
+              console.log('Clicked alert:', info.object);
+            }
+          }
+        })
+      ];
+      
+      overlay.setProps({ layers });
+    }
+  }, [data, activeAlerts]);
 
   useEffect(() => {
     if (!data) return;
@@ -135,8 +236,8 @@ function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam
           },
           getSize: 32,
           sizeScale: 1,
-          sizeMinPixels: 16,
-          sizeMaxPixels: 64,
+          sizeMinPixels: 24,
+          sizeMaxPixels: 48,
           billboard: true,
           onClick: info => {
             if (info.object) {
@@ -175,13 +276,15 @@ function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam
           // It's a service alert
           const alert = info.object;
           
-          // Position tooltip below Dam Levels button, same as dam tooltips
-          let x = 20, y = 60;
-          const btn = document.querySelector('.dam-levels-button');
-          if (btn) {
-            const rect = btn.getBoundingClientRect();
-            x = rect.left;
-            y = rect.bottom + 4; // small margin below button
+          // Position tooltip below both buttons
+          let x = 20, y = 100;
+          const damBtn = document.querySelector('.dam-levels-button');
+          const alertBtn = document.querySelector('.service-alerts-button');
+          if (damBtn && alertBtn) {
+            const damRect = damBtn.getBoundingClientRect();
+            const alertRect = alertBtn.getBoundingClientRect();
+            x = damRect.left;
+            y = alertRect.bottom + 4; // small margin below service alerts button
           }
 
           setHoverInfo({
@@ -198,19 +301,21 @@ function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam
             description: alert.description
           });
         } else if (info.object.properties && info.object.properties.NAME) {
-          // It's a dam - show tooltip below Dam Levels button
+          // It's a dam - show tooltip below both buttons
           const props = info.object.properties;
           const percent = props.current_percentage_full != null 
             ? parseFloat(props.current_percentage_full) 
             : null;
 
-          // compute tooltip position: align under the Dam Levels button
-          let x = 20, y = 60;
-          const btn = document.querySelector('.dam-levels-button');
-          if (btn) {
-            const rect = btn.getBoundingClientRect();
-            x = rect.left;
-            y = rect.bottom + 4; // small margin below button
+          // compute tooltip position: align under both buttons
+          let x = 20, y = 100;
+          const damBtn = document.querySelector('.dam-levels-button');
+          const alertBtn = document.querySelector('.service-alerts-button');
+          if (damBtn && alertBtn) {
+            const damRect = damBtn.getBoundingClientRect();
+            const alertRect = alertBtn.getBoundingClientRect();
+            x = damRect.left;
+            y = alertRect.bottom + 4; // small margin below service alerts button
           }
           
           setHoverInfo({
@@ -294,6 +399,7 @@ function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam
 
     // keep map instance for external control
     mapRef.current = map;
+    overlayRef.current = overlay;
 
     return () => {
       if (mapRef.current) {
@@ -302,9 +408,10 @@ function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam
         cameraRef.current = { center: [c.lng, c.lat], zoom: mapRef.current.getZoom() };
         mapRef.current.remove();
         mapRef.current = null;
+        overlayRef.current = null;
       }
     };
-  }, [data, mapStyle, onSelectDam, activeAlerts, isMobile, selectedServiceArea]);
+  }, [data, mapStyle, onSelectDam, isMobile]);
 
   // Pan/fly to external coordinate when requested
   useEffect(() => {
