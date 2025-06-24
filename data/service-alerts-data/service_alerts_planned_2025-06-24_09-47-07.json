@@ -1,5 +1,100 @@
 [
   {
+    "Id": 34558,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Substation Maintenance",
+    "description": "Substation under repairs. Power will be restored as soon as repairs completed.",
+    "area": "PAROW",
+    "location": "Miltno Rd, Rose St, Alice St",
+    "publish_date": "2025-06-22T22:00:00.000Z",
+    "effective_date": "2025-06-22T22:00:00.000Z",
+    "expiry_date": "2025-06-23T22:00:00.000Z",
+    "start_timestamp": "2025-06-23T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-23T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9067916,
+      "lng": 18.5808115
+    }
+  },
+  {
+    "Id": 34557,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Infrastructure maintenance",
+    "description": "Planned Infrastructure maintenance in progress as per area schedule. Electricity supply interruptions may occur when the work commences in the morning and when the maintenance work is completed in the afternoon. Sometims, tripping can occur among others.",
+    "area": "LLANDUDNO",
+    "location": "Portion of Leeukoppie Rd",
+    "publish_date": "2025-06-22T22:00:00.000Z",
+    "effective_date": "2025-06-22T22:00:00.000Z",
+    "expiry_date": "2025-06-23T22:00:00.000Z",
+    "start_timestamp": "2025-06-23T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-23T13:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.010233,
+      "lng": 18.34276
+    }
+  },
+  {
+    "Id": 34553,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Substation Maintenance",
+    "description": "Substation under repairs. Power will be restored as soon as repairs completed.",
+    "area": "BUH-REIN ESTATE",
+    "location": "Zandvliet, Theuniskraal, Buhrein,Darwin & Lanzarec Rds",
+    "publish_date": "2025-06-22T22:00:00.000Z",
+    "effective_date": "2025-06-22T22:00:00.000Z",
+    "expiry_date": "2025-06-23T22:00:00.000Z",
+    "start_timestamp": "2025-06-23T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-06-23T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.820462,
+      "lng": 18.7140639
+    }
+  },
+  {
+    "Id": 34552,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Substation Maintenance",
+    "description": "Substation under repairs. Power will be restored as soon as repairs completed.",
+    "area": "BUH-REIN ESTATE",
+    "location": "Zandvliet, Theuniskraal, Buhrein,Darwin & Lanzarec Rds",
+    "publish_date": "2025-06-22T22:00:00.000Z",
+    "effective_date": "2025-06-22T22:00:00.000Z",
+    "expiry_date": "2025-06-23T22:00:00.000Z",
+    "start_timestamp": "2025-06-23T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-06-23T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.820462,
+      "lng": 18.7140639
+    }
+  },
+  {
+    "Id": 34551,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Substation Maintenance",
+    "description": "Substation under repairs. Power will be restored as soon as repairs completed.",
+    "area": "BUH-REIN ESTATE",
+    "location": "Zandvliet, Theuniskraal, Buhrein,Darwin & Lanzarec Rds",
+    "publish_date": "2025-06-22T22:00:00.000Z",
+    "effective_date": "2025-06-22T22:00:00.000Z",
+    "expiry_date": "2025-06-23T22:00:00.000Z",
+    "start_timestamp": "2025-06-23T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-06-23T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.820462,
+      "lng": 18.7140639
+    }
+  },
+  {
     "Id": 34495,
     "service_area": "Water & Sanitation",
     "title": "Planned Maintenance - Valve Maintenance",
