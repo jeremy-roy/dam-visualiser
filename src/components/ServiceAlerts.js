@@ -42,7 +42,10 @@ function ServiceAlerts({ data, open, onClose, onSelectArea, selectedArea }) {
         <ul className="service-alerts-list">
           <li 
             className={`service-alerts-item total-item${selectedArea === null ? ' selected' : ''}`}
-            onClick={() => onSelectArea(null)}
+            onClick={() => {
+              onSelectArea(null);
+              if (isMobile && onClose) onClose();
+            }}
           >
             <span className="service-area-name">
               All Service Alerts
@@ -55,7 +58,10 @@ function ServiceAlerts({ data, open, onClose, onSelectArea, selectedArea }) {
             <li
               key={i}
               className={`service-alerts-item${selectedArea === area.name ? ' selected' : ''}`}
-              onClick={() => onSelectArea(area.name)}
+              onClick={() => {
+                onSelectArea(area.name);
+                if (isMobile && onClose) onClose();
+              }}
             >
               <span className="service-area-name">
                 {area.name}
