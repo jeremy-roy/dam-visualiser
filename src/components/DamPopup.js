@@ -296,6 +296,13 @@ function DamPopup({ dam, onClose, initialPos }) {
   const [dragging, setDragging] = useState(false);
   const [rel, setRel] = useState({ x: 0, y: 0 });
 
+  // Update position when initialPos prop changes (e.g., when panels open/close)
+  useEffect(() => {
+    if (initialPos) {
+      setPos(initialPos);
+    }
+  }, [initialPos]);
+
   useEffect(() => {
     function handleMouseMove(e) {
       if (!dragging) return;

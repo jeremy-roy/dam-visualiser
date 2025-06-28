@@ -19,7 +19,7 @@ function App() {
   const [serviceAlerts, setServiceAlerts] = useState({ planned: [], unplanned: [] });
   // Currently selected date for visualization (YYYY-MM-DD)
   const [selectedDate, setSelectedDate] = useState(null);
-  const [mapStyle, setMapStyle] = useState('mapbox://styles/mapbox/light-v10');
+  const [mapStyle, setMapStyle] = useState('mapbox://styles/mapbox/light-v10'); // mapbox://styles/mapbox/satellite-streets-v12
   const [selectedDam, setSelectedDam] = useState(null);
   const [showLevels, setShowLevels] = useState(false);
   const [showAlerts, setShowAlerts] = useState(false);
@@ -28,6 +28,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const isMobile = useIsMobile();
   const [selectedServiceArea, setSelectedServiceArea] = useState(null);
+  const [showDamLevelsLayer, setShowDamLevelsLayer] = useState(true); // Default: ON
+  const [showServiceAlertsLayer, setShowServiceAlertsLayer] = useState(false); // Default: OFF
 
   // Get today's date in YYYY-MM-DD format
   const getTodayDate = () => {
@@ -226,11 +228,32 @@ function App() {
             onClick={() => setShowLevels(open => !open)}
             aria-pressed={showLevels}
           >
+            {/* Toggle switch for dam levels layer */}
+            <div
+              className={`inline-toggle ${showDamLevelsLayer ? 'active' : ''}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowDamLevelsLayer(!showDamLevelsLayer);
+              }}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setShowDamLevelsLayer(!showDamLevelsLayer);
+                }
+              }}
+              aria-pressed={showDamLevelsLayer}
+            >
+              <span className="toggle-slider"></span>
+            </div>
             {/* Battery icon for Big 6 storage */}
             {big6Rounded != null && (
               <BatteryIcon
                 percent={big6Rounded}
                 color={big6Color}
+                className="battery-icon"
                 style={{ opacity: showLevels ? 0 : 1, transition: 'opacity 0.3s ease' }}
               />
             )}
@@ -251,6 +274,26 @@ function App() {
             onClick={() => setShowAlerts(open => !open)}
             aria-pressed={showAlerts}
           >
+            {/* Toggle switch for service alerts layer */}
+            <div
+              className={`inline-toggle ${showServiceAlertsLayer ? 'active' : ''}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowServiceAlertsLayer(!showServiceAlertsLayer);
+              }}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setShowServiceAlertsLayer(!showServiceAlertsLayer);
+                }
+              }}
+              aria-pressed={showServiceAlertsLayer}
+            >
+              <span className="toggle-slider"></span>
+            </div>
             {totalAlerts > 0 && (
               <span className="service-alerts-count">{totalAlerts}</span>
             )}
@@ -278,6 +321,10 @@ function App() {
           onSelectDam={setSelectedDam}
           panTo={panTo}
           selectedServiceArea={selectedServiceArea}
+          showDamLevelsLayer={showDamLevelsLayer}
+          showServiceAlertsLayer={showServiceAlertsLayer}
+          showLevels={showLevels}
+          showAlerts={showAlerts}
         />
       )}
       {/* Show dam levels list after features are available */}
@@ -308,19 +355,6 @@ function App() {
         onSelectArea={setSelectedServiceArea}
         selectedArea={selectedServiceArea}
       />
-      {selectedDam && !isMobile && (
-        <DamPopup
-          dam={selectedDam}
-          onClose={() => setSelectedDam(null)}
-          initialPos={
-            showLevels 
-              ? { x: 360, y: 10 } 
-              : showAlerts 
-                ? { x: 360, y: 10 } 
-                : undefined
-          }
-        />
-      )}
     </div>
   );
 }

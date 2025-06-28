@@ -97,6 +97,7 @@
   }
 }
 
+/* Adjust button group position back to original */
 .button-group {
   position: absolute;
   top: 20px;
@@ -107,7 +108,7 @@
 .button-container {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 220px;
   position: relative;
   gap: 20px;
 }
@@ -133,6 +134,7 @@
   white-space: nowrap;
   left: 0;
   border-radius: 8px;
+  position: relative;
 }
 
 .dam-levels-button {
@@ -141,12 +143,10 @@
 }
 
 .dam-levels-button .battery-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
+  width: 44px;
   height: 20px;
+  margin-right: 8px;
+  flex-shrink: 0;
 }
 
 .service-alerts-button {
@@ -190,4 +190,74 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Inline toggle switches integrated into buttons */
+.inline-toggle {
+  position: relative;
+  width: 28px;
+  height: 16px;
+  background: #ccc;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  padding: 0;
+  margin-right: 8px;
+  flex-shrink: 0;
+  order: -1; /* Ensure it appears first */
+}
+
+.inline-toggle.active {
+  background: #4CAF50;
+}
+
+.inline-toggle .toggle-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.inline-toggle.active .toggle-slider {
+  transform: translateX(12px);
+}
+
+/* Responsive adjustments for mobile and tablet */
+@media (max-width: 768px) {
+  .layer-toggles {
+    bottom: 80px; /* Move up to avoid going off-screen */
+    left: 10px; /* Slightly reduce left margin */
+  }
+  
+  .toggle-pill {
+    width: 120px; /* Slightly smaller on mobile */
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  
+  .toggle-switch {
+    width: 32px;
+    height: 18px;
+  }
+  
+  .toggle-slider {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .toggle-switch.active .toggle-slider {
+    transform: translateX(14px);
+  }
+}
+
+@media (max-width: 480px) {
+  .layer-toggles {
+    bottom: 100px; /* Move up even more on very small screens */
+  }
 }

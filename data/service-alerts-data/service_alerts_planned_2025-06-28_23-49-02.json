@@ -1,5 +1,423 @@
 [
   {
+    "Id": 34735,
+    "service_area": "Water & Sanitation",
+    "title": "Planned Maintenance - Valve Maintenance",
+    "description": "Planned maintenance on Pressure Reducing Valves (PRVs) to ensure network operating effectively. Due to complexity of work, it may take longer than expected.",
+    "area": "DURBANVILLE",
+    "location": "Durbanville and surrounding areas \nCity teams would like to complete a tie-in on the 300mm supply line to supply a 250mm line which will be the main source supplying water to the Durbanville area. In order to do this a temporary shut off is scheduled for Sunday, 29 June 2025 from 09:00 until 16:00 affecting the following areas: Goedemoed, The Crest, Wellway Park, Graanendal 1, Morningstar, Vierlanden and Durmonte. Some areas will experience low pressure to no water during this time.",
+    "publish_date": "2025-06-28T22:00:00.000Z",
+    "effective_date": "2025-06-28T22:00:00.000Z",
+    "expiry_date": "2025-06-30T22:00:00.000Z",
+    "start_timestamp": "2025-06-29T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-30T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.8275335,
+      "lng": 18.6526846
+    }
+  },
+  {
+    "Id": 34694,
+    "service_area": "Electricity",
+    "title": "Unplanned maintenance-Switch tripped",
+    "description": "Oil switch tripped. Power will be off until repaired",
+    "area": "RONDEBOSCH",
+    "location": "Stuart Rd & Surr",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-06-28T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T10:00:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": true,
+    "request_number": "9120205290",
+    "coordinates": {
+      "lat": -33.974876,
+      "lng": 18.490287
+    }
+  },
+  {
+    "Id": 34674,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Infrastructure maintenance",
+    "description": "Planned Infrastructure maintenance in progress as per area schedule. Electricity supply interruptions may occur when the work commences in the morning and when the maintenance work is completed in the afternoon. Sometims, tripping can occur among others.",
+    "area": "LWANDLE",
+    "location": "Linda, Hela & Surr",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-06-28T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T04:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-28T16:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.1217396,
+      "lng": 18.8657982
+    }
+  },
+  {
+    "Id": 34673,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Cutting Trees/Tree trimming",
+    "description": "Planned area maintenance of trees to avoid interference with overhead lines. ",
+    "area": "DURBANVILLE",
+    "location": "Denne, Bohenia, Mimosa, Bethan, Tristan, Sipres, Hibuscus,Eike St Bergsicht St",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-06-26T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-26T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.8192969,
+      "lng": 18.6597265
+    }
+  },
+  {
+    "Id": 34672,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Cutting Trees/Tree trimming",
+    "description": "Planned area maintenance of trees to avoid interference with overhead lines. ",
+    "area": "BLOMTUIN",
+    "location": "Viooltjie, Vaughan, Papawer, Gousblom, Andblom, Madelief",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-06-26T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-26T15:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.8822742,
+      "lng": 18.6480221
+    }
+  },
+  {
+    "Id": 34666,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Substation Maintenance",
+    "description": "Substation under repairs. Power will be restored as soon as repairs completed.",
+    "area": "BELLVILLE SOUTH",
+    "location": "66 Alexandra St",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-06-26T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-26T13:30:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.8932873,
+      "lng": 18.6296491
+    }
+  },
+  {
+    "Id": 34665,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-5yearly planned maintenance",
+    "description": "Planned 5year maintenance as per area schedule.",
+    "area": "PORTLAND",
+    "location": "Baakens Way, Malta Close, Pongola, Palmiet, Molopo, Tugela, Kieskamma, Oliphants Rivier, Kromrivier, Kromrivier, Tobago, Vaalrivier, Limpopo, Sumatra, St Helena, Bermuda, Cyprus, Falkland and Hawai",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-06-26T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-26T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -23.4012946,
+      "lng": 29.4179324
+    }
+  },
+  {
+    "Id": 34664,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Medium Voltage",
+    "description": "Planned Medium Voltage Switch Gear maintenance as per schedule.",
+    "area": "PLUMSTEAD",
+    "location": "Tiverton Rd, Southfield Rd, Chudleigh Rd, Lympleigh Rd, Stella Rd, Pluto Rd, Woodley Rd & Surrounds",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-06-26T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-26T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.021868,
+      "lng": 18.478865
+    }
+  },
+  {
+    "Id": 34663,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Infrastructure maintenance",
+    "description": "Planned Infrastructure maintenance in progress as per area schedule. Electricity supply interruptions may occur when the work commences in the morning and when the maintenance work is completed in the afternoon. Sometims, tripping can occur among others.",
+    "area": "EPPING INDUSTRIA 1",
+    "location": "10 Benbow Ave & Surrounds",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-06-26T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-06-26T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9288474,
+      "lng": 18.537419
+    }
+  },
+  {
+    "Id": 34662,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Infrastructure maintenance",
+    "description": "Planned Infrastructure maintenance in progress as per area schedule. Electricity supply interruptions may occur when the work commences in the morning and when the maintenance work is completed in the afternoon. Sometims, tripping can occur among others.",
+    "area": "PINELANDS",
+    "location": "Scouts Place, Woodside Drive, Union Avenue, Uitvlugt rd, Clarenden Rd, Cone way & Vicinity",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-06-26T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-06-26T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9348021,
+      "lng": 18.4975359
+    }
+  },
+  {
+    "Id": 34661,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Substation Maintenance",
+    "description": "Substation under repairs. Power will be restored as soon as repairs completed.",
+    "area": "PROTEA HEIGHTS",
+    "location": "Hill Crest Street, Upper Mountain Rd, Ridgr Lane, Alphen Glade",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-06-26T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-26T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.8862837,
+      "lng": 18.6977312
+    }
+  },
+  {
+    "Id": 34660,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Medium Voltage",
+    "description": "Planned Medium Voltage Switch Gear maintenance as per schedule.",
+    "area": "SOMERSET WEST",
+    "location": "Hill Crest Street, Upper Mountain Rd, Ridgr Lane, Alphen Glade",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-06-26T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-06-26T16:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.0658881,
+      "lng": 18.8663569
+    }
+  },
+  {
+    "Id": 34659,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Substation Maintenance",
+    "description": "Substation under repairs. Power will be restored as soon as repairs completed.",
+    "area": "OAKDALE",
+    "location": "66 Alexandra St",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-07-03T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-03T13:30:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": 46.5200185,
+      "lng": -84.3420507
+    }
+  },
+  {
+    "Id": 34658,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Infrastructure maintenance",
+    "description": "Planned Infrastructure maintenance in progress as per area schedule. Electricity supply interruptions may occur when the work commences in the morning and when the maintenance work is completed in the afternoon. Sometims, tripping can occur among others.",
+    "area": "PLUMSTEAD",
+    "location": "Baakens Way, Malta Close, Pongola, Palmiet, Molopo, Tugela, Kieskamma, Oliphants Rivier, Kromrivier, Kromrivier, Tobago, Vaalrivier, Limpopo, Sumatra, St Helena, Bermuda, Cyprus, Falkland and Hawai",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-07-03T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-03T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -23.4012946,
+      "lng": 29.4179324
+    }
+  },
+  {
+    "Id": 34657,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Infrastructure maintenance",
+    "description": "Planned Infrastructure maintenance in progress as per area schedule. Electricity supply interruptions may occur when the work commences in the morning and when the maintenance work is completed in the afternoon. Sometims, tripping can occur among others.",
+    "area": "PLUMSTEAD",
+    "location": "Tiverton Rd, Southfield Rd, Chudleigh Rd, Lympleigh Rd, Stella Rd, Pluto Rd, Woodley Rd & Surrounds",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-07-03T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-03T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.021868,
+      "lng": 18.478865
+    }
+  },
+  {
+    "Id": 34656,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Infrastructure maintenance",
+    "description": "Planned Infrastructure maintenance in progress as per area schedule. Electricity supply interruptions may occur when the work commences in the morning and when the maintenance work is completed in the afternoon. Sometims, tripping can occur among others.",
+    "area": "EPPING INDUSTRIA 1",
+    "location": "10 Benbow Ave & Surrounds",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-07-03T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-07-03T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9288474,
+      "lng": 18.537419
+    }
+  },
+  {
+    "Id": 34655,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Infrastructure maintenance",
+    "description": "Planned Infrastructure maintenance in progress as per area schedule. Electricity supply interruptions may occur when the work commences in the morning and when the maintenance work is completed in the afternoon. Sometims, tripping can occur among others.",
+    "area": "PINELANDS",
+    "location": "Scouts Place, Woodside Drive, Union Avenue, Uitvlugt rd, Clarenden rd, Cone way and vicinity",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-07-03T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-07-03T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9334764,
+      "lng": 18.5086335
+    }
+  },
+  {
+    "Id": 34654,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Substation Maintenance",
+    "description": "Planned Medium Voltage Switch Gear maintenance as per schedule.",
+    "area": "PROTEA HEIGHTS",
+    "location": "BONTIA CLOSE, OLEA STREET,REGAL AVENUE, SKEMERZICHT CLOSE,KLAWERVLEI SLOT, MYBURG CLOSE,SONEKE CLOSE, BLAKER CRESCENT",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-07-03T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-03T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.8892157,
+      "lng": 18.7119834
+    }
+  },
+  {
+    "Id": 34653,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Medium Voltage",
+    "description": "Planned Medium Voltage Switch Gear maintenance as per schedule.",
+    "area": "SOMERSET WEST",
+    "location": "Hill Crest Street, Upper Mountain Rd, Ridgr Lane, Alphen Glade",
+    "publish_date": "2025-06-25T22:00:00.000Z",
+    "effective_date": "2025-06-25T22:00:00.000Z",
+    "expiry_date": "2025-07-03T22:00:00.000Z",
+    "start_timestamp": "2025-06-26T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-03T16:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.0658881,
+      "lng": 18.8663569
+    }
+  },
+  {
+    "Id": 34618,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Substation Maintenance",
+    "description": "Substation under repairs. Power will be restored as soon as repairs completed.",
+    "area": "KRAAIFONTEIN",
+    "location": "Kraaifontein Rugby Club",
+    "publish_date": "2025-06-24T22:00:00.000Z",
+    "effective_date": "2025-06-24T22:00:00.000Z",
+    "expiry_date": "2025-07-02T22:00:00.000Z",
+    "start_timestamp": "2025-06-25T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-07-02T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.8251867,
+      "lng": 18.7053312
+    }
+  },
+  {
+    "Id": 34617,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Infrastructure maintenance",
+    "description": "Planned Infrastructure maintenance in progress as per area schedule. Electricity supply interruptions may occur when the work commences in the morning and when the maintenance work is completed in the afternoon. Sometims, tripping can occur among others.",
+    "area": "SURREY ESTATE",
+    "location": "Libra, Pavo, Ruimte Weg & Vacinity",
+    "publish_date": "2025-06-24T22:00:00.000Z",
+    "effective_date": "2025-06-24T22:00:00.000Z",
+    "expiry_date": "2025-07-02T22:00:00.000Z",
+    "start_timestamp": "2025-06-25T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-07-02T15:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9749525,
+      "lng": 18.5433482
+    }
+  },
+  {
+    "Id": 34615,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Medium Voltage",
+    "description": "Planned Medium Voltage Switch Gear maintenance as per schedule.",
+    "area": "STRAND",
+    "location": "Da Gama Street, Broadway BLVD Rd, Benade Street, Roux Street, Claasen Street",
+    "publish_date": "2025-06-24T22:00:00.000Z",
+    "effective_date": "2025-06-24T22:00:00.000Z",
+    "expiry_date": "2025-07-02T22:00:00.000Z",
+    "start_timestamp": "2025-06-25T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-02T16:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.1014714,
+      "lng": 18.8308642
+    }
+  },
+  {
     "Id": 34558,
     "service_area": "Electricity",
     "title": "Planned Maintenance - Substation Maintenance",
