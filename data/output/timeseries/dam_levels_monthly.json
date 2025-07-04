@@ -2137,10 +2137,17 @@
     },
     {
       "date": "2025-06",
-      "height_m": 33.02,
-      "storage_ml": 574.5,
-      "percent_full": 60.16,
-      "last_year_percent_full": 65.77
+      "height_m": 33.04,
+      "storage_ml": 577.36,
+      "percent_full": 60.46,
+      "last_year_percent_full": 68.24
+    },
+    {
+      "date": "2025-07",
+      "height_m": 36.37,
+      "storage_ml": 851.4,
+      "percent_full": 89.16,
+      "last_year_percent_full": 78.68
     }
   ],
   "hely-hutchinson": [
@@ -4281,10 +4288,17 @@
     },
     {
       "date": "2025-06",
-      "height_m": 10.62,
-      "storage_ml": 343.89,
-      "percent_full": 37.19,
-      "last_year_percent_full": 18.53
+      "height_m": 11.39,
+      "storage_ml": 436.61,
+      "percent_full": 47.22,
+      "last_year_percent_full": 21.57
+    },
+    {
+      "date": "2025-07",
+      "height_m": 15.27,
+      "storage_ml": 929.35,
+      "percent_full": 100.51,
+      "last_year_percent_full": 34.28
     }
   ],
   "lewisgay": [
@@ -6425,10 +6439,17 @@
     },
     {
       "date": "2025-06",
-      "height_m": 15.0,
-      "storage_ml": 160.24,
-      "percent_full": 95.38,
-      "last_year_percent_full": 43.03
+      "height_m": 15.05,
+      "storage_ml": 161.75,
+      "percent_full": 96.28,
+      "last_year_percent_full": 46.51
+    },
+    {
+      "date": "2025-07",
+      "height_m": 15.3,
+      "storage_ml": 169.5,
+      "percent_full": 100.89,
+      "last_year_percent_full": 57.62
     }
   ],
   "kleinplaats": [
@@ -8569,10 +8590,17 @@
     },
     {
       "date": "2025-06",
-      "height_m": 4.14,
-      "storage_ml": 142.9,
-      "percent_full": 10.99,
-      "last_year_percent_full": 41.77
+      "height_m": 4.56,
+      "storage_ml": 184.61,
+      "percent_full": 14.19,
+      "last_year_percent_full": 41.89
+    },
+    {
+      "date": "2025-07",
+      "height_m": 6.95,
+      "storage_ml": 439.7,
+      "percent_full": 33.81,
+      "last_year_percent_full": 42.4
     }
   ],
   "victoria": [
@@ -10713,10 +10741,17 @@
     },
     {
       "date": "2025-06",
-      "height_m": 0.0,
-      "storage_ml": 0.0,
-      "percent_full": 0.0,
-      "last_year_percent_full": 96.18
+      "height_m": 0.3,
+      "storage_ml": 0.96,
+      "percent_full": 0.75,
+      "last_year_percent_full": 96.88
+    },
+    {
+      "date": "2025-07",
+      "height_m": 2.08,
+      "storage_ml": 7.55,
+      "percent_full": 5.88,
+      "last_year_percent_full": 100.4
     }
   ],
   "alexandra": [
@@ -12857,10 +12892,17 @@
     },
     {
       "date": "2025-06",
-      "height_m": 7.79,
-      "storage_ml": 45.07,
-      "percent_full": 33.57,
-      "last_year_percent_full": 44.62
+      "height_m": 8.31,
+      "storage_ml": 56.29,
+      "percent_full": 41.93,
+      "last_year_percent_full": 45.86
+    },
+    {
+      "date": "2025-07",
+      "height_m": 11.53,
+      "storage_ml": 132.43,
+      "percent_full": 98.65,
+      "last_year_percent_full": 50.08
     }
   ],
   "devilliers": [
@@ -15001,10 +15043,17 @@
     },
     {
       "date": "2025-06",
-      "height_m": 27.31,
-      "storage_ml": 224.85,
-      "percent_full": 92.74,
-      "last_year_percent_full": 97.82
+      "height_m": 27.42,
+      "storage_ml": 228.71,
+      "percent_full": 94.33,
+      "last_year_percent_full": 98.3
+    },
+    {
+      "date": "2025-07",
+      "height_m": 27.87,
+      "storage_ml": 243.71,
+      "percent_full": 100.52,
+      "last_year_percent_full": 99.48
     }
   ],
   "steenbraslower": [
@@ -16840,9 +16889,15 @@
     },
     {
       "date": "2025-06",
-      "height_m": 17.12,
-      "percent_full": 45.26,
-      "last_year_percent_full": 66.39
+      "height_m": 17.25,
+      "percent_full": 46.13,
+      "last_year_percent_full": 67.36
+    },
+    {
+      "date": "2025-07",
+      "height_m": 15.59,
+      "percent_full": 35.75,
+      "last_year_percent_full": 71.32
     }
   ],
   "steenbrasupper": [
@@ -18983,10 +19038,17 @@
     },
     {
       "date": "2025-06",
-      "height_m": 23.93,
-      "storage_ml": 29016.67,
-      "percent_full": 91.34,
-      "last_year_percent_full": 86.54
+      "height_m": 24.03,
+      "storage_ml": 29260.4,
+      "percent_full": 92.11,
+      "last_year_percent_full": 87.17
+    },
+    {
+      "date": "2025-07",
+      "height_m": 24.54,
+      "storage_ml": 30567.0,
+      "percent_full": 96.22,
+      "last_year_percent_full": 90.16
     }
   ],
   "vo\u00eblvlei": [
@@ -21127,10 +21189,17 @@
     },
     {
       "date": "2025-06",
-      "height_m": 13.1,
-      "storage_ml": 97907.29,
-      "percent_full": 59.67,
-      "last_year_percent_full": 54.55
+      "height_m": 13.19,
+      "storage_ml": 99104.7,
+      "percent_full": 60.39,
+      "last_year_percent_full": 55.58
+    },
+    {
+      "date": "2025-07",
+      "height_m": 13.9,
+      "storage_ml": 108735.0,
+      "percent_full": 66.26,
+      "last_year_percent_full": 60.07
     }
   ],
   "wemmershoek": [
@@ -23271,10 +23340,17 @@
     },
     {
       "date": "2025-06",
-      "height_m": 43.76,
-      "storage_ml": 34377.75,
-      "percent_full": 58.62,
-      "last_year_percent_full": 69.4
+      "height_m": 44.36,
+      "storage_ml": 35711.27,
+      "percent_full": 60.9,
+      "last_year_percent_full": 70.51
+    },
+    {
+      "date": "2025-07",
+      "height_m": 47.75,
+      "storage_ml": 43434.0,
+      "percent_full": 74.06,
+      "last_year_percent_full": 75.11
     }
   ],
   "theewaterskloof": [
@@ -25415,10 +25491,17 @@
     },
     {
       "date": "2025-06",
-      "height_m": 23.36,
-      "storage_ml": 298080.33,
-      "percent_full": 62.08,
-      "last_year_percent_full": 61.36
+      "height_m": 23.52,
+      "storage_ml": 304328.1,
+      "percent_full": 63.38,
+      "last_year_percent_full": 61.88
+    },
+    {
+      "date": "2025-07",
+      "height_m": 24.48,
+      "storage_ml": 343124.0,
+      "percent_full": 71.46,
+      "last_year_percent_full": 62.79
     }
   ],
   "bergriver": [
@@ -27559,10 +27642,17 @@
     },
     {
       "date": "2025-06",
-      "height_m": 35.0,
-      "storage_ml": 94225.92,
-      "percent_full": 72.48,
-      "last_year_percent_full": 80.68
+      "height_m": 35.7,
+      "storage_ml": 97743.07,
+      "percent_full": 75.18,
+      "last_year_percent_full": 82.07
+    },
+    {
+      "date": "2025-07",
+      "height_m": 40.1,
+      "storage_ml": 119950.0,
+      "percent_full": 92.26,
+      "last_year_percent_full": 87.47
     }
   ],
   "land-enzeezicht": [
@@ -29704,8 +29794,15 @@
     {
       "date": "2025-06",
       "height_m": 5.86,
-      "storage_ml": 348.85,
-      "percent_full": 73.75,
+      "storage_ml": 348.47,
+      "percent_full": 73.67,
+      "last_year_percent_full": 100.03
+    },
+    {
+      "date": "2025-07",
+      "height_m": 6.01,
+      "storage_ml": 356.04,
+      "percent_full": 75.27,
       "last_year_percent_full": 100.03
     }
   ],
@@ -31545,6 +31642,12 @@
       "storage_ml": null,
       "percent_full": null,
       "last_year_percent_full": null
+    },
+    {
+      "date": "2025-07",
+      "storage_ml": null,
+      "percent_full": null,
+      "last_year_percent_full": null
     }
   ],
   "totalstored-big6": [
@@ -33380,9 +33483,15 @@
     },
     {
       "date": "2025-06",
-      "storage_ml": 568778.12,
-      "percent_full": 63.32,
-      "last_year_percent_full": 64.52
+      "storage_ml": 581609.73,
+      "percent_full": 64.75,
+      "last_year_percent_full": 65.31
+    },
+    {
+      "date": "2025-07",
+      "storage_ml": 657793.0,
+      "percent_full": 73.23,
+      "last_year_percent_full": 67.96
     }
   ]
 }

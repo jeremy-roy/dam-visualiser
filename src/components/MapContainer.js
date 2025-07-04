@@ -21,13 +21,13 @@ const ICONS = [
   'electricity_planned'
 ];
 
-function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam, panTo, selectedServiceArea, showDamLevelsLayer, showServiceAlertsLayer, showLevels, showAlerts }) {
+function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam, panTo, selectedServiceArea, showDamLevelsLayer, showServiceAlertsLayer, showLevels, showAlerts, selectedDam, setSelectedDam }) {
   const mapContainer = useRef(null);
   const mapRef = useRef(null);
   const cameraRef = useRef({ center: [18.665, -33.962], zoom: 8.4, pitch: 40, bearing: 0 });
   const [hoverInfo, setHoverInfo] = useState(null);
-  const [selectedDam, setSelectedDam] = useState(null);
   const isMobile = useIsMobile();
+  const hasAnimatedRef = useRef(false);
 
   // Calculate initial position for DamPopup based on panel states
   const damPopupInitialPos = useMemo(() => {
@@ -95,7 +95,7 @@ function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam
       attributionControl: false
     });
 
-    let hasAnimated = false;
+    // const hasAnimatedRef = useRef(false);
 
     map.on('load', () => {
       map.addControl(new mapboxgl.NavigationControl());
@@ -232,8 +232,8 @@ function MapContainer({ data, serviceAlerts, selectedDate, mapStyle, onSelectDam
       });
 
       // Animate to Cape Town after a short delay (only once)
-      if (!hasAnimated) {
-        hasAnimated = true;
+      if (!hasAnimatedRef.current && !isMobile) {
+        hasAnimatedRef.current = true;
         setTimeout(() => {
           map.flyTo({
             center: [18.750, -34.038], // Cape Town

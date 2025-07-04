@@ -180,6 +180,7 @@ function DamLevels({ data, selectedDate, dailyLevels, onClose, onSelectDam, onSe
                 const isPopupOpen = !!selectedFeature;
                 if (onSelectDam) onSelectDam(d.coords);
                 if ((isPopupOpen || isDoubleClick) && onSelectFeature) {
+                  console.log('Calling onSelectFeature for', d.name, d.feature);
                   onSelectFeature(d.feature);
                 }
                 setLastClicked(d.name);

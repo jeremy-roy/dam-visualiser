@@ -1,5 +1,309 @@
 [
   {
+    "Id": 34832,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Substation Maintenance",
+    "description": "Substation under repairs. Power will be restored as soon as repairs completed.",
+    "area": "SCOTTSVILLE",
+    "location": "Tiger, Vlei, Uitspan, Titus, Alfred, Milner, Chamberlain, Rembrandt, Milton, Pioneer, Midway, Loop, Kotze, Jakaranda, Ivanhoe, Hop, Graaf, Fick, Erasmus, Duine, Krom, Conradie, Jack Crow, Appolis and Bezuidenhout streets",
+    "publish_date": "2025-07-07T22:00:00.000Z",
+    "effective_date": "2025-07-07T22:00:00.000Z",
+    "expiry_date": "2025-07-15T22:00:00.000Z",
+    "start_timestamp": "2025-07-08T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-15T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -29.6162454,
+      "lng": 30.3960724
+    }
+  },
+  {
+    "Id": 34831,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Substation Maintenance",
+    "description": "Substation under repairs. Power will be restored as soon as repairs completed.",
+    "area": "BUH-REIN ESTATE",
+    "location": "Zandvliet, Theuniskraal, Buhrein, Darwin and Lanzarec roads",
+    "publish_date": "2025-07-13T22:00:00.000Z",
+    "effective_date": "2025-07-13T22:00:00.000Z",
+    "expiry_date": "2025-07-21T22:00:00.000Z",
+    "start_timestamp": "2025-07-14T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-07-21T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.8199929,
+      "lng": 18.7140705
+    }
+  },
+  {
+    "Id": 34827,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Infrastructure maintenance",
+    "description": "Planned Infrastructure maintenance in progress as per area schedule. Electricity supply interruptions may occur when the work commences in the morning and when the maintenance work is completed in the afternoon. Sometims, tripping can occur among others.",
+    "area": "MOWBRAY",
+    "location": "UCT Complex - Mowbray",
+    "publish_date": "2025-07-01T22:00:00.000Z",
+    "effective_date": "2025-07-01T22:00:00.000Z",
+    "expiry_date": "2025-07-02T22:00:00.000Z",
+    "start_timestamp": "2025-07-02T08:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-02T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.957652,
+      "lng": 18.4611991
+    }
+  },
+  {
+    "Id": 34826,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-5yearly planned maintenance",
+    "description": "Planned 5year maintenance as per area schedule.",
+    "area": "MITCHELLS PLAIN CBD",
+    "location": "Annetette, Samantha, Elizabeth, Edna, Ethel, Emma & Evelyn Cls - Mitchells Plain (The Farm)",
+    "publish_date": "2025-07-01T22:00:00.000Z",
+    "effective_date": "2025-07-01T22:00:00.000Z",
+    "expiry_date": "2025-07-02T22:00:00.000Z",
+    "start_timestamp": "2025-07-02T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-02T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.0485946,
+      "lng": 18.6056873
+    }
+  },
+  {
+    "Id": 34825,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Distribution Network",
+    "description": "Essential upgrade on the Distribution network.",
+    "area": "OTTERY",
+    "location": "Venus Way, Mercury Crescent, Hillstar Avenue - Ottery",
+    "publish_date": "2025-07-01T22:00:00.000Z",
+    "effective_date": "2025-07-01T22:00:00.000Z",
+    "expiry_date": "2025-07-02T22:00:00.000Z",
+    "start_timestamp": "2025-07-02T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-07-02T16:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.006816,
+      "lng": 18.5041939
+    }
+  },
+  {
+    "Id": 34824,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - System Upgrade",
+    "description": "Systems being upgraded as part of routine maintenance",
+    "area": "BONTEHEUWEL",
+    "location": "Jakkelsvlei Laan,Honey Suckle street, Ironwood Road & Surr - Bonteheuwel",
+    "publish_date": "2025-07-01T22:00:00.000Z",
+    "effective_date": "2025-07-01T22:00:00.000Z",
+    "expiry_date": "2025-07-02T22:00:00.000Z",
+    "start_timestamp": "2025-07-02T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-07-02T17:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9506028,
+      "lng": 18.5515299
+    }
+  },
+  {
+    "Id": 34823,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-5yearly planned maintenance",
+    "description": "Planned 5year maintenance as per area schedule.",
+    "area": "STIKLAND INDUSTRIA",
+    "location": "Stickland Industrial - Stikland Park",
+    "publish_date": "2025-07-01T22:00:00.000Z",
+    "effective_date": "2025-07-01T22:00:00.000Z",
+    "expiry_date": "2025-07-02T22:00:00.000Z",
+    "start_timestamp": "2025-07-02T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-02T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9033239,
+      "lng": 18.668609
+    }
+  },
+  {
+    "Id": 34822,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Infrastructure maintenance",
+    "description": "Planned Infrastructure maintenance in progress as per area schedule. Electricity supply interruptions may occur when the work commences in the morning and when the maintenance work is completed in the afternoon. Sometims, tripping can occur among others.",
+    "area": "ATLANTIS INDUSTRIAL",
+    "location": "Protea Park, Verbena Street, Zinnia Place & Surroundings - Atlantis",
+    "publish_date": "2025-07-01T22:00:00.000Z",
+    "effective_date": "2025-07-01T22:00:00.000Z",
+    "expiry_date": "2025-07-02T22:00:00.000Z",
+    "start_timestamp": "2025-07-02T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-02T18:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.5756639,
+      "lng": 18.4980379
+    }
+  },
+  {
+    "Id": 34797,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-5yearly planned maintenance",
+    "description": "Planned 5year maintenance as per area schedule.",
+    "area": "EASTRIDGE",
+    "location": "Grysbok, Rietbok & 6th Ave - Eastridge",
+    "publish_date": "2025-06-30T22:00:00.000Z",
+    "effective_date": "2025-06-30T22:00:00.000Z",
+    "expiry_date": "2025-07-01T22:00:00.000Z",
+    "start_timestamp": "2025-07-01T07:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-01T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.0528357,
+      "lng": 18.6249667
+    }
+  },
+  {
+    "Id": 34796,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Distribution Network",
+    "description": "Essential upgrade on the Distribution network.",
+    "area": "OBSERVATORY",
+    "location": "1 Baker St (Erf 25475) - Observatory",
+    "publish_date": "2025-06-30T22:00:00.000Z",
+    "effective_date": "2025-06-30T22:00:00.000Z",
+    "expiry_date": "2025-07-04T22:00:00.000Z",
+    "start_timestamp": "2025-07-01T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-04T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9317734,
+      "lng": 18.4684537
+    }
+  },
+  {
+    "Id": 34795,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Distribution Network",
+    "description": "Essential upgrade on the Distribution network.",
+    "area": "SALT RIVER",
+    "location": "Salt River Rd, Hopkins St, Victoria Rd,  Booth Rd, Milner Rd, Avenue rd, Hares Ave & Surr - Salt River",
+    "publish_date": "2025-06-30T22:00:00.000Z",
+    "effective_date": "2025-06-30T22:00:00.000Z",
+    "expiry_date": "2025-07-01T22:00:00.000Z",
+    "start_timestamp": "2025-07-01T06:30:00.000Z",
+    "forecast_end_timestamp": "2025-07-01T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.93228,
+      "lng": 18.4566549
+    }
+  },
+  {
+    "Id": 34794,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance - Substation Maintenance",
+    "description": "Substation under repairs. Power will be restored as soon as repairs completed.",
+    "area": "KUILS RIVER COMMON",
+    "location": "Fisant Rd & Piet Fransman Rd -  Rouxville - Kuilsriver",
+    "publish_date": "2025-06-30T22:00:00.000Z",
+    "effective_date": "2025-06-30T22:00:00.000Z",
+    "expiry_date": "2025-07-01T22:00:00.000Z",
+    "start_timestamp": "2025-07-01T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-01T14:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.9227312,
+      "lng": 18.6898045
+    }
+  },
+  {
+    "Id": 34793,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Medium Voltage",
+    "description": "Planned Medium Voltage Switch Gear maintenance as per schedule.",
+    "area": "SOMERSET WEST",
+    "location": "Merriman Ave, Greenways Drv, King Stone St, Cypress Rd & De Hoop Cres - Somerset West",
+    "publish_date": "2025-06-30T22:00:00.000Z",
+    "effective_date": "2025-06-30T22:00:00.000Z",
+    "expiry_date": "2025-07-01T22:00:00.000Z",
+    "start_timestamp": "2025-07-01T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-01T16:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.07054189999999,
+      "lng": 18.8411629
+    }
+  },
+  {
+    "Id": 34792,
+    "service_area": "Electricity",
+    "title": "Planned Maintenance-Medium Voltage",
+    "description": "Planned Medium Voltage Switch Gear maintenance as per schedule.",
+    "area": "SOMERSET WEST",
+    "location": "Almond Street & Helderberg College - Somerset West",
+    "publish_date": "2025-06-30T22:00:00.000Z",
+    "effective_date": "2025-06-30T22:00:00.000Z",
+    "expiry_date": "2025-07-01T22:00:00.000Z",
+    "start_timestamp": "2025-07-01T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-01T16:00:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -34.0493035,
+      "lng": 18.8424972
+    }
+  },
+  {
+    "Id": 34783,
+    "service_area": "Electricity",
+    "title": "Unplanned Maintenance - Feeder cable",
+    "description": "Repairs on burnt feeder cable",
+    "area": "ATHLONE",
+    "location": "Louisvale Rd, Grasmere Str & Surr - Athlone",
+    "publish_date": "2025-06-29T22:00:00.000Z",
+    "effective_date": "2025-06-29T22:00:00.000Z",
+    "expiry_date": "2025-07-04T22:00:00.000Z",
+    "start_timestamp": "2025-06-30T18:28:00.000Z",
+    "forecast_end_timestamp": null,
+    "planned": true,
+    "request_number": "9120240020",
+    "coordinates": {
+      "lat": -33.9671049,
+      "lng": 18.507215
+    }
+  },
+  {
+    "Id": 34763,
+    "service_area": "Drivers Licence Enquiries",
+    "title": "DLTC Centre closed to the public",
+    "description": "Not open for any transactions",
+    "area": "Atlantis Driving License Testing Centre",
+    "location": "Cnr Charel Uys Street and Hampshire Place, Atlantis;",
+    "publish_date": "2025-06-30T22:00:00.000Z",
+    "effective_date": "2025-07-01T22:00:00.000Z",
+    "expiry_date": "2025-07-02T22:00:00.000Z",
+    "start_timestamp": "2025-07-02T06:00:00.000Z",
+    "forecast_end_timestamp": "2025-07-02T06:30:00.000Z",
+    "planned": true,
+    "request_number": null,
+    "coordinates": {
+      "lat": -33.5877595,
+      "lng": 18.4835181
+    }
+  },
+  {
     "Id": 34735,
     "service_area": "Water & Sanitation",
     "title": "Planned Maintenance - Valve Maintenance",
@@ -128,8 +432,8 @@
     "planned": true,
     "request_number": null,
     "coordinates": {
-      "lat": -23.4012946,
-      "lng": 29.4179324
+      "lat": -34.0401543,
+      "lng": 18.6101438
     }
   },
   {
@@ -242,8 +546,8 @@
     "planned": true,
     "request_number": null,
     "coordinates": {
-      "lat": 46.5200185,
-      "lng": -84.3420507
+      "lat": -33.893056,
+      "lng": 18.629688
     }
   },
   {

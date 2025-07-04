@@ -128,8 +128,13 @@ def merge_alerts(existing_alerts: List[Dict], new_alerts: List[Dict]) -> List[Di
     # Create a dictionary of existing alerts by Id
     alerts_dict = {alert["Id"]: alert for alert in existing_alerts}
     
-    # Update with new alerts
+    # Update with new alerts, but preserve existing coordinates if present
     for alert in new_alerts:
+        existing = alerts_dict.get(alert["Id"])
+        if existing and "coordinates" in existing:
+            coords = existing["coordinates"]
+            if coords and coords.get("lat") not in (None, '', 'null') and coords.get("lng") not in (None, '', 'null'):
+                alert["coordinates"] = coords
         alerts_dict[alert["Id"]] = alert
     
     # Add coordinates to any alerts that don't have them

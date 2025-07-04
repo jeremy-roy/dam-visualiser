@@ -318,7 +318,8 @@ function App() {
           serviceAlerts={filteredServiceAlerts}
           selectedDate={selectedDate}
           mapStyle={mapStyle}
-          onSelectDam={setSelectedDam}
+          selectedDam={selectedDam}
+          setSelectedDam={setSelectedDam}
           panTo={panTo}
           selectedServiceArea={selectedServiceArea}
           showDamLevelsLayer={showDamLevelsLayer}
